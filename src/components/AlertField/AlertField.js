@@ -4,13 +4,19 @@ import { ThemeProvider } from '@mui/material/styles';
 import {theme} from './Style';
 import PropTypes from 'prop-types'
 
+/**
+ * 
+ * @example ./Example.md
+ */
 function AlertField({color,icon,...props}) {
   return (
     <ThemeProvider theme={theme}>
         <Alert icon={icon} severity={color}>{props.children}</Alert>
     </ThemeProvider>
   )
+  
 }
+
 
 
 AlertField.propTypes = {

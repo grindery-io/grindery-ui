@@ -1,11 +1,16 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import App from './App';
-
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
-
+export { default as Button } from "./components/ButtonElement/ButtonElement";
+export { default as AutoCompleteInput } from "./components/AutoCompleteInput/AutoCompleteInput";
+export { default as InputBox } from "./components/InputBox/InputBox";
+export { default as SelectInput } from "./components/SelectInput/SelectInput";
+export { default as PaperBox } from "./components/PaperBox/PaperBox";
+export { default as Text } from "./components/Text/Text";
+export { default as InputSuffix } from "./components/InputSuffix/InputSuffix";
+export { default as AlertField } from "./components/AlertField/AlertField";
+export { default as SwitchInput } from "./components/SwitchInput/SwitchInput";
+export { default as DialogBox } from "./components/DialogBox/DialogBox";
+export { default as SelectSimple } from "./components/SelectSimple/SelectSimple";
+export { default as Drawer } from "./components/DrawerComponent/DrawerComponent";
+export { default as IconButton } from "./components/IconButtonComponent/IconButtonComponent";
+export { default as TabComponent } from "./components/TabComponent/TabComponent";
+export { default as CircularProgress } from "./components/CircularProgressComponent/CircularProgressComponent";
+export { default as RichInput } from "./components/RichInput/RichInput";

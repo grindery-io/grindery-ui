@@ -2,8 +2,7 @@ import React, {
   useRef,
   useMemo,
   useCallback,
-  useState,
-  useEffect,
+  useState
 } from "react";
 import {
   Box,
@@ -27,6 +26,9 @@ import { styled } from "@mui/material/styles";
 import InputBox from "../InputBox/InputBox";
 import ButtonElement from "../ButtonElement/ButtonElement";
 
+/**
+ * @example ./Example.md
+ */
 const RichInput = ({
   value,
   onChange,
