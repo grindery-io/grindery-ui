@@ -4,6 +4,8 @@ Reusable React components library for Grindery projects.
 
 Based on [Material UI](https://mui.com/).
 
+Documentation: https://grindery-io.github.io/grindery-ui/
+
 ## Development
 
 Library uses [Styleguidist](https://react-styleguidist.js.org/) for local development and documentation.
