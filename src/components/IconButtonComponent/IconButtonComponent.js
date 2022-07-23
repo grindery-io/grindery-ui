@@ -4,6 +4,9 @@ import { ThemeProvider } from "@mui/material/styles";
 import { theme } from "./Style";
 import PropTypes from "prop-types";
 
+/**
+ * @example ./Example.md
+ */
 function IconButtonComponent({ color, type, icon, onClick }) {
   return (
     <ThemeProvider theme={theme}>
@@ -19,8 +22,9 @@ function IconButtonComponent({ color, type, icon, onClick }) {
 }
 
 IconButtonComponent.propTypes = {
-  color: PropTypes.string.isRequired,
+  color: PropTypes.string,
   icon: PropTypes.string,
+  type: PropTypes.string,
 };
 
 export default IconButtonComponent;

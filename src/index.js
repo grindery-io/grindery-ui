@@ -2,7 +2,6 @@ export { default as Button } from "./components/ButtonElement/ButtonElement";
 export { default as AutoCompleteInput } from "./components/AutoCompleteInput/AutoCompleteInput";
 export { default as InputBox } from "./components/InputBox/InputBox";
 export { default as SelectInput } from "./components/SelectInput/SelectInput";
-export { default as PaperBox } from "./components/PaperBox/PaperBox";
 export { default as Text } from "./components/Text/Text";
 export { default as InputSuffix } from "./components/InputSuffix/InputSuffix";
 export { default as AlertField } from "./components/AlertField/AlertField";

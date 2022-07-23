@@ -4,6 +4,10 @@ import { ThemeProvider } from "@mui/material/styles";
 import { theme } from "./Style";
 import PropTypes from "prop-types";
 
+/**
+ *
+ * @example ./Example.md
+ */
 function SelectSimple({ value, options, placeholder, onChange }) {
   return (
     <ThemeProvider theme={theme}>

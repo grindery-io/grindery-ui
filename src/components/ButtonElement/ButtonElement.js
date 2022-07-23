@@ -5,6 +5,11 @@ import { theme } from "./Style";
 import PropTypes from "prop-types";
 import { CircularProgress } from "@mui/material";
 
+/**
+ * Button component
+ *
+ * @example ./Example.md
+ */
 function ButtonElement({
   variant,
   value,

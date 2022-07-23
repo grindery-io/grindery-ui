@@ -4,6 +4,9 @@ import { ThemeProvider } from "@mui/material/styles";
 import { theme } from "./Style";
 import PropTypes from "prop-types";
 
+/**
+ * @example ./Example.md
+ */
 function Text({ variant, value }) {
   return (
     <ThemeProvider theme={theme}>

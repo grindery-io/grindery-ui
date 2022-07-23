@@ -3,6 +3,9 @@ import PropTypes from "prop-types";
 import { ThemeProvider, Switch } from "@mui/material";
 import { theme } from "./Style";
 
+/**
+ * @example ./Example.md
+ */
 function SwitchInput({ value, color, on, off, onChange }) {
   return (
     <ThemeProvider theme={theme}>
