@@ -321,7 +321,7 @@ function SelectInput({
               ""
             )}
           </Box>
-          <FormControl fullWidth>
+          <FormControl fullWidth error={Boolean(error)}>
             {currentValue.length === 0 ? (
               <InputLabel disableAnimation shrink={false} focused={false}>
                 {placeholder}
@@ -501,13 +501,27 @@ function SelectInput({
                 </MenuItem>
               ))}
             </Select>
-            <Typography
-              variant="p"
-              className="texthelper"
-              style={{ margin: "4px 0 0 " }}
-            >
-              {texthelper}
-            </Typography>
+            {Boolean(error) ? (
+              <Typography
+                variant="p"
+                className="texthelper"
+                style={{ margin: "4px 0 0", color: "#FF5858" }}
+              >
+                {error}
+              </Typography>
+            ) : (
+              <>
+                {texthelper && (
+                  <Typography
+                    variant="p"
+                    className="texthelper"
+                    style={{ margin: "4px 0 0 " }}
+                  >
+                    {texthelper}
+                  </Typography>
+                )}
+              </>
+            )}
           </FormControl>
         </Box>
       ) : (

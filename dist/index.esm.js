@@ -1647,7 +1647,8 @@ function SelectInput(_ref) {
     variant: "p",
     className: "required"
   }, "(required)") : ""), /*#__PURE__*/React.createElement(FormControl, {
-    fullWidth: true
+    fullWidth: true,
+    error: Boolean(error)
   }, currentValue.length === 0 ? /*#__PURE__*/React.createElement(InputLabel, {
     disableAnimation: true,
     shrink: false,
@@ -1785,13 +1786,20 @@ function SelectInput(_ref) {
       variant: "p",
       title: option.label
     }, option.label), variant === "full" ? /*#__PURE__*/React.createElement("span", null, option.reference) : ""));
-  })), /*#__PURE__*/React.createElement(Typography, {
+  })), Boolean(error) ? /*#__PURE__*/React.createElement(Typography, {
+    variant: "p",
+    className: "texthelper",
+    style: {
+      margin: "4px 0 0",
+      color: "#FF5858"
+    }
+  }, error) : /*#__PURE__*/React.createElement(React.Fragment, null, texthelper && /*#__PURE__*/React.createElement(Typography, {
     variant: "p",
     className: "texthelper",
     style: {
       margin: "4px 0 0 "
     }
-  }, texthelper))) : "");
+  }, texthelper)))) : "");
 }
 
 SelectInput.propTypes = {
