@@ -1,9 +1,4 @@
-import React, {
-  useRef,
-  useMemo,
-  useCallback,
-  useState
-} from "react";
+import React, { useRef, useMemo, useCallback, useState } from "react";
 import {
   Box,
   Icon,
@@ -14,6 +9,7 @@ import {
   Tooltip,
   Typography,
 } from "@mui/material";
+import PropTypes from "prop-types";
 import { createEditor, Transforms } from "slate";
 import { Slate, Editable, withReact, ReactEditor } from "slate-react";
 import { withHistory } from "slate-history";
@@ -27,6 +23,9 @@ import InputBox from "../InputBox/InputBox";
 import ButtonElement from "../ButtonElement/ButtonElement";
 
 /**
+ * 
+ * Richtext input component
+ * 
  * @example ./Example.md
  */
 const RichInput = ({
@@ -41,6 +40,7 @@ const RichInput = ({
   user,
   addressBook,
   setAddressBook,
+  error,
 }) => {
   const editor = useMemo(
     () => withReferences(withReact(withHistory(createEditor()))),
@@ -92,7 +92,7 @@ const RichInput = ({
       );
     };
 
-    return unserializeValue(value)
+    return unserializeValue(value);
   }, [value, options]);
 
   const serializeValue = (val) => {
@@ -438,9 +438,9 @@ const RichInput = ({
         }}
       >
         <RichInputWrapper ref={inputRef}>
-          <Box className="rich-input">
+          <Box className={`rich-input ${error ? "has-error" : ""}`}>
             {renderLabel()}
-            <div>
+            <div style={{position: 'relative'}}>
               <Slate
                 editor={editor}
                 value={initialValue}
@@ -469,6 +469,7 @@ const RichInput = ({
                 {(options.length > 0 || hasAddressBook) && renderDropdown()}
               </Slate>
             </div>
+            {Boolean(error) && <div class="error-message">{error}</div>}
           </Box>
         </RichInputWrapper>
       </Foco>
@@ -915,6 +916,21 @@ const RichInputWrapper = styled("div")({
       },
     },
   },
+  "& .rich-input.has-error": {
+    '& p[data-slate-node="element"]': {},
+    '& [data-slate-placeholder="true"] p': {},
+    '& div[role="textbox"]': {
+      border: "1px solid #FF5858",
+      boxShadow: "inset 0px 0px 0px 1px #FF5858",
+    },
+    "& div.error-message": {
+      fontWeight: "400",
+      fontSize: "14px",
+      lineHeight: "150%",
+      color: "#FF5858",
+      marginTop: "4px",
+    },
+  },
 });
 
 const EditIcon = () => (
@@ -1013,5 +1029,44 @@ const CloseIcon = () => (
     />
   </svg>
 );
+
+RichInput.propTypes = {
+  /** The field value */
+  value: PropTypes.string.isRequired, 
+
+  /** Value change handler */
+  onChange: PropTypes.func.isRequired,
+
+  /** Field label */
+  label: PropTypes.string,
+
+  /** Available options */
+  options: PropTypes.array,
+
+  /** Field placeholder  */
+  placeholder: PropTypes.string,
+
+  /** Help text that will be shown in the tooltip  */
+  tooltip: PropTypes.string,
+  
+  /** Is field required */
+  required: PropTypes.bool,
+
+  /** Error message */
+  error: PropTypes.string,
+  
+  /** Is field allows to use Address Book */
+  hasAddressBook: PropTypes.bool,
+  
+  /** User id, required if `hasAddressBook` is `true` */
+  user: PropTypes.string,
+  
+  /** User's address book, required if `hasAddressBook` is `true` */
+  addressBook: PropTypes.array,
+
+  /** Address Book change handler, required if `hasAddressBook` is `true` */
+  setAddressBook: PropTypes.func,
+  
+}
 
 export default RichInput;

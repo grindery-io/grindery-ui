@@ -44,6 +44,11 @@ function ButtonElement({
           type={type}
           disabled={disabled}
           onClick={onClick}
+          startIcon={
+            loading ? (
+              <CircularProgress sx={{ color: "#FFF" }} size={14} />
+            ) : undefined
+          }
         >
           {value}
         </Button>

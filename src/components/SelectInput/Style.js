@@ -51,6 +51,21 @@ export const theme = createTheme({
               border: "1px solid #8C30F5",
             },
           },
+          "& .MuiInputLabel-root.Mui-error": {
+            color: "rgba(0, 0, 0, 0.6)",
+          },
+          "& .MuiOutlinedInput-root.Mui-error": {
+            boxShadow: "inset 0px 0px 0px 1px #FF5858 !important",
+            border: "1px solid #FF5858 !important",
+            "& #search-select": {
+              boxShadow: "none",
+              border: "none",
+            },
+            "& #search-select-empty": {
+              boxShadow: "none",
+              border: "none",
+            },
+          },
           "& #search-select": {
             padding: "10px 15px 10px 15px!important",
           },

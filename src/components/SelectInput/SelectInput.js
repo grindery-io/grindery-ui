@@ -5,7 +5,6 @@ import {
   Select,
   MenuItem,
   Typography,
-  ListSubheader,
   TextField,
   InputAdornment,
   ThemeProvider,
@@ -27,6 +26,11 @@ const styleDescription = {
   margin: "0px",
 };
 
+/**
+ * Select input component
+ *
+ * @example ./Example.md
+ */
 function SelectInput({
   options,
   type,
@@ -39,6 +43,7 @@ function SelectInput({
   required,
   tooltip,
   onChange,
+  error,
 }) {
   const [searchText, setSearchText] = useState("");
 
@@ -97,7 +102,7 @@ function SelectInput({
               ""
             )}
           </Box>
-          <FormControl fullWidth>
+          <FormControl fullWidth error={Boolean(error)}>
             {currentValue.length === 0 ? (
               <InputLabel disableAnimation shrink={false} focused={false}>
                 {placeholder}
@@ -256,9 +261,27 @@ function SelectInput({
                 </MenuItem>
               ))}
             </Select>
-            <Typography variant="p" className="texthelper">
-              {texthelper}
-            </Typography>
+            {Boolean(error) ? (
+              <Typography
+                variant="p"
+                className="texthelper"
+                style={{ margin: "4px 0 0", color: "#FF5858" }}
+              >
+                {error}
+              </Typography>
+            ) : (
+              <>
+                {texthelper && (
+                  <Typography
+                    variant="p"
+                    className="texthelper"
+                    style={{ margin: "4px 0 0 " }}
+                  >
+                    {texthelper}
+                  </Typography>
+                )}
+              </>
+            )}
           </FormControl>
         </Box>
       ) : type === "searchLabel" ? (
@@ -478,7 +501,11 @@ function SelectInput({
                 </MenuItem>
               ))}
             </Select>
-            <Typography variant="p" className="texthelper">
+            <Typography
+              variant="p"
+              className="texthelper"
+              style={{ margin: "4px 0 0 " }}
+            >
               {texthelper}
             </Typography>
           </FormControl>
@@ -498,6 +525,7 @@ SelectInput.propTypes = {
   variant: PropTypes.string,
   multiple: PropTypes.bool,
   tooltip: PropTypes.string,
+  error: PropTypes.string,
 };
 
 SelectInput.defaultProps = {

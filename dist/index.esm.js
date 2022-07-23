@@ -117,7 +117,13 @@ function ButtonElement(_ref) {
     color: color,
     type: type,
     disabled: disabled,
-    onClick: onClick
+    onClick: onClick,
+    startIcon: loading ? /*#__PURE__*/React.createElement(CircularProgress, {
+      sx: {
+        color: "#FFF"
+      },
+      size: 14
+    }) : undefined
   }, value));
 }
 
@@ -444,7 +450,7 @@ var theme$d = createTheme({
         listbox: {
           "& > li:first-child > .MuiListSubheader-root": {
             border: "0px",
-            padding: '0px'
+            padding: "0px"
           },
           '& .MuiAutocomplete-option[aria-disabled="true"]': {
             opacity: 1
@@ -532,9 +538,9 @@ var theme$d = createTheme({
           marginLeft: "10px",
           marginRight: "10px",
           marginTop: "10px",
-          padding: '8px 0px',
+          padding: "8px 0px",
           borderTop: "1px solid #DCDCDC",
-          fontFamily: 'Roboto',
+          fontFamily: "Roboto",
           fontStyle: "normal",
           fontWeight: "400",
           fontSize: "14px",
@@ -543,7 +549,7 @@ var theme$d = createTheme({
         },
         groupUl: {
           padding: "0px",
-          '& > .MuiAutocomplete-option': {
+          "& > .MuiAutocomplete-option": {
             paddingLeft: "15px"
           }
         },
@@ -625,20 +631,25 @@ var styleDescription$1 = {
   margin: "0px"
 };
 var styleButton = {
-  fontFamily: 'Roboto',
-  fontStyle: 'normal',
-  fontWeight: '700',
-  fontSize: '14px',
-  lineHeight: '150%',
-  textAlign: 'center',
-  color: '#0B0D17',
-  border: '1px solid #898989',
-  borderRadius: '5px',
-  margin: '8px 10px',
-  width: 'calc( 100% - 20px)',
-  padding: '10px 0px',
-  textTransform: 'none'
+  fontFamily: "Roboto",
+  fontStyle: "normal",
+  fontWeight: "700",
+  fontSize: "14px",
+  lineHeight: "150%",
+  textAlign: "center",
+  color: "#0B0D17",
+  border: "1px solid #898989",
+  borderRadius: "5px",
+  margin: "8px 10px",
+  width: "calc( 100% - 20px)",
+  padding: "10px 0px",
+  textTransform: "none"
 };
+/**
+ * Autocomplete input component
+ *
+ * @example ./Example.md
+ */
 
 function AutoCompleteInput(_ref) {
   var options = _ref.options,
@@ -650,7 +661,8 @@ function AutoCompleteInput(_ref) {
       value = _ref.value,
       tooltip = _ref.tooltip,
       buttonSuggestion = _ref.buttonSuggestion,
-      onChange = _ref.onChange;
+      onChange = _ref.onChange,
+      error = _ref.error;
   var currentValue = options.find(function (opt) {
     return opt.value === value;
   }) || null;
@@ -705,16 +717,25 @@ function AutoCompleteInput(_ref) {
     onChange: handleChange,
     value: currentValue,
     PaperComponent: PaperComponentCustom,
-    sx: currentValue ? {
+    sx: _objectSpread2(_objectSpread2({}, currentValue ? {
       ".MuiOutlinedInput-root": {
-        boxShadow: "inset 0px 0px 0px 1px #8C30F5",
-        border: "1px solid #8C30F5"
+        boxShadow: error ? "inset 0px 0px 0px 1px #FF5858" : "inset 0px 0px 0px 1px #8C30F5",
+        border: error ? "1px solid #FF5858" : "1px solid #8C30F5"
       }
     } : {
+      ".MuiOutlinedInput-root": {
+        boxShadow: error ? "inset 0px 0px 0px 1px #FF5858" : undefined,
+        border: error ? "1px solid #FF5858" : undefined
+      },
       ".MuiAutocomplete-clearIndicator": {
         display: "none"
       }
-    },
+    }), {}, {
+      ".MuiOutlinedInput-root.Mui-focused": {
+        boxShadow: error ? "inset 0px 0px 0px 1px #FF5858" : "inset 0px 0px 0px 1px #8C30F5",
+        border: error ? "1px solid #FF5858" : "1px solid #8C30F5"
+      }
+    }),
     options: options,
     groupBy: function groupBy(option) {
       return option.group;
@@ -810,10 +831,22 @@ function AutoCompleteInput(_ref) {
         variant: "p"
       }, "Paid")) : null : null);
     }
-  }), /*#__PURE__*/React.createElement(Typography, {
+  }), Boolean(error) ? /*#__PURE__*/React.createElement(Typography, {
     variant: "span",
-    className: "texthelper"
-  }, texthelper)));
+    className: "texthelper",
+    style: {
+      display: "block",
+      margin: "4px 0 0",
+      color: "#FF5858"
+    }
+  }, error) : /*#__PURE__*/React.createElement(React.Fragment, null, texthelper && /*#__PURE__*/React.createElement(Typography, {
+    variant: "span",
+    className: "texthelper",
+    style: {
+      display: "block",
+      margin: "4px 0 0"
+    }
+  }, texthelper))));
 }
 
 AutoCompleteInput.propTypes = {
@@ -826,7 +859,8 @@ AutoCompleteInput.propTypes = {
   value: PropTypes.string.isRequired,
   onChange: PropTypes.func,
   tooltip: PropTypes.string,
-  buttonSuggestion: PropTypes.bool
+  buttonSuggestion: PropTypes.bool,
+  error: PropTypes.string
 };
 
 var theme$c = createTheme({
@@ -1120,6 +1154,21 @@ var theme$b = createTheme({
               border: "1px solid #8C30F5"
             }
           },
+          "& .MuiInputLabel-root.Mui-error": {
+            color: "rgba(0, 0, 0, 0.6)"
+          },
+          "& .MuiOutlinedInput-root.Mui-error": {
+            boxShadow: "inset 0px 0px 0px 1px #FF5858 !important",
+            border: "1px solid #FF5858 !important",
+            "& #search-select": {
+              boxShadow: "none",
+              border: "none"
+            },
+            "& #search-select-empty": {
+              boxShadow: "none",
+              border: "none"
+            }
+          },
           "& #search-select": {
             padding: "10px 15px 10px 15px!important"
           },
@@ -1351,6 +1400,11 @@ var styleDescription = {
   color: "#898989!important",
   margin: "0px"
 };
+/**
+ * Select input component
+ *
+ * @example ./Example.md
+ */
 
 function SelectInput(_ref) {
   var options = _ref.options,
@@ -1363,7 +1417,8 @@ function SelectInput(_ref) {
       multiple = _ref.multiple,
       required = _ref.required,
       tooltip = _ref.tooltip,
-      onChange = _ref.onChange;
+      onChange = _ref.onChange,
+      error = _ref.error;
 
   var _useState = useState(""),
       _useState2 = _slicedToArray(_useState, 2),
@@ -1420,7 +1475,8 @@ function SelectInput(_ref) {
     variant: "p",
     className: "required"
   }, "(required)") : ""), /*#__PURE__*/React.createElement(FormControl, {
-    fullWidth: true
+    fullWidth: true,
+    error: Boolean(error)
   }, currentValue.length === 0 ? /*#__PURE__*/React.createElement(InputLabel, {
     disableAnimation: true,
     shrink: false,
@@ -1545,10 +1601,20 @@ function SelectInput(_ref) {
       variant: "p",
       title: option.label
     }, option.label)));
-  })), /*#__PURE__*/React.createElement(Typography, {
+  })), Boolean(error) ? /*#__PURE__*/React.createElement(Typography, {
     variant: "p",
-    className: "texthelper"
-  }, texthelper))) : type === "searchLabel" ? /*#__PURE__*/React.createElement(Box, {
+    className: "texthelper",
+    style: {
+      margin: "4px 0 0",
+      color: "#FF5858"
+    }
+  }, error) : /*#__PURE__*/React.createElement(React.Fragment, null, texthelper && /*#__PURE__*/React.createElement(Typography, {
+    variant: "p",
+    className: "texthelper",
+    style: {
+      margin: "4px 0 0 "
+    }
+  }, texthelper)))) : type === "searchLabel" ? /*#__PURE__*/React.createElement(Box, {
     component: "div",
     sx: {
       marginBottom: "20px"
@@ -1721,7 +1787,10 @@ function SelectInput(_ref) {
     }, option.label), variant === "full" ? /*#__PURE__*/React.createElement("span", null, option.reference) : ""));
   })), /*#__PURE__*/React.createElement(Typography, {
     variant: "p",
-    className: "texthelper"
+    className: "texthelper",
+    style: {
+      margin: "4px 0 0 "
+    }
   }, texthelper))) : "");
 }
 
@@ -1732,7 +1801,8 @@ SelectInput.propTypes = {
   onChange: PropTypes.func,
   variant: PropTypes.string,
   multiple: PropTypes.bool,
-  tooltip: PropTypes.string
+  tooltip: PropTypes.string,
+  error: PropTypes.string
 };
 SelectInput.defaultProps = {
   options: [],
@@ -2636,6 +2706,9 @@ var theme = createTheme({
 });
 
 /**
+ * 
+ * Richtext input component
+ * 
  * @example ./Example.md
  */
 
@@ -2650,7 +2723,8 @@ var RichInput = function RichInput(_ref) {
       hasAddressBook = _ref.hasAddressBook,
       user = _ref.user,
       addressBook = _ref.addressBook,
-      setAddressBook = _ref.setAddressBook;
+      setAddressBook = _ref.setAddressBook,
+      error = _ref.error;
   var editor = useMemo(function () {
     return withReferences(withReact(withHistory(createEditor())));
   }, []);
@@ -2964,8 +3038,12 @@ var RichInput = function RichInput(_ref) {
   }, /*#__PURE__*/React.createElement(RichInputWrapper, {
     ref: inputRef
   }, /*#__PURE__*/React.createElement(Box, {
-    className: "rich-input"
-  }, renderLabel(), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(Slate, {
+    className: "rich-input ".concat(error ? "has-error" : "")
+  }, renderLabel(), /*#__PURE__*/React.createElement("div", {
+    style: {
+      position: 'relative'
+    }
+  }, /*#__PURE__*/React.createElement(Slate, {
     editor: editor,
     value: initialValue,
     onChange: function onChange(value) {
@@ -2989,7 +3067,9 @@ var RichInput = function RichInput(_ref) {
     onFocus: function onFocus() {
       setFocused(true);
     }
-  }), (options.length > 0 || hasAddressBook) && renderDropdown()))))));
+  }), (options.length > 0 || hasAddressBook) && renderDropdown())), Boolean(error) && /*#__PURE__*/React.createElement("div", {
+    class: "error-message"
+  }, error)))));
 };
 
 var withReferences = function withReferences(editor) {
@@ -3425,6 +3505,21 @@ var RichInputWrapper = styled("div")({
         background: "none"
       }
     }
+  },
+  "& .rich-input.has-error": {
+    '& p[data-slate-node="element"]': {},
+    '& [data-slate-placeholder="true"] p': {},
+    '& div[role="textbox"]': {
+      border: "1px solid #FF5858",
+      boxShadow: "inset 0px 0px 0px 1px #FF5858"
+    },
+    "& div.error-message": {
+      fontWeight: "400",
+      fontSize: "14px",
+      lineHeight: "150%",
+      color: "#FF5858",
+      marginTop: "4px"
+    }
   }
 });
 
@@ -3513,6 +3608,44 @@ var CloseIcon = function CloseIcon() {
     d: "M10.5024 9L13.25 6.24955C13.4284 6.04679 13.5229 5.78372 13.5143 5.5138C13.5057 5.24387 13.3946 4.98736 13.2036 4.7964C13.0127 4.60544 12.7562 4.49436 12.4862 4.48574C12.2163 4.47712 11.9532 4.57161 11.7505 4.75L9.00002 7.49763L6.24461 4.7415C6.14591 4.64281 6.02875 4.56452 5.8998 4.51111C5.77085 4.4577 5.63264 4.43021 5.49307 4.43021C5.35349 4.43021 5.21528 4.4577 5.08633 4.51111C4.95738 4.56452 4.84022 4.64281 4.74152 4.7415C4.64283 4.8402 4.56454 4.95737 4.51113 5.08632C4.45772 5.21526 4.43023 5.35347 4.43023 5.49305C4.43023 5.63262 4.45772 5.77083 4.51113 5.89978C4.56454 6.02873 4.64283 6.14589 4.74152 6.24459L7.49765 9L4.75002 11.7498C4.64227 11.8461 4.5553 11.9634 4.49443 12.0945C4.43357 12.2256 4.40009 12.3677 4.39605 12.5122C4.392 12.6567 4.41748 12.8004 4.47092 12.9347C4.52435 13.069 4.60463 13.191 4.70683 13.2932C4.80903 13.3954 4.93101 13.4757 5.0653 13.5291C5.19959 13.5826 5.34338 13.608 5.48785 13.604C5.63233 13.5999 5.77446 13.5665 5.90556 13.5056C6.03665 13.4447 6.15395 13.3578 6.25027 13.25L9.00002 10.5024L11.7469 13.25C11.9463 13.4493 12.2166 13.5613 12.4985 13.5613C12.7804 13.5613 13.0507 13.4493 13.25 13.25C13.4493 13.0507 13.5613 12.7803 13.5613 12.4985C13.5613 12.2166 13.4493 11.9462 13.25 11.7469L10.5024 9Z",
     fill: "#0B0D17"
   }));
+};
+
+RichInput.propTypes = {
+  /** The field value */
+  value: PropTypes.string.isRequired,
+
+  /** Value change handler */
+  onChange: PropTypes.func.isRequired,
+
+  /** Field label */
+  label: PropTypes.string,
+
+  /** Available options */
+  options: PropTypes.array,
+
+  /** Field placeholder  */
+  placeholder: PropTypes.string,
+
+  /** Help text that will be shown in the tooltip  */
+  tooltip: PropTypes.string,
+
+  /** Is field required */
+  required: PropTypes.bool,
+
+  /** Error message */
+  error: PropTypes.string,
+
+  /** Is field allows to use Address Book */
+  hasAddressBook: PropTypes.bool,
+
+  /** User id, required if `hasAddressBook` is `true` */
+  user: PropTypes.string,
+
+  /** User's address book, required if `hasAddressBook` is `true` */
+  addressBook: PropTypes.array,
+
+  /** Address Book change handler, required if `hasAddressBook` is `true` */
+  setAddressBook: PropTypes.func
 };
 
 export { AlertField, AutoCompleteInput, ButtonElement as Button, CircularProgressComponent as CircularProgress, DialogBox, DrawerComponent as Drawer, IconButtonComponent as IconButton, InputBox, InputSuffix, PaperBox, RichInput, SelectInput, SelectSimple, SwitchInput, TabComponent, Text };
