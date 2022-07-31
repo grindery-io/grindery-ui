@@ -64,7 +64,7 @@ function TabComponent({
 }
 
 TabComponent.propTypes = {
-  value: PropTypes.number.isRequired,
+  value: PropTypes.oneOfType([PropTypes.number, PropTypes.bool]).isRequired,
   type: PropTypes.string.isRequired,
   options: PropTypes.array.isRequired,
   orientation: PropTypes.string,

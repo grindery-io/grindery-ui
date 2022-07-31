@@ -17,7 +17,7 @@ var palette = {
     main: "#0B0D17"
   }
 };
-var theme$e = createTheme({
+var theme$d = createTheme({
   palette: palette,
   components: {
     MuiButton: {
@@ -81,6 +81,12 @@ var theme$e = createTheme({
   }
 });
 
+/**
+ * Button component
+ *
+ * @example ./Example.md
+ */
+
 function ButtonElement(_ref) {
   var variant = _ref.variant,
       value = _ref.value,
@@ -92,7 +98,7 @@ function ButtonElement(_ref) {
       loading = _ref.loading,
       onClick = _ref.onClick;
   return /*#__PURE__*/React.createElement(ThemeProvider, {
-    theme: theme$e
+    theme: theme$d
   }, icon ? /*#__PURE__*/React.createElement(Button, {
     variant: variant,
     size: size,
@@ -317,7 +323,7 @@ function _nonIterableRest() {
   throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
 }
 
-var theme$d = createTheme({
+var theme$c = createTheme({
   typography: {
     p: {
       fontSize: 16,
@@ -448,7 +454,7 @@ var theme$d = createTheme({
           }
         },
         listbox: {
-          "& > li:first-child > .MuiListSubheader-root": {
+          "& > li:first-of-type > .MuiListSubheader-root": {
             border: "0px",
             padding: "0px"
           },
@@ -678,7 +684,7 @@ function AutoCompleteInput(_ref) {
   };
 
   return /*#__PURE__*/React.createElement(ThemeProvider, {
-    theme: theme$d
+    theme: theme$c
   }, /*#__PURE__*/React.createElement(Box, {
     component: "div",
     sx: {
@@ -749,7 +755,9 @@ function AutoCompleteInput(_ref) {
     loading: true,
     loadingText: "Nothing found",
     renderOption: function renderOption(props, option) {
-      return /*#__PURE__*/React.createElement(React.Fragment, null, console.log(props), /*#__PURE__*/React.createElement(Box, _extends({
+      return /*#__PURE__*/React.createElement(React.Fragment, {
+        key: option.value
+      }, /*#__PURE__*/React.createElement(Box, _extends({
         component: "li",
         sx: {
           "& > img": {
@@ -863,7 +871,7 @@ AutoCompleteInput.propTypes = {
   error: PropTypes.string
 };
 
-var theme$c = createTheme({
+var theme$b = createTheme({
   typography: {
     p: {
       fontSize: 14,
@@ -973,6 +981,10 @@ var theme$c = createTheme({
   }
 });
 
+/**
+ * @example ./Example.md
+ */
+
 function InputBox(_ref) {
   var placeholder = _ref.placeholder,
       size = _ref.size,
@@ -1001,7 +1013,7 @@ function InputBox(_ref) {
     changeValue(currentValue);
   }, [currentValue, changeValue]);
   return /*#__PURE__*/React.createElement(ThemeProvider, {
-    theme: theme$c
+    theme: theme$b
   }, /*#__PURE__*/React.createElement(Box, {
     component: "div",
     sx: {
@@ -1103,7 +1115,7 @@ InputBox.defaultProps = {
   label: ""
 };
 
-var theme$b = createTheme({
+var theme$a = createTheme({
   typography: {
     p: {
       fontSize: 16,
@@ -1441,7 +1453,7 @@ function SelectInput(_ref) {
   };
 
   return /*#__PURE__*/React.createElement(ThemeProvider$1, {
-    theme: theme$b
+    theme: theme$a
   }, type === "default" ? /*#__PURE__*/React.createElement(Box, {
     component: "div",
     sx: {
@@ -1730,7 +1742,6 @@ function SelectInput(_ref) {
     },
     onKeyDown: function onKeyDown(e) {
       e.stopPropagation();
-      console.log("stoped");
     },
     onClickCapture: function onClickCapture(e) {
       e.stopPropagation();
@@ -1823,30 +1834,6 @@ SelectInput.defaultProps = {
   }
 };
 
-var theme$a = createTheme({
-  components: {
-    MuiPaper: {
-      styleOverrides: {
-        root: {
-          padding: "80px 10px",
-          borderRadius: 10,
-          border: "1px solid 1px solid #DCDCDC",
-          width: "375px"
-        }
-      }
-    }
-  }
-});
-
-function PaperBox(props) {
-  return /*#__PURE__*/React.createElement(ThemeProvider, {
-    theme: theme$a
-  }, /*#__PURE__*/React.createElement(Paper, {
-    variant: "outlined",
-    square: true
-  }, props.children));
-}
-
 var theme$9 = createTheme({
   typography: {
     h3: {
@@ -1865,6 +1852,10 @@ var theme$9 = createTheme({
     }
   }
 });
+
+/**
+ * @example ./Example.md
+ */
 
 function Text(_ref) {
   var variant = _ref.variant,
@@ -1939,6 +1930,10 @@ var theme$8 = createTheme({
   }
 });
 
+/**
+ * @example ./Example.md
+ */
+
 function InputSuffix(_ref) {
   var value = _ref.value,
       placeholder = _ref.placeholder,
@@ -2008,7 +2003,7 @@ var theme$7 = createTheme({
 
 var _excluded$2 = ["color", "icon"];
 /**
- * 
+ *
  * @example ./Example.md
  */
 
@@ -2026,7 +2021,8 @@ function AlertField(_ref) {
 }
 
 AlertField.propTypes = {
-  color: PropTypes.string.isRequired
+  color: PropTypes.string,
+  icon: PropTypes.element
 };
 
 var theme$6 = createTheme({
@@ -2081,6 +2077,10 @@ var theme$6 = createTheme({
     }
   }
 });
+
+/**
+ * @example ./Example.md
+ */
 
 function SwitchInput(_ref) {
   var value = _ref.value,
@@ -2195,6 +2195,9 @@ var theme$5 = createTheme({
 });
 
 var _excluded$1 = ["open", "onClose", "maxWidth"];
+/**
+ * @example ./Example.md
+ */
 
 function DialogBox(_ref) {
   var open = _ref.open,
@@ -2280,6 +2283,11 @@ var theme$4 = createTheme({
   }
 });
 
+/**
+ *
+ * @example ./Example.md
+ */
+
 function SelectSimple(_ref) {
   var value = _ref.value,
       options = _ref.options,
@@ -2353,6 +2361,9 @@ var theme$3 = createTheme({
 });
 
 var _excluded = ["variant", "open", "anchor", "sx", "hideBackdrop", "elevation", "PaperProps", "ModalProps", "container"];
+/**
+ * @example ./Example.md
+ */
 
 function DrawerComponent(_ref) {
   var variant = _ref.variant,
@@ -2423,6 +2434,10 @@ var theme$2 = createTheme({
   }
 });
 
+/**
+ * @example ./Example.md
+ */
+
 function IconButtonComponent(_ref) {
   var color = _ref.color,
       type = _ref.type,
@@ -2447,8 +2462,9 @@ function IconButtonComponent(_ref) {
 }
 
 IconButtonComponent.propTypes = {
-  color: PropTypes.string.isRequired,
-  icon: PropTypes.string
+  color: PropTypes.string,
+  icon: PropTypes.string,
+  type: PropTypes.string
 };
 
 var theme$1 = createTheme({
@@ -2474,6 +2490,10 @@ var theme$1 = createTheme({
     }
   }
 });
+
+/**
+ * @example ./Example.md
+ */
 
 function TabComponent(_ref) {
   var value = _ref.value,
@@ -2544,7 +2564,7 @@ function TabComponent(_ref) {
 }
 
 TabComponent.propTypes = {
-  value: PropTypes.number.isRequired,
+  value: PropTypes.oneOfType([PropTypes.number, PropTypes.bool]).isRequired,
   type: PropTypes.string.isRequired,
   options: PropTypes.array.isRequired,
   orientation: PropTypes.string,
@@ -2714,9 +2734,9 @@ var theme = createTheme({
 });
 
 /**
- * 
+ *
  * Richtext input component
- * 
+ *
  * @example ./Example.md
  */
 
@@ -3049,7 +3069,7 @@ var RichInput = function RichInput(_ref) {
     className: "rich-input ".concat(error ? "has-error" : "")
   }, renderLabel(), /*#__PURE__*/React.createElement("div", {
     style: {
-      position: 'relative'
+      position: "relative"
     }
   }, /*#__PURE__*/React.createElement(Slate, {
     editor: editor,
@@ -3076,7 +3096,7 @@ var RichInput = function RichInput(_ref) {
       setFocused(true);
     }
   }), (options.length > 0 || hasAddressBook) && renderDropdown())), Boolean(error) && /*#__PURE__*/React.createElement("div", {
-    class: "error-message"
+    className: "error-message"
   }, error)))));
 };
 
@@ -3656,4 +3676,4 @@ RichInput.propTypes = {
   setAddressBook: PropTypes.func
 };
 
-export { AlertField, AutoCompleteInput, ButtonElement as Button, CircularProgressComponent as CircularProgress, DialogBox, DrawerComponent as Drawer, IconButtonComponent as IconButton, InputBox, InputSuffix, PaperBox, RichInput, SelectInput, SelectSimple, SwitchInput, TabComponent, Text };
+export { AlertField, AutoCompleteInput, ButtonElement as Button, CircularProgressComponent as CircularProgress, DialogBox, DrawerComponent as Drawer, IconButtonComponent as IconButton, InputBox, InputSuffix, RichInput, SelectInput, SelectSimple, SwitchInput, TabComponent, Text };

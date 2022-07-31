@@ -132,7 +132,7 @@ export const theme = createTheme({
           },
         },
         listbox: {
-          "& > li:first-child > .MuiListSubheader-root": {
+          "& > li:first-of-type > .MuiListSubheader-root": {
             border: "0px",
             padding: "0px",
           },

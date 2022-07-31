@@ -423,7 +423,6 @@ function SelectInput({
                   }}
                   onKeyDown={(e) => {
                     e.stopPropagation();
-                    console.log("stoped");
                   }}
                   onClickCapture={(e) => {
                     e.stopPropagation();

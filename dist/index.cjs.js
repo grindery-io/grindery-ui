@@ -29,7 +29,7 @@ var palette = {
     main: "#0B0D17"
   }
 };
-var theme$e = styles.createTheme({
+var theme$d = styles.createTheme({
   palette: palette,
   components: {
     MuiButton: {
@@ -93,6 +93,12 @@ var theme$e = styles.createTheme({
   }
 });
 
+/**
+ * Button component
+ *
+ * @example ./Example.md
+ */
+
 function ButtonElement(_ref) {
   var variant = _ref.variant,
       value = _ref.value,
@@ -104,7 +110,7 @@ function ButtonElement(_ref) {
       loading = _ref.loading,
       onClick = _ref.onClick;
   return /*#__PURE__*/React__default["default"].createElement(styles.ThemeProvider, {
-    theme: theme$e
+    theme: theme$d
   }, icon ? /*#__PURE__*/React__default["default"].createElement(material.Button, {
     variant: variant,
     size: size,
@@ -329,7 +335,7 @@ function _nonIterableRest() {
   throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
 }
 
-var theme$d = styles.createTheme({
+var theme$c = styles.createTheme({
   typography: {
     p: {
       fontSize: 16,
@@ -460,7 +466,7 @@ var theme$d = styles.createTheme({
           }
         },
         listbox: {
-          "& > li:first-child > .MuiListSubheader-root": {
+          "& > li:first-of-type > .MuiListSubheader-root": {
             border: "0px",
             padding: "0px"
           },
@@ -690,7 +696,7 @@ function AutoCompleteInput(_ref) {
   };
 
   return /*#__PURE__*/React__default["default"].createElement(styles.ThemeProvider, {
-    theme: theme$d
+    theme: theme$c
   }, /*#__PURE__*/React__default["default"].createElement(material.Box, {
     component: "div",
     sx: {
@@ -761,7 +767,9 @@ function AutoCompleteInput(_ref) {
     loading: true,
     loadingText: "Nothing found",
     renderOption: function renderOption(props, option) {
-      return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, console.log(props), /*#__PURE__*/React__default["default"].createElement(material.Box, _extends({
+      return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, {
+        key: option.value
+      }, /*#__PURE__*/React__default["default"].createElement(material.Box, _extends({
         component: "li",
         sx: {
           "& > img": {
@@ -875,7 +883,7 @@ AutoCompleteInput.propTypes = {
   error: PropTypes__default["default"].string
 };
 
-var theme$c = styles.createTheme({
+var theme$b = styles.createTheme({
   typography: {
     p: {
       fontSize: 14,
@@ -985,6 +993,10 @@ var theme$c = styles.createTheme({
   }
 });
 
+/**
+ * @example ./Example.md
+ */
+
 function InputBox(_ref) {
   var placeholder = _ref.placeholder,
       size = _ref.size,
@@ -1013,7 +1025,7 @@ function InputBox(_ref) {
     changeValue(currentValue);
   }, [currentValue, changeValue]);
   return /*#__PURE__*/React__default["default"].createElement(styles.ThemeProvider, {
-    theme: theme$c
+    theme: theme$b
   }, /*#__PURE__*/React__default["default"].createElement(material.Box, {
     component: "div",
     sx: {
@@ -1115,7 +1127,7 @@ InputBox.defaultProps = {
   label: ""
 };
 
-var theme$b = styles.createTheme({
+var theme$a = styles.createTheme({
   typography: {
     p: {
       fontSize: 16,
@@ -1453,7 +1465,7 @@ function SelectInput(_ref) {
   };
 
   return /*#__PURE__*/React__default["default"].createElement(material.ThemeProvider, {
-    theme: theme$b
+    theme: theme$a
   }, type === "default" ? /*#__PURE__*/React__default["default"].createElement(material.Box, {
     component: "div",
     sx: {
@@ -1742,7 +1754,6 @@ function SelectInput(_ref) {
     },
     onKeyDown: function onKeyDown(e) {
       e.stopPropagation();
-      console.log("stoped");
     },
     onClickCapture: function onClickCapture(e) {
       e.stopPropagation();
@@ -1835,30 +1846,6 @@ SelectInput.defaultProps = {
   }
 };
 
-var theme$a = styles.createTheme({
-  components: {
-    MuiPaper: {
-      styleOverrides: {
-        root: {
-          padding: "80px 10px",
-          borderRadius: 10,
-          border: "1px solid 1px solid #DCDCDC",
-          width: "375px"
-        }
-      }
-    }
-  }
-});
-
-function PaperBox(props) {
-  return /*#__PURE__*/React__default["default"].createElement(styles.ThemeProvider, {
-    theme: theme$a
-  }, /*#__PURE__*/React__default["default"].createElement(material.Paper, {
-    variant: "outlined",
-    square: true
-  }, props.children));
-}
-
 var theme$9 = styles.createTheme({
   typography: {
     h3: {
@@ -1877,6 +1864,10 @@ var theme$9 = styles.createTheme({
     }
   }
 });
+
+/**
+ * @example ./Example.md
+ */
 
 function Text(_ref) {
   var variant = _ref.variant,
@@ -1951,6 +1942,10 @@ var theme$8 = styles.createTheme({
   }
 });
 
+/**
+ * @example ./Example.md
+ */
+
 function InputSuffix(_ref) {
   var value = _ref.value,
       placeholder = _ref.placeholder,
@@ -2020,7 +2015,7 @@ var theme$7 = styles.createTheme({
 
 var _excluded$2 = ["color", "icon"];
 /**
- * 
+ *
  * @example ./Example.md
  */
 
@@ -2038,7 +2033,8 @@ function AlertField(_ref) {
 }
 
 AlertField.propTypes = {
-  color: PropTypes__default["default"].string.isRequired
+  color: PropTypes__default["default"].string,
+  icon: PropTypes__default["default"].element
 };
 
 var theme$6 = styles.createTheme({
@@ -2093,6 +2089,10 @@ var theme$6 = styles.createTheme({
     }
   }
 });
+
+/**
+ * @example ./Example.md
+ */
 
 function SwitchInput(_ref) {
   var value = _ref.value,
@@ -2207,6 +2207,9 @@ var theme$5 = styles.createTheme({
 });
 
 var _excluded$1 = ["open", "onClose", "maxWidth"];
+/**
+ * @example ./Example.md
+ */
 
 function DialogBox(_ref) {
   var open = _ref.open,
@@ -2292,6 +2295,11 @@ var theme$4 = styles.createTheme({
   }
 });
 
+/**
+ *
+ * @example ./Example.md
+ */
+
 function SelectSimple(_ref) {
   var value = _ref.value,
       options = _ref.options,
@@ -2365,6 +2373,9 @@ var theme$3 = styles.createTheme({
 });
 
 var _excluded = ["variant", "open", "anchor", "sx", "hideBackdrop", "elevation", "PaperProps", "ModalProps", "container"];
+/**
+ * @example ./Example.md
+ */
 
 function DrawerComponent(_ref) {
   var variant = _ref.variant,
@@ -2435,6 +2446,10 @@ var theme$2 = styles.createTheme({
   }
 });
 
+/**
+ * @example ./Example.md
+ */
+
 function IconButtonComponent(_ref) {
   var color = _ref.color,
       type = _ref.type,
@@ -2459,8 +2474,9 @@ function IconButtonComponent(_ref) {
 }
 
 IconButtonComponent.propTypes = {
-  color: PropTypes__default["default"].string.isRequired,
-  icon: PropTypes__default["default"].string
+  color: PropTypes__default["default"].string,
+  icon: PropTypes__default["default"].string,
+  type: PropTypes__default["default"].string
 };
 
 var theme$1 = styles.createTheme({
@@ -2486,6 +2502,10 @@ var theme$1 = styles.createTheme({
     }
   }
 });
+
+/**
+ * @example ./Example.md
+ */
 
 function TabComponent(_ref) {
   var value = _ref.value,
@@ -2556,7 +2576,7 @@ function TabComponent(_ref) {
 }
 
 TabComponent.propTypes = {
-  value: PropTypes__default["default"].number.isRequired,
+  value: PropTypes__default["default"].oneOfType([PropTypes__default["default"].number, PropTypes__default["default"].bool]).isRequired,
   type: PropTypes__default["default"].string.isRequired,
   options: PropTypes__default["default"].array.isRequired,
   orientation: PropTypes__default["default"].string,
@@ -2726,9 +2746,9 @@ var theme = styles.createTheme({
 });
 
 /**
- * 
+ *
  * Richtext input component
- * 
+ *
  * @example ./Example.md
  */
 
@@ -3061,7 +3081,7 @@ var RichInput = function RichInput(_ref) {
     className: "rich-input ".concat(error ? "has-error" : "")
   }, renderLabel(), /*#__PURE__*/React__default["default"].createElement("div", {
     style: {
-      position: 'relative'
+      position: "relative"
     }
   }, /*#__PURE__*/React__default["default"].createElement(slateReact.Slate, {
     editor: editor,
@@ -3088,7 +3108,7 @@ var RichInput = function RichInput(_ref) {
       setFocused(true);
     }
   }), (options.length > 0 || hasAddressBook) && renderDropdown())), Boolean(error) && /*#__PURE__*/React__default["default"].createElement("div", {
-    class: "error-message"
+    className: "error-message"
   }, error)))));
 };
 
@@ -3677,7 +3697,6 @@ exports.Drawer = DrawerComponent;
 exports.IconButton = IconButtonComponent;
 exports.InputBox = InputBox;
 exports.InputSuffix = InputSuffix;
-exports.PaperBox = PaperBox;
 exports.RichInput = RichInput;
 exports.SelectInput = SelectInput;
 exports.SelectSimple = SelectSimple;

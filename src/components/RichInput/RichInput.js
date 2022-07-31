@@ -23,9 +23,9 @@ import InputBox from "../InputBox/InputBox";
 import ButtonElement from "../ButtonElement/ButtonElement";
 
 /**
- * 
+ *
  * Richtext input component
- * 
+ *
  * @example ./Example.md
  */
 const RichInput = ({
@@ -440,7 +440,7 @@ const RichInput = ({
         <RichInputWrapper ref={inputRef}>
           <Box className={`rich-input ${error ? "has-error" : ""}`}>
             {renderLabel()}
-            <div style={{position: 'relative'}}>
+            <div style={{ position: "relative" }}>
               <Slate
                 editor={editor}
                 value={initialValue}
@@ -469,7 +469,7 @@ const RichInput = ({
                 {(options.length > 0 || hasAddressBook) && renderDropdown()}
               </Slate>
             </div>
-            {Boolean(error) && <div class="error-message">{error}</div>}
+            {Boolean(error) && <div className="error-message">{error}</div>}
           </Box>
         </RichInputWrapper>
       </Foco>
@@ -1032,7 +1032,7 @@ const CloseIcon = () => (
 
 RichInput.propTypes = {
   /** The field value */
-  value: PropTypes.string.isRequired, 
+  value: PropTypes.string.isRequired,
 
   /** Value change handler */
   onChange: PropTypes.func.isRequired,
@@ -1048,25 +1048,24 @@ RichInput.propTypes = {
 
   /** Help text that will be shown in the tooltip  */
   tooltip: PropTypes.string,
-  
+
   /** Is field required */
   required: PropTypes.bool,
 
   /** Error message */
   error: PropTypes.string,
-  
+
   /** Is field allows to use Address Book */
   hasAddressBook: PropTypes.bool,
-  
+
   /** User id, required if `hasAddressBook` is `true` */
   user: PropTypes.string,
-  
+
   /** User's address book, required if `hasAddressBook` is `true` */
   addressBook: PropTypes.array,
 
   /** Address Book change handler, required if `hasAddressBook` is `true` */
   setAddressBook: PropTypes.func,
-  
-}
+};
 
 export default RichInput;

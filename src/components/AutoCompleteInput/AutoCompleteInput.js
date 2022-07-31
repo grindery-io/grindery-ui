@@ -152,8 +152,7 @@ function AutoCompleteInput({
           loading={true}
           loadingText="Nothing found"
           renderOption={(props, option) => (
-            <>
-              {console.log(props)}
+            <React.Fragment key={option.value}>
               <Box
                 component="li"
                 sx={{
@@ -235,7 +234,7 @@ function AutoCompleteInput({
                   ""
                 )}
               </Box>
-            </>
+            </React.Fragment>
           )}
           forcePopupIcon={false}
           renderInput={(params) => (
