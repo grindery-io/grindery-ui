@@ -99,7 +99,7 @@ var theme$d = styles.createTheme({
  * @example ./Example.md
  */
 
-function ButtonElement(_ref) {
+function Button(_ref) {
   var variant = _ref.variant,
       value = _ref.value,
       size = _ref.size,
@@ -145,7 +145,7 @@ function ButtonElement(_ref) {
   }, value));
 }
 
-ButtonElement.propTypes = {
+Button.propTypes = {
   variant: PropTypes__default["default"].string,
   value: PropTypes__default["default"].string,
   size: PropTypes__default["default"].string,
@@ -155,7 +155,7 @@ ButtonElement.propTypes = {
   onClick: PropTypes__default["default"].func,
   type: PropTypes__default["default"].string
 };
-ButtonElement.defaultProps = {
+Button.defaultProps = {
   variant: "contained",
   value: "Continue",
   size: "large",
@@ -669,7 +669,7 @@ var styleButton = {
  * @example ./Example.md
  */
 
-function AutoCompleteInput(_ref) {
+function Autocomplete(_ref) {
   var options = _ref.options,
       label = _ref.label,
       placeholder = _ref.placeholder,
@@ -869,7 +869,7 @@ function AutoCompleteInput(_ref) {
   }, texthelper))));
 }
 
-AutoCompleteInput.propTypes = {
+Autocomplete.propTypes = {
   options: PropTypes__default["default"].array.isRequired,
   label: PropTypes__default["default"].string,
   placeholder: PropTypes__default["default"].string,
@@ -997,7 +997,7 @@ var theme$b = styles.createTheme({
  * @example ./Example.md
  */
 
-function InputBox(_ref) {
+function TextInput(_ref) {
   var placeholder = _ref.placeholder,
       size = _ref.size,
       onChange = _ref.onChange,
@@ -1110,7 +1110,7 @@ function InputBox(_ref) {
   }, texthelper) : ""));
 }
 
-InputBox.propTypes = {
+TextInput.propTypes = {
   placeholder: PropTypes__default["default"].string,
   size: PropTypes__default["default"].string,
   onChange: PropTypes__default["default"].func,
@@ -1118,7 +1118,7 @@ InputBox.propTypes = {
   type: PropTypes__default["default"].string,
   label: PropTypes__default["default"].string
 };
-InputBox.defaultProps = {
+TextInput.defaultProps = {
   placeholder: "0x...",
   size: "large",
   onChange: undefined,
@@ -1430,7 +1430,7 @@ var styleDescription = {
  * @example ./Example.md
  */
 
-function SelectInput(_ref) {
+function Select(_ref) {
   var options = _ref.options,
       type = _ref.type,
       label = _ref.label,
@@ -1825,7 +1825,7 @@ function SelectInput(_ref) {
   }, texthelper)))) : "");
 }
 
-SelectInput.propTypes = {
+Select.propTypes = {
   options: PropTypes__default["default"].array.isRequired,
   placeholder: PropTypes__default["default"].string,
   type: PropTypes__default["default"].string,
@@ -1835,7 +1835,7 @@ SelectInput.propTypes = {
   tooltip: PropTypes__default["default"].string,
   error: PropTypes__default["default"].string
 };
-SelectInput.defaultProps = {
+Select.defaultProps = {
   options: [],
   placeholder: "0x",
   type: "default",
@@ -1946,7 +1946,7 @@ var theme$8 = styles.createTheme({
  * @example ./Example.md
  */
 
-function InputSuffix(_ref) {
+function SuffixInput(_ref) {
   var value = _ref.value,
       placeholder = _ref.placeholder,
       suffix = _ref.suffix,
@@ -1966,7 +1966,7 @@ function InputSuffix(_ref) {
   }));
 }
 
-InputSuffix.propTypes = {
+SuffixInput.propTypes = {
   value: PropTypes__default["default"].string.isRequired,
   placeholder: PropTypes__default["default"].string.isRequired,
   suffix: PropTypes__default["default"].string.isRequired,
@@ -2019,7 +2019,7 @@ var _excluded$2 = ["color", "icon"];
  * @example ./Example.md
  */
 
-function AlertField(_ref) {
+function Alert(_ref) {
   var color = _ref.color,
       icon = _ref.icon,
       props = _objectWithoutProperties(_ref, _excluded$2);
@@ -2032,7 +2032,7 @@ function AlertField(_ref) {
   }, props.children));
 }
 
-AlertField.propTypes = {
+Alert.propTypes = {
   color: PropTypes__default["default"].string,
   icon: PropTypes__default["default"].element
 };
@@ -2094,7 +2094,7 @@ var theme$6 = styles.createTheme({
  * @example ./Example.md
  */
 
-function SwitchInput(_ref) {
+function Switch(_ref) {
   var value = _ref.value,
       color = _ref.color,
       on = _ref.on;
@@ -2161,14 +2161,14 @@ function SwitchInput(_ref) {
   }));
 }
 
-SwitchInput.propTypes = {
+Switch.propTypes = {
   value: PropTypes__default["default"].bool,
   color: PropTypes__default["default"].string,
   on: PropTypes__default["default"].string,
   off: PropTypes__default["default"].string,
   onChange: PropTypes__default["default"].func
 };
-SwitchInput.defaultProps = {
+Switch.defaultProps = {
   value: false,
   color: "primary",
   onChange: undefined
@@ -2211,7 +2211,7 @@ var _excluded$1 = ["open", "onClose", "maxWidth"];
  * @example ./Example.md
  */
 
-function DialogBox(_ref) {
+function Dialog(_ref) {
   var open = _ref.open,
       onClose = _ref.onClose,
       maxWidth = _ref.maxWidth,
@@ -2228,7 +2228,7 @@ function DialogBox(_ref) {
   }, props.children));
 }
 
-DialogBox.propTypes = {
+Dialog.propTypes = {
   onClose: PropTypes__default["default"].func.isRequired,
   open: PropTypes__default["default"].bool.isRequired,
   maxWidth: PropTypes__default["default"].string
@@ -2377,7 +2377,7 @@ var _excluded = ["variant", "open", "anchor", "sx", "hideBackdrop", "elevation",
  * @example ./Example.md
  */
 
-function DrawerComponent(_ref) {
+function Drawer(_ref) {
   var variant = _ref.variant,
       open = _ref.open,
       anchor = _ref.anchor,
@@ -2402,7 +2402,7 @@ function DrawerComponent(_ref) {
   }, props.children));
 }
 
-DrawerComponent.propTypes = {
+Drawer.propTypes = {
   variant: PropTypes__default["default"].string,
   open: PropTypes__default["default"].bool,
   anchor: PropTypes__default["default"].string,
@@ -2450,7 +2450,7 @@ var theme$2 = styles.createTheme({
  * @example ./Example.md
  */
 
-function IconButtonComponent(_ref) {
+function IconButton(_ref) {
   var color = _ref.color,
       type = _ref.type,
       icon = _ref.icon,
@@ -2473,7 +2473,7 @@ function IconButtonComponent(_ref) {
   })));
 }
 
-IconButtonComponent.propTypes = {
+IconButton.propTypes = {
   color: PropTypes__default["default"].string,
   icon: PropTypes__default["default"].string,
   type: PropTypes__default["default"].string
@@ -2507,7 +2507,7 @@ var theme$1 = styles.createTheme({
  * @example ./Example.md
  */
 
-function TabComponent(_ref) {
+function Tabs(_ref) {
   var value = _ref.value,
       type = _ref.type,
       options = _ref.options,
@@ -2575,7 +2575,7 @@ function TabComponent(_ref) {
   })));
 }
 
-TabComponent.propTypes = {
+Tabs.propTypes = {
   value: PropTypes__default["default"].oneOfType([PropTypes__default["default"].number, PropTypes__default["default"].bool]).isRequired,
   type: PropTypes__default["default"].string.isRequired,
   options: PropTypes__default["default"].array.isRequired,
@@ -2590,7 +2590,7 @@ TabComponent.propTypes = {
  * @example ./Example.md
  */
 
-function CircularProgressComponent(props) {
+function CircularProgress(props) {
   return /*#__PURE__*/React__default["default"].createElement(material.CircularProgress, props);
 }
 
@@ -2890,7 +2890,7 @@ var RichInput = function RichInput(_ref) {
       className: "rich-input__dropdown"
     }, (tabs.length > 1 || tabs[0] === "Address Book") && /*#__PURE__*/React__default["default"].createElement(material.Box, {
       className: "rich-input__dropdown-tabs-wrapper"
-    }, /*#__PURE__*/React__default["default"].createElement(TabComponent, {
+    }, /*#__PURE__*/React__default["default"].createElement(Tabs, {
       value: tab,
       onChange: function onChange(index) {
         setTab(index);
@@ -3219,21 +3219,21 @@ var AddAddressForm = function AddAddressForm(_ref4) {
     }
   };
 
-  return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement(InputBox, {
+  return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement(TextInput, {
     label: "Name",
     placeholder: "Name",
     value: name,
     onChange: function onChange(e) {
       setName(e);
     }
-  }), /*#__PURE__*/React__default["default"].createElement(InputBox, {
+  }), /*#__PURE__*/React__default["default"].createElement(TextInput, {
     label: "Contract Address",
     placeholder: "0x",
     value: address,
     onChange: function onChange(e) {
       setAddress(e);
     }
-  }), /*#__PURE__*/React__default["default"].createElement(ButtonElement, {
+  }), /*#__PURE__*/React__default["default"].createElement(Button, {
     value: "Add Address",
     color: "primary",
     onClick: handleSubmit
@@ -3281,21 +3281,21 @@ var EditAddressForm = function EditAddressForm(_ref5) {
     }
   };
 
-  return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement(InputBox, {
+  return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement(TextInput, {
     label: "Name",
     placeholder: "Name",
     value: name,
     onChange: function onChange(e) {
       setName(e);
     }
-  }), /*#__PURE__*/React__default["default"].createElement(InputBox, {
+  }), /*#__PURE__*/React__default["default"].createElement(TextInput, {
     label: "Contract Address",
     placeholder: "0x",
     value: address,
     onChange: function onChange(e) {
       setAddress(e);
     }
-  }), /*#__PURE__*/React__default["default"].createElement(ButtonElement, {
+  }), /*#__PURE__*/React__default["default"].createElement(Button, {
     value: "Save Address",
     color: "primary",
     onClick: handleSubmit
@@ -3688,18 +3688,18 @@ RichInput.propTypes = {
   setAddressBook: PropTypes__default["default"].func
 };
 
-exports.AlertField = AlertField;
-exports.AutoCompleteInput = AutoCompleteInput;
-exports.Button = ButtonElement;
-exports.CircularProgress = CircularProgressComponent;
-exports.DialogBox = DialogBox;
-exports.Drawer = DrawerComponent;
-exports.IconButton = IconButtonComponent;
-exports.InputBox = InputBox;
-exports.InputSuffix = InputSuffix;
+exports.Alert = Alert;
+exports.Autocomplete = Autocomplete;
+exports.Button = Button;
+exports.CircularProgress = CircularProgress;
+exports.Dialog = Dialog;
+exports.Drawer = Drawer;
+exports.IconButton = IconButton;
 exports.RichInput = RichInput;
-exports.SelectInput = SelectInput;
+exports.Select = Select;
 exports.SelectSimple = SelectSimple;
-exports.SwitchInput = SwitchInput;
-exports.TabComponent = TabComponent;
+exports.SuffixInput = SuffixInput;
+exports.Switch = Switch;
+exports.Tabs = Tabs;
 exports.Text = Text;
+exports.TextInput = TextInput;

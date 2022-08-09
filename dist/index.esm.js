@@ -1,5 +1,5 @@
 import React, { useState, useCallback, useEffect, useMemo, useRef } from 'react';
-import { Button, CircularProgress, Box, Typography, Tooltip, Icon, Autocomplete, TextField, InputAdornment, Paper, ThemeProvider as ThemeProvider$1, FormControl, InputLabel, Select, MenuItem, Alert, Switch, Dialog, Drawer, IconButton, Tabs, Tab } from '@mui/material';
+import { Button as Button$1, CircularProgress as CircularProgress$1, Box, Typography, Tooltip, Icon, Autocomplete as Autocomplete$1, TextField, InputAdornment, Paper, ThemeProvider as ThemeProvider$1, FormControl, InputLabel, Select as Select$1, MenuItem, Alert as Alert$1, Switch as Switch$1, Dialog as Dialog$1, Drawer as Drawer$1, IconButton as IconButton$1, Tabs as Tabs$1, Tab } from '@mui/material';
 import { createTheme, ThemeProvider, styled } from '@mui/material/styles';
 import PropTypes from 'prop-types';
 import SearchIcon from '@mui/icons-material/Search';
@@ -87,7 +87,7 @@ var theme$d = createTheme({
  * @example ./Example.md
  */
 
-function ButtonElement(_ref) {
+function Button(_ref) {
   var variant = _ref.variant,
       value = _ref.value,
       size = _ref.size,
@@ -99,14 +99,14 @@ function ButtonElement(_ref) {
       onClick = _ref.onClick;
   return /*#__PURE__*/React.createElement(ThemeProvider, {
     theme: theme$d
-  }, icon ? /*#__PURE__*/React.createElement(Button, {
+  }, icon ? /*#__PURE__*/React.createElement(Button$1, {
     variant: variant,
     size: size,
     color: color,
     type: type,
     disabled: disabled,
     onClick: onClick,
-    startIcon: loading ? /*#__PURE__*/React.createElement(CircularProgress, {
+    startIcon: loading ? /*#__PURE__*/React.createElement(CircularProgress$1, {
       sx: {
         color: "#FFF"
       },
@@ -117,14 +117,14 @@ function ButtonElement(_ref) {
       width: 16,
       alt: value
     })
-  }, value) : /*#__PURE__*/React.createElement(Button, {
+  }, value) : /*#__PURE__*/React.createElement(Button$1, {
     variant: variant,
     size: size,
     color: color,
     type: type,
     disabled: disabled,
     onClick: onClick,
-    startIcon: loading ? /*#__PURE__*/React.createElement(CircularProgress, {
+    startIcon: loading ? /*#__PURE__*/React.createElement(CircularProgress$1, {
       sx: {
         color: "#FFF"
       },
@@ -133,7 +133,7 @@ function ButtonElement(_ref) {
   }, value));
 }
 
-ButtonElement.propTypes = {
+Button.propTypes = {
   variant: PropTypes.string,
   value: PropTypes.string,
   size: PropTypes.string,
@@ -143,7 +143,7 @@ ButtonElement.propTypes = {
   onClick: PropTypes.func,
   type: PropTypes.string
 };
-ButtonElement.defaultProps = {
+Button.defaultProps = {
   variant: "contained",
   value: "Continue",
   size: "large",
@@ -657,7 +657,7 @@ var styleButton = {
  * @example ./Example.md
  */
 
-function AutoCompleteInput(_ref) {
+function Autocomplete(_ref) {
   var options = _ref.options,
       label = _ref.label,
       placeholder = _ref.placeholder,
@@ -674,7 +674,7 @@ function AutoCompleteInput(_ref) {
   }) || null;
 
   var PaperComponentCustom = function PaperComponentCustom(options) {
-    return /*#__PURE__*/React.createElement(Paper, options.containerProps, options.children, buttonSuggestion && /*#__PURE__*/React.createElement(Button, {
+    return /*#__PURE__*/React.createElement(Paper, options.containerProps, options.children, buttonSuggestion && /*#__PURE__*/React.createElement(Button$1, {
       sx: styleButton
     }, "Suggest an App"));
   };
@@ -717,7 +717,7 @@ function AutoCompleteInput(_ref) {
   }, "error")) : "", required ? /*#__PURE__*/React.createElement(Typography, {
     variant: "p",
     className: "required"
-  }, "(required)") : ""), /*#__PURE__*/React.createElement(Autocomplete, {
+  }, "(required)") : ""), /*#__PURE__*/React.createElement(Autocomplete$1, {
     size: size,
     id: "g-form-input",
     onChange: handleChange,
@@ -857,7 +857,7 @@ function AutoCompleteInput(_ref) {
   }, texthelper))));
 }
 
-AutoCompleteInput.propTypes = {
+Autocomplete.propTypes = {
   options: PropTypes.array.isRequired,
   label: PropTypes.string,
   placeholder: PropTypes.string,
@@ -985,7 +985,7 @@ var theme$b = createTheme({
  * @example ./Example.md
  */
 
-function InputBox(_ref) {
+function TextInput(_ref) {
   var placeholder = _ref.placeholder,
       size = _ref.size,
       onChange = _ref.onChange,
@@ -1098,7 +1098,7 @@ function InputBox(_ref) {
   }, texthelper) : ""));
 }
 
-InputBox.propTypes = {
+TextInput.propTypes = {
   placeholder: PropTypes.string,
   size: PropTypes.string,
   onChange: PropTypes.func,
@@ -1106,7 +1106,7 @@ InputBox.propTypes = {
   type: PropTypes.string,
   label: PropTypes.string
 };
-InputBox.defaultProps = {
+TextInput.defaultProps = {
   placeholder: "0x...",
   size: "large",
   onChange: undefined,
@@ -1418,7 +1418,7 @@ var styleDescription = {
  * @example ./Example.md
  */
 
-function SelectInput(_ref) {
+function Select(_ref) {
   var options = _ref.options,
       type = _ref.type,
       label = _ref.label,
@@ -1493,7 +1493,7 @@ function SelectInput(_ref) {
     disableAnimation: true,
     shrink: false,
     focused: false
-  }, placeholder) : "", /*#__PURE__*/React.createElement(Select, {
+  }, placeholder) : "", /*#__PURE__*/React.createElement(Select$1, {
     MenuProps: {
       PaperProps: {
         sx: {
@@ -1665,7 +1665,7 @@ function SelectInput(_ref) {
     disableAnimation: true,
     shrink: false,
     focused: false
-  }, placeholder) : "", /*#__PURE__*/React.createElement(Select, {
+  }, placeholder) : "", /*#__PURE__*/React.createElement(Select$1, {
     MenuProps: {
       PaperProps: {
         sx: {
@@ -1813,7 +1813,7 @@ function SelectInput(_ref) {
   }, texthelper)))) : "");
 }
 
-SelectInput.propTypes = {
+Select.propTypes = {
   options: PropTypes.array.isRequired,
   placeholder: PropTypes.string,
   type: PropTypes.string,
@@ -1823,7 +1823,7 @@ SelectInput.propTypes = {
   tooltip: PropTypes.string,
   error: PropTypes.string
 };
-SelectInput.defaultProps = {
+Select.defaultProps = {
   options: [],
   placeholder: "0x",
   type: "default",
@@ -1934,7 +1934,7 @@ var theme$8 = createTheme({
  * @example ./Example.md
  */
 
-function InputSuffix(_ref) {
+function SuffixInput(_ref) {
   var value = _ref.value,
       placeholder = _ref.placeholder,
       suffix = _ref.suffix,
@@ -1954,7 +1954,7 @@ function InputSuffix(_ref) {
   }));
 }
 
-InputSuffix.propTypes = {
+SuffixInput.propTypes = {
   value: PropTypes.string.isRequired,
   placeholder: PropTypes.string.isRequired,
   suffix: PropTypes.string.isRequired,
@@ -2007,20 +2007,20 @@ var _excluded$2 = ["color", "icon"];
  * @example ./Example.md
  */
 
-function AlertField(_ref) {
+function Alert(_ref) {
   var color = _ref.color,
       icon = _ref.icon,
       props = _objectWithoutProperties(_ref, _excluded$2);
 
   return /*#__PURE__*/React.createElement(ThemeProvider, {
     theme: theme$7
-  }, /*#__PURE__*/React.createElement(Alert, {
+  }, /*#__PURE__*/React.createElement(Alert$1, {
     icon: icon,
     severity: color
   }, props.children));
 }
 
-AlertField.propTypes = {
+Alert.propTypes = {
   color: PropTypes.string,
   icon: PropTypes.element
 };
@@ -2082,7 +2082,7 @@ var theme$6 = createTheme({
  * @example ./Example.md
  */
 
-function SwitchInput(_ref) {
+function Switch(_ref) {
   var value = _ref.value,
       color = _ref.color,
       on = _ref.on;
@@ -2090,7 +2090,7 @@ function SwitchInput(_ref) {
       var onChange = _ref.onChange;
   return /*#__PURE__*/React.createElement(ThemeProvider$1, {
     theme: theme$6
-  }, on ? /*#__PURE__*/React.createElement(Switch, {
+  }, on ? /*#__PURE__*/React.createElement(Switch$1, {
     checked: value,
     onChange: onChange,
     sx: {
@@ -2131,7 +2131,7 @@ function SwitchInput(_ref) {
     inputProps: {
       "aria-label": "secondary checkbox"
     }
-  }) : /*#__PURE__*/React.createElement(Switch, {
+  }) : /*#__PURE__*/React.createElement(Switch$1, {
     checked: value,
     onChange: onChange,
     sx: {
@@ -2149,14 +2149,14 @@ function SwitchInput(_ref) {
   }));
 }
 
-SwitchInput.propTypes = {
+Switch.propTypes = {
   value: PropTypes.bool,
   color: PropTypes.string,
   on: PropTypes.string,
   off: PropTypes.string,
   onChange: PropTypes.func
 };
-SwitchInput.defaultProps = {
+Switch.defaultProps = {
   value: false,
   color: "primary",
   onChange: undefined
@@ -2199,7 +2199,7 @@ var _excluded$1 = ["open", "onClose", "maxWidth"];
  * @example ./Example.md
  */
 
-function DialogBox(_ref) {
+function Dialog(_ref) {
   var open = _ref.open,
       onClose = _ref.onClose,
       maxWidth = _ref.maxWidth,
@@ -2207,7 +2207,7 @@ function DialogBox(_ref) {
 
   return /*#__PURE__*/React.createElement(ThemeProvider, {
     theme: theme$5
-  }, /*#__PURE__*/React.createElement(Dialog, {
+  }, /*#__PURE__*/React.createElement(Dialog$1, {
     sx: {
       maxWidth: maxWidth
     },
@@ -2216,7 +2216,7 @@ function DialogBox(_ref) {
   }, props.children));
 }
 
-DialogBox.propTypes = {
+Dialog.propTypes = {
   onClose: PropTypes.func.isRequired,
   open: PropTypes.bool.isRequired,
   maxWidth: PropTypes.string
@@ -2300,7 +2300,7 @@ function SelectSimple(_ref) {
   }, value === "" ? /*#__PURE__*/React.createElement(InputLabel, {
     id: "simple-select-label",
     shrink: false
-  }, placeholder) : "", /*#__PURE__*/React.createElement(Select, {
+  }, placeholder) : "", /*#__PURE__*/React.createElement(Select$1, {
     labelId: "simple-select-label",
     id: "simple-select",
     value: value,
@@ -2365,7 +2365,7 @@ var _excluded = ["variant", "open", "anchor", "sx", "hideBackdrop", "elevation",
  * @example ./Example.md
  */
 
-function DrawerComponent(_ref) {
+function Drawer(_ref) {
   var variant = _ref.variant,
       open = _ref.open,
       anchor = _ref.anchor,
@@ -2379,7 +2379,7 @@ function DrawerComponent(_ref) {
 
   return /*#__PURE__*/React.createElement(ThemeProvider, {
     theme: theme$3
-  }, /*#__PURE__*/React.createElement(Drawer, {
+  }, /*#__PURE__*/React.createElement(Drawer$1, {
     container: container,
     variant: variant,
     open: open,
@@ -2390,7 +2390,7 @@ function DrawerComponent(_ref) {
   }, props.children));
 }
 
-DrawerComponent.propTypes = {
+Drawer.propTypes = {
   variant: PropTypes.string,
   open: PropTypes.bool,
   anchor: PropTypes.string,
@@ -2438,14 +2438,14 @@ var theme$2 = createTheme({
  * @example ./Example.md
  */
 
-function IconButtonComponent(_ref) {
+function IconButton(_ref) {
   var color = _ref.color,
       type = _ref.type,
       icon = _ref.icon,
       onClick = _ref.onClick;
   return /*#__PURE__*/React.createElement(ThemeProvider, {
     theme: theme$2
-  }, /*#__PURE__*/React.createElement(IconButton, {
+  }, /*#__PURE__*/React.createElement(IconButton$1, {
     onClick: onClick,
     "aria-label": "delete"
   }, type === "text" ? /*#__PURE__*/React.createElement(Icon, {
@@ -2461,7 +2461,7 @@ function IconButtonComponent(_ref) {
   })));
 }
 
-IconButtonComponent.propTypes = {
+IconButton.propTypes = {
   color: PropTypes.string,
   icon: PropTypes.string,
   type: PropTypes.string
@@ -2495,7 +2495,7 @@ var theme$1 = createTheme({
  * @example ./Example.md
  */
 
-function TabComponent(_ref) {
+function Tabs(_ref) {
   var value = _ref.value,
       type = _ref.type,
       options = _ref.options,
@@ -2512,7 +2512,7 @@ function TabComponent(_ref) {
 
   return /*#__PURE__*/React.createElement(ThemeProvider, {
     theme: theme$1
-  }, type === "text" ? /*#__PURE__*/React.createElement(Tabs, {
+  }, type === "text" ? /*#__PURE__*/React.createElement(Tabs$1, {
     TabIndicatorProps: {
       style: {
         background: activeIndicatorColor
@@ -2536,7 +2536,7 @@ function TabComponent(_ref) {
       key: index,
       label: option
     });
-  })) : /*#__PURE__*/React.createElement(Tabs, {
+  })) : /*#__PURE__*/React.createElement(Tabs$1, {
     TabIndicatorProps: {
       style: {
         background: activeIndicatorColor
@@ -2563,7 +2563,7 @@ function TabComponent(_ref) {
   })));
 }
 
-TabComponent.propTypes = {
+Tabs.propTypes = {
   value: PropTypes.oneOfType([PropTypes.number, PropTypes.bool]).isRequired,
   type: PropTypes.string.isRequired,
   options: PropTypes.array.isRequired,
@@ -2578,8 +2578,8 @@ TabComponent.propTypes = {
  * @example ./Example.md
  */
 
-function CircularProgressComponent(props) {
-  return /*#__PURE__*/React.createElement(CircularProgress, props);
+function CircularProgress(props) {
+  return /*#__PURE__*/React.createElement(CircularProgress$1, props);
 }
 
 var theme = createTheme({
@@ -2878,7 +2878,7 @@ var RichInput = function RichInput(_ref) {
       className: "rich-input__dropdown"
     }, (tabs.length > 1 || tabs[0] === "Address Book") && /*#__PURE__*/React.createElement(Box, {
       className: "rich-input__dropdown-tabs-wrapper"
-    }, /*#__PURE__*/React.createElement(TabComponent, {
+    }, /*#__PURE__*/React.createElement(Tabs, {
       value: tab,
       onChange: function onChange(index) {
         setTab(index);
@@ -2890,7 +2890,7 @@ var RichInput = function RichInput(_ref) {
       type: "text",
       tabColor: "",
       variant: "scrollable"
-    }), /*#__PURE__*/React.createElement(IconButton, {
+    }), /*#__PURE__*/React.createElement(IconButton$1, {
       onClick: function onClick() {
         setFocused(false);
       },
@@ -2905,7 +2905,7 @@ var RichInput = function RichInput(_ref) {
       style: {
         marginLeft: addressBookView === "list" ? 0 : "auto"
       }
-    }, addressBookView === "list" && "Address Book", addressBookView === "add" && "Add new", addressBookView === "edit" && "Edit"), /*#__PURE__*/React.createElement(IconButton, {
+    }, addressBookView === "list" && "Address Book", addressBookView === "add" && "Add new", addressBookView === "edit" && "Edit"), /*#__PURE__*/React.createElement(IconButton$1, {
       onClick: function onClick() {
         if (addressBookView === "list") {
           setAddressBookView("add");
@@ -2992,7 +2992,7 @@ var RichInput = function RichInput(_ref) {
       style: {
         flex: 1
       }
-    }), isAddressBook && /*#__PURE__*/React.createElement(IconButton, {
+    }), isAddressBook && /*#__PURE__*/React.createElement(IconButton$1, {
       onClick: function onClick() {
         setAddressBookView("add");
       },
@@ -3028,14 +3028,14 @@ var RichInput = function RichInput(_ref) {
       alt: option.label
     }) : null, /*#__PURE__*/React.createElement("span", null, /*#__PURE__*/React.createElement("strong", null, option.label), " ", option.reference)), /*#__PURE__*/React.createElement("div", {
       className: "rich-input__dropdown-option-actions"
-    }, option.isAddressBook && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(IconButton, {
+    }, option.isAddressBook && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(IconButton$1, {
       "aria-label": "edit",
       onClick: function onClick() {
         setSelectedAddress(option);
         ReactEditor.focus(editor);
         setAddressBookView("edit");
       }
-    }, /*#__PURE__*/React.createElement(EditIcon, null)), /*#__PURE__*/React.createElement(IconButton, {
+    }, /*#__PURE__*/React.createElement(EditIcon, null)), /*#__PURE__*/React.createElement(IconButton$1, {
       "aria-label": "delete",
       onClick: function onClick() {
         handleOptionDelete(option);
@@ -3207,21 +3207,21 @@ var AddAddressForm = function AddAddressForm(_ref4) {
     }
   };
 
-  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(InputBox, {
+  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(TextInput, {
     label: "Name",
     placeholder: "Name",
     value: name,
     onChange: function onChange(e) {
       setName(e);
     }
-  }), /*#__PURE__*/React.createElement(InputBox, {
+  }), /*#__PURE__*/React.createElement(TextInput, {
     label: "Contract Address",
     placeholder: "0x",
     value: address,
     onChange: function onChange(e) {
       setAddress(e);
     }
-  }), /*#__PURE__*/React.createElement(ButtonElement, {
+  }), /*#__PURE__*/React.createElement(Button, {
     value: "Add Address",
     color: "primary",
     onClick: handleSubmit
@@ -3269,21 +3269,21 @@ var EditAddressForm = function EditAddressForm(_ref5) {
     }
   };
 
-  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(InputBox, {
+  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(TextInput, {
     label: "Name",
     placeholder: "Name",
     value: name,
     onChange: function onChange(e) {
       setName(e);
     }
-  }), /*#__PURE__*/React.createElement(InputBox, {
+  }), /*#__PURE__*/React.createElement(TextInput, {
     label: "Contract Address",
     placeholder: "0x",
     value: address,
     onChange: function onChange(e) {
       setAddress(e);
     }
-  }), /*#__PURE__*/React.createElement(ButtonElement, {
+  }), /*#__PURE__*/React.createElement(Button, {
     value: "Save Address",
     color: "primary",
     onClick: handleSubmit
@@ -3676,4 +3676,4 @@ RichInput.propTypes = {
   setAddressBook: PropTypes.func
 };
 
-export { AlertField, AutoCompleteInput, ButtonElement as Button, CircularProgressComponent as CircularProgress, DialogBox, DrawerComponent as Drawer, IconButtonComponent as IconButton, InputBox, InputSuffix, RichInput, SelectInput, SelectSimple, SwitchInput, TabComponent, Text };
+export { Alert, Autocomplete, Button, CircularProgress, Dialog, Drawer, IconButton, RichInput, Select, SelectSimple, SuffixInput, Switch, Tabs, Text, TextInput };
