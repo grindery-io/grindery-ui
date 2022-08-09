@@ -12,47 +12,23 @@ Documentation: https://grindery-io.github.io/grindery-ui/
 
 `yarn add grindery-ui`
 
-or 
+or
 
 `npm install grindery-ui`
 
 ### Add components to your React app
 
 ```js
-import {CircularProgressComponent} from 'grindery-ui';
+import { CircularProgress } from "grindery-ui";
 
 const App = () => {
-    return <CircularProgressComponent color="success" />;
+  return <CircularProgress color="success" />;
 };
 ```
 
 ## Development
 
-Library uses [Styleguidist](https://react-styleguidist.js.org/) for local development and documentation.
+See [DEVELOPMENT.md](https://github.com/grindery-io/grindery-ui/blob/master/DEVELOPMENT.md) file.
 
-Node version >=14 required.
-
-### `yarn`
-
-Install dependencies.
-
-### `yarn dev`
-
-Runs documentation in the development mode.
-Open [http://localhost:6060](http://localhost:6060) to view it in your browser.
-
-### `yarn build:docs`
-
-Builds Styleguidist documentation.
-
-## Publishing
-
-Before publishing changes make sure to update the library version in the package.json file. We are using [Semantic Versioning](https://semver.org/).
-
-### `yarn build`
-
-Builds library for publishing on [NPM](npmjs.com).
-
-### `yarn publish`
-
-Publishes library to NPM: https://www.npmjs.com/package/grindery-ui
+## License
+MIT

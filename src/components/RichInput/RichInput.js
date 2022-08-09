@@ -17,10 +17,10 @@ import Foco from "react-foco";
 import _ from "lodash";
 import { theme } from "./Style";
 import SearchIcon from "@mui/icons-material/Search";
-import TabComponent from "../TabComponent/TabComponent";
+import Tabs from "../Tabs/Tabs";
 import { styled } from "@mui/material/styles";
-import InputBox from "../InputBox/InputBox";
-import ButtonElement from "../ButtonElement/ButtonElement";
+import TextInput from "../TextInput/TextInput";
+import Button from "../Button/Button";
 
 /**
  *
@@ -158,7 +158,7 @@ const RichInput = ({
       <Box className="rich-input__dropdown">
         {(tabs.length > 1 || tabs[0] === "Address Book") && (
           <Box className="rich-input__dropdown-tabs-wrapper">
-            <TabComponent
+            <Tabs
               value={tab}
               onChange={(index) => {
                 setTab(index);
@@ -582,7 +582,7 @@ const AddAddressForm = ({
 
   return (
     <>
-      <InputBox
+      <TextInput
         label="Name"
         placeholder="Name"
         value={name}
@@ -590,7 +590,7 @@ const AddAddressForm = ({
           setName(e);
         }}
       />
-      <InputBox
+      <TextInput
         label="Contract Address"
         placeholder="0x"
         value={address}
@@ -598,11 +598,7 @@ const AddAddressForm = ({
           setAddress(e);
         }}
       />
-      <ButtonElement
-        value="Add Address"
-        color="primary"
-        onClick={handleSubmit}
-      />
+      <Button value="Add Address" color="primary" onClick={handleSubmit} />
     </>
   );
 };
@@ -651,7 +647,7 @@ const EditAddressForm = ({
 
   return (
     <>
-      <InputBox
+      <TextInput
         label="Name"
         placeholder="Name"
         value={name}
@@ -659,7 +655,7 @@ const EditAddressForm = ({
           setName(e);
         }}
       />
-      <InputBox
+      <TextInput
         label="Contract Address"
         placeholder="0x"
         value={address}
@@ -667,11 +663,7 @@ const EditAddressForm = ({
           setAddress(e);
         }}
       />
-      <ButtonElement
-        value="Save Address"
-        color="primary"
-        onClick={handleSubmit}
-      />
+      <Button value="Save Address" color="primary" onClick={handleSubmit} />
     </>
   );
 };

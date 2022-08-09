@@ -1,23 +1,38 @@
 module.exports = {
-  styleguideDir: "./docs",
-  components: "src/components/**/[A-Z]*.js",
-  ignore: [
-    "**/__tests__/**",
-    "**/*.test.{js,jsx,ts,tsx}",
-    "**/*.spec.{js,jsx,ts,tsx}",
-    "**/*.d.ts",
-    "**/components/*/Style.js",
+  title: "Grindery UI documentation",
+  sections: [
+    {
+      name: 'Get started',
+      content: 'get-started.md'
+    },
+    {
+      name: 'Components',
+      components: "src/components/**/[A-Z]*.js",
+      ignore: [
+        "**/__tests__/**",
+        "**/*.test.{js,jsx,ts,tsx}",
+        "**/*.spec.{js,jsx,ts,tsx}",
+        "**/*.d.ts",
+        "**/components/*/Style.js",
+      ],
+      exampleMode: 'collapse',
+      usageMode: 'expand'
+    },
+    {
+      name: 'Source code',
+      href: "https://github.com/grindery-io/grindery-ui",
+      external: true
+    }
   ],
+  styleguideDir: "./docs",
   webpackConfig: {
     module: {
       rules: [
-        // Babel loader will use your project’s babel.config.js
         {
           test: /\.jsx?$/,
           exclude: /node_modules/,
           loader: "babel-loader",
         },
-        // Other loaders that are needed for your components
         {
           test: /\.css$/,
           use: ["style-loader", "css-loader"],
@@ -26,6 +41,7 @@ module.exports = {
     },
   },
   template: {
+    favicon: 'assets/favicon.ico',
     head: {
       links: [
         {
@@ -38,5 +54,5 @@ module.exports = {
         },
       ],
     },
-  },
+  }
 };
