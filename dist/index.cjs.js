@@ -29,7 +29,7 @@ var palette = {
     main: "#0B0D17"
   }
 };
-var theme$d = styles.createTheme({
+var theme$f = styles.createTheme({
   palette: palette,
   components: {
     MuiButton: {
@@ -110,7 +110,7 @@ function Button(_ref) {
       loading = _ref.loading,
       onClick = _ref.onClick;
   return /*#__PURE__*/React__default["default"].createElement(styles.ThemeProvider, {
-    theme: theme$d
+    theme: theme$f
   }, icon ? /*#__PURE__*/React__default["default"].createElement(material.Button, {
     variant: variant,
     size: size,
@@ -335,7 +335,7 @@ function _nonIterableRest() {
   throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
 }
 
-var theme$c = styles.createTheme({
+var theme$e = styles.createTheme({
   typography: {
     p: {
       fontSize: 16,
@@ -696,7 +696,7 @@ function Autocomplete(_ref) {
   };
 
   return /*#__PURE__*/React__default["default"].createElement(styles.ThemeProvider, {
-    theme: theme$c
+    theme: theme$e
   }, /*#__PURE__*/React__default["default"].createElement(material.Box, {
     component: "div",
     sx: {
@@ -883,7 +883,7 @@ Autocomplete.propTypes = {
   error: PropTypes__default["default"].string
 };
 
-var theme$b = styles.createTheme({
+var theme$d = styles.createTheme({
   typography: {
     p: {
       fontSize: 14,
@@ -1025,7 +1025,7 @@ function TextInput(_ref) {
     changeValue(currentValue);
   }, [currentValue, changeValue]);
   return /*#__PURE__*/React__default["default"].createElement(styles.ThemeProvider, {
-    theme: theme$b
+    theme: theme$d
   }, /*#__PURE__*/React__default["default"].createElement(material.Box, {
     component: "div",
     sx: {
@@ -1116,7 +1116,8 @@ TextInput.propTypes = {
   onChange: PropTypes__default["default"].func,
   value: PropTypes__default["default"].string,
   type: PropTypes__default["default"].string,
-  label: PropTypes__default["default"].string
+  label: PropTypes__default["default"].string,
+  tooltip: PropTypes__default["default"].string
 };
 TextInput.defaultProps = {
   placeholder: "0x...",
@@ -1127,7 +1128,7 @@ TextInput.defaultProps = {
   label: ""
 };
 
-var theme$a = styles.createTheme({
+var theme$c = styles.createTheme({
   typography: {
     p: {
       fontSize: 16,
@@ -1465,7 +1466,7 @@ function Select(_ref) {
   };
 
   return /*#__PURE__*/React__default["default"].createElement(material.ThemeProvider, {
-    theme: theme$a
+    theme: theme$c
   }, type === "default" ? /*#__PURE__*/React__default["default"].createElement(material.Box, {
     component: "div",
     sx: {
@@ -1846,7 +1847,7 @@ Select.defaultProps = {
   }
 };
 
-var theme$9 = styles.createTheme({
+var theme$b = styles.createTheme({
   typography: {
     h3: {
       fontSize: 30,
@@ -1873,7 +1874,7 @@ function Text(_ref) {
   var variant = _ref.variant,
       value = _ref.value;
   return /*#__PURE__*/React__default["default"].createElement(styles.ThemeProvider, {
-    theme: theme$9
+    theme: theme$b
   }, /*#__PURE__*/React__default["default"].createElement(material.Typography, {
     variant: variant
   }, value));
@@ -1888,7 +1889,7 @@ Text.defaultProps = {
   value: "Connecting..."
 };
 
-var theme$8 = styles.createTheme({
+var theme$a = styles.createTheme({
   components: {
     MuiTextField: {
       styleOverrides: {
@@ -1952,7 +1953,7 @@ function SuffixInput(_ref) {
       suffix = _ref.suffix,
       onChange = _ref.onChange;
   return /*#__PURE__*/React__default["default"].createElement(styles.ThemeProvider, {
-    theme: theme$8
+    theme: theme$a
   }, /*#__PURE__*/React__default["default"].createElement(material.TextField, {
     id: "input-with-suffix",
     value: value,
@@ -1973,7 +1974,7 @@ SuffixInput.propTypes = {
   onChange: PropTypes__default["default"].func.isRequired
 };
 
-var theme$7 = styles.createTheme({
+var theme$9 = styles.createTheme({
   components: {
     MuiAlert: {
       styleOverrides: {
@@ -2025,7 +2026,7 @@ function Alert(_ref) {
       props = _objectWithoutProperties(_ref, _excluded$2);
 
   return /*#__PURE__*/React__default["default"].createElement(styles.ThemeProvider, {
-    theme: theme$7
+    theme: theme$9
   }, /*#__PURE__*/React__default["default"].createElement(material.Alert, {
     icon: icon,
     severity: color
@@ -2037,7 +2038,7 @@ Alert.propTypes = {
   icon: PropTypes__default["default"].element
 };
 
-var theme$6 = styles.createTheme({
+var theme$8 = styles.createTheme({
   typography: {
     p: {
       fontSize: 16,
@@ -2101,7 +2102,7 @@ function Switch(_ref) {
       _ref.off;
       var onChange = _ref.onChange;
   return /*#__PURE__*/React__default["default"].createElement(material.ThemeProvider, {
-    theme: theme$6
+    theme: theme$8
   }, on ? /*#__PURE__*/React__default["default"].createElement(material.Switch, {
     checked: value,
     onChange: onChange,
@@ -2174,7 +2175,7 @@ Switch.defaultProps = {
   onChange: undefined
 };
 
-var theme$5 = styles.createTheme({
+var theme$7 = styles.createTheme({
   components: {
     MuiModal: {
       styleOverrides: {
@@ -2218,7 +2219,7 @@ function Dialog(_ref) {
       props = _objectWithoutProperties(_ref, _excluded$1);
 
   return /*#__PURE__*/React__default["default"].createElement(styles.ThemeProvider, {
-    theme: theme$5
+    theme: theme$7
   }, /*#__PURE__*/React__default["default"].createElement(material.Dialog, {
     sx: {
       maxWidth: maxWidth
@@ -2234,7 +2235,7 @@ Dialog.propTypes = {
   maxWidth: PropTypes__default["default"].string
 };
 
-var theme$4 = styles.createTheme({
+var theme$6 = styles.createTheme({
   components: {
     MuiOutlinedInput: {
       styleOverrides: {
@@ -2306,7 +2307,7 @@ function SelectSimple(_ref) {
       placeholder = _ref.placeholder,
       onChange = _ref.onChange;
   return /*#__PURE__*/React__default["default"].createElement(styles.ThemeProvider, {
-    theme: theme$4
+    theme: theme$6
   }, /*#__PURE__*/React__default["default"].createElement(material.FormControl, {
     fullWidth: true
   }, value === "" ? /*#__PURE__*/React__default["default"].createElement(material.InputLabel, {
@@ -2332,7 +2333,7 @@ SelectSimple.propTypes = {
   onChange: PropTypes__default["default"].func.isRequired
 };
 
-var theme$3 = styles.createTheme({
+var theme$5 = styles.createTheme({
   components: {
     MuiAlert: {
       styleOverrides: {
@@ -2390,7 +2391,7 @@ function Drawer(_ref) {
       props = _objectWithoutProperties(_ref, _excluded);
 
   return /*#__PURE__*/React__default["default"].createElement(styles.ThemeProvider, {
-    theme: theme$3
+    theme: theme$5
   }, /*#__PURE__*/React__default["default"].createElement(material.Drawer, {
     container: container,
     variant: variant,
@@ -2423,7 +2424,7 @@ var severity = {
     main: "#FFF1D7"
   }
 };
-var theme$2 = styles.createTheme({
+var theme$4 = styles.createTheme({
   severity: severity,
   components: {
     MuiAlert: {
@@ -2456,7 +2457,7 @@ function IconButton(_ref) {
       icon = _ref.icon,
       onClick = _ref.onClick;
   return /*#__PURE__*/React__default["default"].createElement(styles.ThemeProvider, {
-    theme: theme$2
+    theme: theme$4
   }, /*#__PURE__*/React__default["default"].createElement(material.IconButton, {
     onClick: onClick,
     "aria-label": "delete"
@@ -2479,7 +2480,7 @@ IconButton.propTypes = {
   type: PropTypes__default["default"].string
 };
 
-var theme$1 = styles.createTheme({
+var theme$3 = styles.createTheme({
   components: {
     MuiTabs: {
       styleOverrides: {
@@ -2523,7 +2524,7 @@ function Tabs(_ref) {
   };
 
   return /*#__PURE__*/React__default["default"].createElement(styles.ThemeProvider, {
-    theme: theme$1
+    theme: theme$3
   }, type === "text" ? /*#__PURE__*/React__default["default"].createElement(material.Tabs, {
     TabIndicatorProps: {
       style: {
@@ -2594,7 +2595,7 @@ function CircularProgress(props) {
   return /*#__PURE__*/React__default["default"].createElement(material.CircularProgress, props);
 }
 
-var theme = styles.createTheme({
+var theme$2 = styles.createTheme({
   typography: {
     p: {
       fontSize: 16,
@@ -2752,7 +2753,7 @@ var theme = styles.createTheme({
  * @example ./Example.md
  */
 
-var RichInput = function RichInput(_ref) {
+function RichInput(_ref) {
   var value = _ref.value,
       _onChange = _ref.onChange,
       options = _ref.options,
@@ -3066,7 +3067,7 @@ var RichInput = function RichInput(_ref) {
   };
 
   return /*#__PURE__*/React__default["default"].createElement(material.ThemeProvider, {
-    theme: theme
+    theme: theme$2
   }, /*#__PURE__*/React__default["default"].createElement(Foco__default["default"], {
     onClickOutside: function onClickOutside() {
       setFocused(false);
@@ -3110,7 +3111,7 @@ var RichInput = function RichInput(_ref) {
   }), (options.length > 0 || hasAddressBook) && renderDropdown())), Boolean(error) && /*#__PURE__*/React__default["default"].createElement("div", {
     className: "error-message"
   }, error)))));
-};
+}
 
 var withReferences = function withReferences(editor) {
   var isInline = editor.isInline,
@@ -3688,6 +3689,138 @@ RichInput.propTypes = {
   setAddressBook: PropTypes__default["default"].func
 };
 
+var theme$1 = styles.createTheme({
+  components: {
+    MuiTooltip: {
+      styleOverrides: {
+        tooltip: {
+          background: "#000",
+          width: "160px",
+          padding: "10px",
+          fontFamily: "Roboto",
+          fontStyle: "normal",
+          fontWeight: "400",
+          fontSize: "12px",
+          lineHeight: "150%"
+        },
+        arrow: {
+          color: "#000"
+        }
+      }
+    }
+  }
+});
+
+/**
+ *
+ * @example ./Example.md
+ */
+
+function Tooltip(_ref) {
+  var title = _ref.title,
+      children = _ref.children;
+  return /*#__PURE__*/React__default["default"].createElement(styles.ThemeProvider, {
+    theme: theme$1
+  }, /*#__PURE__*/React__default["default"].createElement(material.Tooltip, {
+    title: title,
+    placement: "top",
+    arrow: true
+  }, children));
+}
+
+Tooltip.propTypes = {
+  title: PropTypes__default["default"].string.isRequired
+};
+
+var theme = styles.createTheme({
+  components: {
+    MuiMenu: {
+      styleOverrides: {
+        paper: {
+          background: "#FFFFFF !important",
+          border: "1px solid #DCDCDC !important",
+          boxShadow: "2px 2px 24px rgba(0, 0, 0, 0.15) !important",
+          borderRadius: "5px !important",
+          color: "#0B0D17",
+          padding: "0 10px !important"
+        },
+        list: {
+          "& li:hover": {
+            background: "#FDFBFF !important",
+            borderRadius: "5px !important"
+          }
+        }
+      }
+    }
+  }
+});
+
+/**
+ *
+ * @example ./Example.md
+ */
+
+function Menu(_ref) {
+  var anchorEl = _ref.anchorEl,
+      onClose = _ref.onClose,
+      items = _ref.items,
+      closeOnClick = _ref.closeOnClick,
+      anchorOrigin = _ref.anchorOrigin,
+      transformOrigin = _ref.transformOrigin;
+  var open = Boolean(anchorEl);
+
+  var handleClose = function handleClose() {
+    onClose();
+  };
+
+  return /*#__PURE__*/React__default["default"].createElement(styles.ThemeProvider, {
+    theme: theme
+  }, /*#__PURE__*/React__default["default"].createElement(material.Menu, {
+    anchorEl: anchorEl,
+    open: open,
+    onClose: handleClose,
+    anchorOrigin: anchorOrigin,
+    transformOrigin: transformOrigin
+  }, items.map(function (item) {
+    return /*#__PURE__*/React__default["default"].createElement(material.MenuItem, {
+      key: item.key,
+      onClick: function onClick() {
+        if (item.onClick) {
+          item.onClick();
+        }
+
+        if (closeOnClick) {
+          handleClose();
+        }
+      }
+    }, item.label ? item.label : item.Component ? item.Component : null);
+  })));
+}
+
+Menu.propTypes = {
+  /** Anchor element */
+  anchorEl: PropTypes__default["default"].element,
+
+  /** Function called on menu close */
+  onClose: PropTypes__default["default"].func.isRequired,
+
+  /** Menu items */
+  items: PropTypes__default["default"].array,
+
+  /** If menu should be closed on item click */
+  closeOnClick: PropTypes__default["default"].bool,
+
+  /** Point on the anchor where the dropdown will be attached */
+  anchorOrigin: PropTypes__default["default"].object,
+
+  /** Point on the dropdown which will be attached to the anchor's origin. */
+  transformOrigin: PropTypes__default["default"].object
+};
+Menu.defaultProps = {
+  anchorEl: null,
+  items: []
+};
+
 exports.Alert = Alert;
 exports.Autocomplete = Autocomplete;
 exports.Button = Button;
@@ -3695,6 +3828,7 @@ exports.CircularProgress = CircularProgress;
 exports.Dialog = Dialog;
 exports.Drawer = Drawer;
 exports.IconButton = IconButton;
+exports.Menu = Menu;
 exports.RichInput = RichInput;
 exports.Select = Select;
 exports.SelectSimple = SelectSimple;
@@ -3703,3 +3837,4 @@ exports.Switch = Switch;
 exports.Tabs = Tabs;
 exports.Text = Text;
 exports.TextInput = TextInput;
+exports.Tooltip = Tooltip;

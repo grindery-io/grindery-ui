@@ -1,5 +1,5 @@
 import React, { useState, useCallback, useEffect, useMemo, useRef } from 'react';
-import { Button as Button$1, CircularProgress as CircularProgress$1, Box, Typography, Tooltip, Icon, Autocomplete as Autocomplete$1, TextField, InputAdornment, Paper, ThemeProvider as ThemeProvider$1, FormControl, InputLabel, Select as Select$1, MenuItem, Alert as Alert$1, Switch as Switch$1, Dialog as Dialog$1, Drawer as Drawer$1, IconButton as IconButton$1, Tabs as Tabs$1, Tab } from '@mui/material';
+import { Button as Button$1, CircularProgress as CircularProgress$1, Box, Typography, Tooltip as Tooltip$1, Icon, Autocomplete as Autocomplete$1, TextField, InputAdornment, Paper, ThemeProvider as ThemeProvider$1, FormControl, InputLabel, Select as Select$1, MenuItem, Alert as Alert$1, Switch as Switch$1, Dialog as Dialog$1, Drawer as Drawer$1, IconButton as IconButton$1, Tabs as Tabs$1, Tab, Menu as Menu$1 } from '@mui/material';
 import { createTheme, ThemeProvider, styled } from '@mui/material/styles';
 import PropTypes from 'prop-types';
 import SearchIcon from '@mui/icons-material/Search';
@@ -17,7 +17,7 @@ var palette = {
     main: "#0B0D17"
   }
 };
-var theme$d = createTheme({
+var theme$f = createTheme({
   palette: palette,
   components: {
     MuiButton: {
@@ -98,7 +98,7 @@ function Button(_ref) {
       loading = _ref.loading,
       onClick = _ref.onClick;
   return /*#__PURE__*/React.createElement(ThemeProvider, {
-    theme: theme$d
+    theme: theme$f
   }, icon ? /*#__PURE__*/React.createElement(Button$1, {
     variant: variant,
     size: size,
@@ -323,7 +323,7 @@ function _nonIterableRest() {
   throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
 }
 
-var theme$c = createTheme({
+var theme$e = createTheme({
   typography: {
     p: {
       fontSize: 16,
@@ -684,7 +684,7 @@ function Autocomplete(_ref) {
   };
 
   return /*#__PURE__*/React.createElement(ThemeProvider, {
-    theme: theme$c
+    theme: theme$e
   }, /*#__PURE__*/React.createElement(Box, {
     component: "div",
     sx: {
@@ -702,7 +702,7 @@ function Autocomplete(_ref) {
     }
   }, /*#__PURE__*/React.createElement(Typography, {
     variant: "p"
-  }, label), tooltip ? /*#__PURE__*/React.createElement(Tooltip, {
+  }, label), tooltip ? /*#__PURE__*/React.createElement(Tooltip$1, {
     title: tooltip,
     placement: "top",
     arrow: true
@@ -871,7 +871,7 @@ Autocomplete.propTypes = {
   error: PropTypes.string
 };
 
-var theme$b = createTheme({
+var theme$d = createTheme({
   typography: {
     p: {
       fontSize: 14,
@@ -1013,7 +1013,7 @@ function TextInput(_ref) {
     changeValue(currentValue);
   }, [currentValue, changeValue]);
   return /*#__PURE__*/React.createElement(ThemeProvider, {
-    theme: theme$b
+    theme: theme$d
   }, /*#__PURE__*/React.createElement(Box, {
     component: "div",
     sx: {
@@ -1031,7 +1031,7 @@ function TextInput(_ref) {
     }
   }, label ? /*#__PURE__*/React.createElement(Typography, {
     variant: "p"
-  }, label) : "", tooltip ? /*#__PURE__*/React.createElement(Tooltip, {
+  }, label) : "", tooltip ? /*#__PURE__*/React.createElement(Tooltip$1, {
     title: tooltip,
     placement: "top",
     arrow: true
@@ -1104,7 +1104,8 @@ TextInput.propTypes = {
   onChange: PropTypes.func,
   value: PropTypes.string,
   type: PropTypes.string,
-  label: PropTypes.string
+  label: PropTypes.string,
+  tooltip: PropTypes.string
 };
 TextInput.defaultProps = {
   placeholder: "0x...",
@@ -1115,7 +1116,7 @@ TextInput.defaultProps = {
   label: ""
 };
 
-var theme$a = createTheme({
+var theme$c = createTheme({
   typography: {
     p: {
       fontSize: 16,
@@ -1453,7 +1454,7 @@ function Select(_ref) {
   };
 
   return /*#__PURE__*/React.createElement(ThemeProvider$1, {
-    theme: theme$a
+    theme: theme$c
   }, type === "default" ? /*#__PURE__*/React.createElement(Box, {
     component: "div",
     sx: {
@@ -1471,7 +1472,7 @@ function Select(_ref) {
     }
   }, /*#__PURE__*/React.createElement(Typography, {
     variant: "p"
-  }, label), tooltip ? /*#__PURE__*/React.createElement(Tooltip, {
+  }, label), tooltip ? /*#__PURE__*/React.createElement(Tooltip$1, {
     title: tooltip,
     placement: "top",
     arrow: true
@@ -1643,7 +1644,7 @@ function Select(_ref) {
     }
   }, /*#__PURE__*/React.createElement(Typography, {
     variant: "p"
-  }, label), tooltip ? /*#__PURE__*/React.createElement(Tooltip, {
+  }, label), tooltip ? /*#__PURE__*/React.createElement(Tooltip$1, {
     title: tooltip,
     placement: "top",
     arrow: true
@@ -1834,7 +1835,7 @@ Select.defaultProps = {
   }
 };
 
-var theme$9 = createTheme({
+var theme$b = createTheme({
   typography: {
     h3: {
       fontSize: 30,
@@ -1861,7 +1862,7 @@ function Text(_ref) {
   var variant = _ref.variant,
       value = _ref.value;
   return /*#__PURE__*/React.createElement(ThemeProvider, {
-    theme: theme$9
+    theme: theme$b
   }, /*#__PURE__*/React.createElement(Typography, {
     variant: variant
   }, value));
@@ -1876,7 +1877,7 @@ Text.defaultProps = {
   value: "Connecting..."
 };
 
-var theme$8 = createTheme({
+var theme$a = createTheme({
   components: {
     MuiTextField: {
       styleOverrides: {
@@ -1940,7 +1941,7 @@ function SuffixInput(_ref) {
       suffix = _ref.suffix,
       onChange = _ref.onChange;
   return /*#__PURE__*/React.createElement(ThemeProvider, {
-    theme: theme$8
+    theme: theme$a
   }, /*#__PURE__*/React.createElement(TextField, {
     id: "input-with-suffix",
     value: value,
@@ -1961,7 +1962,7 @@ SuffixInput.propTypes = {
   onChange: PropTypes.func.isRequired
 };
 
-var theme$7 = createTheme({
+var theme$9 = createTheme({
   components: {
     MuiAlert: {
       styleOverrides: {
@@ -2013,7 +2014,7 @@ function Alert(_ref) {
       props = _objectWithoutProperties(_ref, _excluded$2);
 
   return /*#__PURE__*/React.createElement(ThemeProvider, {
-    theme: theme$7
+    theme: theme$9
   }, /*#__PURE__*/React.createElement(Alert$1, {
     icon: icon,
     severity: color
@@ -2025,7 +2026,7 @@ Alert.propTypes = {
   icon: PropTypes.element
 };
 
-var theme$6 = createTheme({
+var theme$8 = createTheme({
   typography: {
     p: {
       fontSize: 16,
@@ -2089,7 +2090,7 @@ function Switch(_ref) {
       _ref.off;
       var onChange = _ref.onChange;
   return /*#__PURE__*/React.createElement(ThemeProvider$1, {
-    theme: theme$6
+    theme: theme$8
   }, on ? /*#__PURE__*/React.createElement(Switch$1, {
     checked: value,
     onChange: onChange,
@@ -2162,7 +2163,7 @@ Switch.defaultProps = {
   onChange: undefined
 };
 
-var theme$5 = createTheme({
+var theme$7 = createTheme({
   components: {
     MuiModal: {
       styleOverrides: {
@@ -2206,7 +2207,7 @@ function Dialog(_ref) {
       props = _objectWithoutProperties(_ref, _excluded$1);
 
   return /*#__PURE__*/React.createElement(ThemeProvider, {
-    theme: theme$5
+    theme: theme$7
   }, /*#__PURE__*/React.createElement(Dialog$1, {
     sx: {
       maxWidth: maxWidth
@@ -2222,7 +2223,7 @@ Dialog.propTypes = {
   maxWidth: PropTypes.string
 };
 
-var theme$4 = createTheme({
+var theme$6 = createTheme({
   components: {
     MuiOutlinedInput: {
       styleOverrides: {
@@ -2294,7 +2295,7 @@ function SelectSimple(_ref) {
       placeholder = _ref.placeholder,
       onChange = _ref.onChange;
   return /*#__PURE__*/React.createElement(ThemeProvider, {
-    theme: theme$4
+    theme: theme$6
   }, /*#__PURE__*/React.createElement(FormControl, {
     fullWidth: true
   }, value === "" ? /*#__PURE__*/React.createElement(InputLabel, {
@@ -2320,7 +2321,7 @@ SelectSimple.propTypes = {
   onChange: PropTypes.func.isRequired
 };
 
-var theme$3 = createTheme({
+var theme$5 = createTheme({
   components: {
     MuiAlert: {
       styleOverrides: {
@@ -2378,7 +2379,7 @@ function Drawer(_ref) {
       props = _objectWithoutProperties(_ref, _excluded);
 
   return /*#__PURE__*/React.createElement(ThemeProvider, {
-    theme: theme$3
+    theme: theme$5
   }, /*#__PURE__*/React.createElement(Drawer$1, {
     container: container,
     variant: variant,
@@ -2411,7 +2412,7 @@ var severity = {
     main: "#FFF1D7"
   }
 };
-var theme$2 = createTheme({
+var theme$4 = createTheme({
   severity: severity,
   components: {
     MuiAlert: {
@@ -2444,7 +2445,7 @@ function IconButton(_ref) {
       icon = _ref.icon,
       onClick = _ref.onClick;
   return /*#__PURE__*/React.createElement(ThemeProvider, {
-    theme: theme$2
+    theme: theme$4
   }, /*#__PURE__*/React.createElement(IconButton$1, {
     onClick: onClick,
     "aria-label": "delete"
@@ -2467,7 +2468,7 @@ IconButton.propTypes = {
   type: PropTypes.string
 };
 
-var theme$1 = createTheme({
+var theme$3 = createTheme({
   components: {
     MuiTabs: {
       styleOverrides: {
@@ -2511,7 +2512,7 @@ function Tabs(_ref) {
   };
 
   return /*#__PURE__*/React.createElement(ThemeProvider, {
-    theme: theme$1
+    theme: theme$3
   }, type === "text" ? /*#__PURE__*/React.createElement(Tabs$1, {
     TabIndicatorProps: {
       style: {
@@ -2582,7 +2583,7 @@ function CircularProgress(props) {
   return /*#__PURE__*/React.createElement(CircularProgress$1, props);
 }
 
-var theme = createTheme({
+var theme$2 = createTheme({
   typography: {
     p: {
       fontSize: 16,
@@ -2740,7 +2741,7 @@ var theme = createTheme({
  * @example ./Example.md
  */
 
-var RichInput = function RichInput(_ref) {
+function RichInput(_ref) {
   var value = _ref.value,
       _onChange = _ref.onChange,
       options = _ref.options,
@@ -2852,7 +2853,7 @@ var RichInput = function RichInput(_ref) {
     }, /*#__PURE__*/React.createElement(Typography, {
       variant: "p",
       className: "rich-input__label"
-    }, label), tooltip ? /*#__PURE__*/React.createElement(Tooltip, {
+    }, label), tooltip ? /*#__PURE__*/React.createElement(Tooltip$1, {
       title: tooltip,
       placement: "top",
       arrow: true
@@ -3054,7 +3055,7 @@ var RichInput = function RichInput(_ref) {
   };
 
   return /*#__PURE__*/React.createElement(ThemeProvider$1, {
-    theme: theme
+    theme: theme$2
   }, /*#__PURE__*/React.createElement(Foco, {
     onClickOutside: function onClickOutside() {
       setFocused(false);
@@ -3098,7 +3099,7 @@ var RichInput = function RichInput(_ref) {
   }), (options.length > 0 || hasAddressBook) && renderDropdown())), Boolean(error) && /*#__PURE__*/React.createElement("div", {
     className: "error-message"
   }, error)))));
-};
+}
 
 var withReferences = function withReferences(editor) {
   var isInline = editor.isInline,
@@ -3676,4 +3677,136 @@ RichInput.propTypes = {
   setAddressBook: PropTypes.func
 };
 
-export { Alert, Autocomplete, Button, CircularProgress, Dialog, Drawer, IconButton, RichInput, Select, SelectSimple, SuffixInput, Switch, Tabs, Text, TextInput };
+var theme$1 = createTheme({
+  components: {
+    MuiTooltip: {
+      styleOverrides: {
+        tooltip: {
+          background: "#000",
+          width: "160px",
+          padding: "10px",
+          fontFamily: "Roboto",
+          fontStyle: "normal",
+          fontWeight: "400",
+          fontSize: "12px",
+          lineHeight: "150%"
+        },
+        arrow: {
+          color: "#000"
+        }
+      }
+    }
+  }
+});
+
+/**
+ *
+ * @example ./Example.md
+ */
+
+function Tooltip(_ref) {
+  var title = _ref.title,
+      children = _ref.children;
+  return /*#__PURE__*/React.createElement(ThemeProvider, {
+    theme: theme$1
+  }, /*#__PURE__*/React.createElement(Tooltip$1, {
+    title: title,
+    placement: "top",
+    arrow: true
+  }, children));
+}
+
+Tooltip.propTypes = {
+  title: PropTypes.string.isRequired
+};
+
+var theme = createTheme({
+  components: {
+    MuiMenu: {
+      styleOverrides: {
+        paper: {
+          background: "#FFFFFF !important",
+          border: "1px solid #DCDCDC !important",
+          boxShadow: "2px 2px 24px rgba(0, 0, 0, 0.15) !important",
+          borderRadius: "5px !important",
+          color: "#0B0D17",
+          padding: "0 10px !important"
+        },
+        list: {
+          "& li:hover": {
+            background: "#FDFBFF !important",
+            borderRadius: "5px !important"
+          }
+        }
+      }
+    }
+  }
+});
+
+/**
+ *
+ * @example ./Example.md
+ */
+
+function Menu(_ref) {
+  var anchorEl = _ref.anchorEl,
+      onClose = _ref.onClose,
+      items = _ref.items,
+      closeOnClick = _ref.closeOnClick,
+      anchorOrigin = _ref.anchorOrigin,
+      transformOrigin = _ref.transformOrigin;
+  var open = Boolean(anchorEl);
+
+  var handleClose = function handleClose() {
+    onClose();
+  };
+
+  return /*#__PURE__*/React.createElement(ThemeProvider, {
+    theme: theme
+  }, /*#__PURE__*/React.createElement(Menu$1, {
+    anchorEl: anchorEl,
+    open: open,
+    onClose: handleClose,
+    anchorOrigin: anchorOrigin,
+    transformOrigin: transformOrigin
+  }, items.map(function (item) {
+    return /*#__PURE__*/React.createElement(MenuItem, {
+      key: item.key,
+      onClick: function onClick() {
+        if (item.onClick) {
+          item.onClick();
+        }
+
+        if (closeOnClick) {
+          handleClose();
+        }
+      }
+    }, item.label ? item.label : item.Component ? item.Component : null);
+  })));
+}
+
+Menu.propTypes = {
+  /** Anchor element */
+  anchorEl: PropTypes.element,
+
+  /** Function called on menu close */
+  onClose: PropTypes.func.isRequired,
+
+  /** Menu items */
+  items: PropTypes.array,
+
+  /** If menu should be closed on item click */
+  closeOnClick: PropTypes.bool,
+
+  /** Point on the anchor where the dropdown will be attached */
+  anchorOrigin: PropTypes.object,
+
+  /** Point on the dropdown which will be attached to the anchor's origin. */
+  transformOrigin: PropTypes.object
+};
+Menu.defaultProps = {
+  anchorEl: null,
+  items: []
+};
+
+export { Alert, Autocomplete, Button, CircularProgress, Dialog, Drawer, IconButton, Menu, RichInput, Select, SelectSimple, SuffixInput, Switch, Tabs, Text, TextInput, Tooltip };

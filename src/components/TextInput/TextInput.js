@@ -153,6 +153,7 @@ TextInput.propTypes = {
   value: PropTypes.string,
   type: PropTypes.string,
   label: PropTypes.string,
+  tooltip: PropTypes.string,
 };
 
 TextInput.defaultProps = {

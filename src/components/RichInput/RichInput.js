@@ -28,7 +28,7 @@ import Button from "../Button/Button";
  *
  * @example ./Example.md
  */
-const RichInput = ({
+function RichInput({
   value,
   onChange,
   options,
@@ -41,7 +41,7 @@ const RichInput = ({
   addressBook,
   setAddressBook,
   error,
-}) => {
+}) {
   const editor = useMemo(
     () => withReferences(withReact(withHistory(createEditor()))),
     []
@@ -475,7 +475,7 @@ const RichInput = ({
       </Foco>
     </ThemeProvider>
   );
-};
+}
 
 const withReferences = (editor) => {
   const { isInline, isVoid } = editor;
