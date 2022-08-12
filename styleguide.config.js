@@ -1,12 +1,13 @@
+const path = require("path");
 module.exports = {
-  title: "Grindery UI documentation",
+  title: "Grindery Nexus\nUI Styleguide",
   sections: [
     {
-      name: 'Get started',
-      content: 'get-started.md'
+      name: "Get started",
+      content: "get-started.md",
     },
     {
-      name: 'Components',
+      name: "Components",
       components: "src/components/**/[A-Z]*.js",
       ignore: [
         "**/__tests__/**",
@@ -15,14 +16,14 @@ module.exports = {
         "**/*.d.ts",
         "**/components/*/Style.js",
       ],
-      exampleMode: 'collapse',
-      usageMode: 'expand'
+      exampleMode: "collapse",
+      usageMode: "expand",
     },
     {
-      name: 'Source code',
+      name: "Source code",
       href: "https://github.com/grindery-io/grindery-ui",
-      external: true
-    }
+      external: true,
+    },
   ],
   styleguideDir: "./docs",
   webpackConfig: {
@@ -41,7 +42,7 @@ module.exports = {
     },
   },
   template: {
-    favicon: 'assets/favicon.ico',
+    favicon: "assets/favicon.ico",
     head: {
       links: [
         {
@@ -54,5 +55,13 @@ module.exports = {
         },
       ],
     },
-  }
+  },
+  theme: "./styleguide/themes.js",
+  styles: "./styleguide/styles.js",
+  styleguideComponents: {
+    Logo: path.join(__dirname, "styleguide/LogoRenderer"),
+  },
+  ribbon: {
+    text: "Beta",
+  },
 };
