@@ -4,11 +4,26 @@ module.exports = {
   sections: [
     {
       name: "Get started",
-      content: "get-started.md",
+      content: "GETSTARTED.md",
     },
     {
       name: "Components",
       components: "src/components/**/[A-Z]*.js",
+      ignore: [
+        "**/__tests__/**",
+        "**/*.test.{js,jsx,ts,tsx}",
+        "**/*.spec.{js,jsx,ts,tsx}",
+        "**/*.d.ts",
+        "**/components/*/Style.js",
+        "**/components/ThemeProvider/**",
+      ],
+      exampleMode: "collapse",
+      usageMode: "expand",
+    },
+    {
+      name: "Theme",
+      content: "THEMING.md",
+      components: "src/components/ThemeProvider/[A-Z]*.js",
       ignore: [
         "**/__tests__/**",
         "**/*.test.{js,jsx,ts,tsx}",
