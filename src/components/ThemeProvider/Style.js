@@ -331,6 +331,11 @@ export const theme = createTheme({
     },
     MuiMenu: {
       styleOverrides: {
+        root: {
+          "& .MuiBackdrop-root": {
+            opacity: "0 !important",
+          },
+        },
         paper: {
           background: "#FFFFFF !important",
           border: "1px solid #DCDCDC !important",

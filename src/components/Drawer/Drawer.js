@@ -1,7 +1,5 @@
 import React from "react";
 import { Drawer as MuiDrawer } from "@mui/material";
-import { ThemeProvider } from "@mui/material/styles";
-import { theme } from "./Style";
 import PropTypes from "prop-types";
 
 /**
@@ -20,19 +18,17 @@ function Drawer({
   ...props
 }) {
   return (
-    <ThemeProvider theme={theme}>
-      <MuiDrawer
-        container={container}
-        variant={variant}
-        open={open}
-        ModalProps={ModalProps}
-        sx={sx}
-        anchor={anchor}
-        PaperProps={PaperProps}
-      >
-        {props.children}
-      </MuiDrawer>
-    </ThemeProvider>
+    <MuiDrawer
+      container={container}
+      variant={variant}
+      open={open}
+      ModalProps={ModalProps}
+      sx={sx}
+      anchor={anchor}
+      PaperProps={PaperProps}
+    >
+      {props.children}
+    </MuiDrawer>
   );
 }
 

@@ -1,8 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Menu as MuiMenu, MenuItem } from "@mui/material";
-import { theme } from "./Style";
-import { ThemeProvider } from "@mui/material/styles";
 
 /**
  *
@@ -21,31 +19,30 @@ function Menu({
     onClose();
   };
   return (
-    <ThemeProvider theme={theme}>
-      <MuiMenu
-        anchorEl={anchorEl}
-        open={open}
-        onClose={handleClose}
-        anchorOrigin={anchorOrigin}
-        transformOrigin={transformOrigin}
-      >
-        {items.map((item) => (
-          <MenuItem
-            key={item.key}
-            onClick={() => {
-              if (item.onClick) {
-                item.onClick();
-              }
-              if (closeOnClick) {
-                handleClose();
-              }
-            }}
-          >
-            {item.label ? item.label : item.Component ? item.Component : null}
-          </MenuItem>
-        ))}
-      </MuiMenu>
-    </ThemeProvider>
+    <MuiMenu
+      anchorEl={anchorEl}
+      open={open}
+      onClose={handleClose}
+      anchorOrigin={anchorOrigin}
+      transformOrigin={transformOrigin}
+      //hideBackdrop
+    >
+      {items.map((item) => (
+        <MenuItem
+          key={item.key}
+          onClick={() => {
+            if (item.onClick) {
+              item.onClick();
+            }
+            if (closeOnClick) {
+              handleClose();
+            }
+          }}
+        >
+          {item.label ? item.label : item.Component ? item.Component : null}
+        </MenuItem>
+      ))}
+    </MuiMenu>
   );
 }
 

@@ -1,14 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { ThemeProvider, Switch as MuiSwitch } from "@mui/material";
-import { theme } from "./Style";
+import { Switch as MuiSwitch } from "@mui/material";
 
 /**
  * @example ./Example.md
  */
 function Switch({ value, color, on, off, onChange }) {
   return (
-    <ThemeProvider theme={theme}>
+    <>
       {on ? (
         <MuiSwitch
           checked={value}
@@ -58,7 +57,7 @@ function Switch({ value, color, on, off, onChange }) {
           inputProps={{ "aria-label": "secondary checkbox" }}
         />
       )}
-    </ThemeProvider>
+    </>
   );
 }
 

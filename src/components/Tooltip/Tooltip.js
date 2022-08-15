@@ -1,8 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Tooltip as MuiTooltip } from "@mui/material";
-import { theme } from "./Style";
-import { ThemeProvider } from "@mui/material/styles";
 
 /**
  *
@@ -10,11 +8,9 @@ import { ThemeProvider } from "@mui/material/styles";
  */
 function Tooltip({ title, children }) {
   return (
-    <ThemeProvider theme={theme}>
-      <MuiTooltip title={title} placement="top" arrow>
-        {children}
-      </MuiTooltip>
-    </ThemeProvider>
+    <MuiTooltip title={title} placement="top" arrow>
+      {children}
+    </MuiTooltip>
   );
 }
 

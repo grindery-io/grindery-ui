@@ -2,14 +2,9 @@ Default:
 
 ```js
 import CircularProgress from "./CircularProgress.js";
+import ThemeProvider from "../ThemeProvider";
 
-<CircularProgress />;
-```
-
-Custom color:
-
-```js
-import CircularProgress from "./CircularProgress.js";
-
-<CircularProgress style={{ color: "#8C30F5" }} />;
+<ThemeProvider>
+  <CircularProgress />
+</ThemeProvider>;
 ```

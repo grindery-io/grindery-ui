@@ -1,13 +1,9 @@
 import React from "react";
 import { Button as MuiButton } from "@mui/material";
-import { ThemeProvider } from "@mui/material/styles";
-import { theme } from "./Style";
 import PropTypes from "prop-types";
 import { CircularProgress } from "@mui/material";
 
 /**
- * Button component
- *
  * @example ./Example.md
  */
 function Button({
@@ -22,7 +18,7 @@ function Button({
   onClick,
 }) {
   return (
-    <ThemeProvider theme={theme}>
+    <>
       {icon ? (
         <MuiButton
           variant={variant}
@@ -58,7 +54,7 @@ function Button({
           {value}
         </MuiButton>
       )}
-    </ThemeProvider>
+    </>
   );
 }
 

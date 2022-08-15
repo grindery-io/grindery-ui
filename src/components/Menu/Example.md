@@ -2,6 +2,7 @@ Default:
 
 ```js
 import Menu from "./Menu.js";
+import ThemeProvider from "../ThemeProvider";
 import Button from "../Button/Button.js";
 
 const [anchorEl, setAnchorEl] = React.useState(null);
@@ -14,7 +15,7 @@ const handleMenuClose = () => {
   setAnchorEl(null);
 };
 
-<React.Fragment>
+<ThemeProvider>
   <Button
     onClick={handleButtonClick}
     value="Open menu"
@@ -41,13 +42,14 @@ const handleMenuClose = () => {
       },
     ]}
   />
-</React.Fragment>;
+</ThemeProvider>;
 ```
 
 With custom position:
 
 ```js
 import Menu from "./Menu.js";
+import ThemeProvider from "../ThemeProvider";
 import Button from "../Button/Button.js";
 
 const [anchorEl, setAnchorEl] = React.useState(null);
@@ -60,7 +62,7 @@ const handleMenuClose = () => {
   setAnchorEl(null);
 };
 
-<React.Fragment>
+<ThemeProvider>
   <Button
     onClick={handleButtonClick}
     value="Open menu"
@@ -95,13 +97,14 @@ const handleMenuClose = () => {
       },
     ]}
   />
-</React.Fragment>;
+</ThemeProvider>;
 ```
 
 With custom action on menu item click:
 
 ```js
 import Menu from "./Menu.js";
+import ThemeProvider from "../ThemeProvider";
 import Button from "../Button/Button.js";
 
 const [anchorEl, setAnchorEl] = React.useState(null);
@@ -114,7 +117,7 @@ const handleMenuClose = () => {
   setAnchorEl(null);
 };
 
-<React.Fragment>
+<ThemeProvider>
   <Button
     onClick={handleButtonClick}
     value="Open menu"
@@ -158,13 +161,14 @@ const handleMenuClose = () => {
       },
     ]}
   />
-</React.Fragment>;
+</ThemeProvider>;
 ```
 
 With custom menu item:
 
 ```js
 import Menu from "./Menu.js";
+import ThemeProvider from "../ThemeProvider";
 import Button from "../Button/Button.js";
 import { ICONS } from "../../constants.js";
 
@@ -178,7 +182,7 @@ const handleMenuClose = () => {
   setAnchorEl(null);
 };
 
-<React.Fragment>
+<ThemeProvider>
   <Button
     onClick={handleButtonClick}
     value="Open menu"
@@ -267,5 +271,5 @@ const handleMenuClose = () => {
       },
     ]}
   />
-</React.Fragment>;
+</ThemeProvider>;
 ```

@@ -9,7 +9,9 @@ import { theme } from "./Style";
  * @example ./Example.md
  */
 function ThemeProvider(props) {
-  return <MuiThemeProvider theme={theme}>{props.children}</MuiThemeProvider>;
+  return (
+    <MuiThemeProvider theme={props.theme}>{props.children}</MuiThemeProvider>
+  );
 }
 
 ThemeProvider.propTypes = {

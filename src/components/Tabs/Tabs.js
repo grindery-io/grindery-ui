@@ -1,7 +1,5 @@
 import React from "react";
 import { Tabs as MuiTabs, Tab } from "@mui/material";
-import { ThemeProvider } from "@mui/material/styles";
-import { theme } from "./Style";
 import PropTypes from "prop-types";
 
 /**
@@ -23,7 +21,7 @@ function Tabs({
   };
 
   return (
-    <ThemeProvider theme={theme}>
+    <>
       {type === "text" ? (
         <MuiTabs
           TabIndicatorProps={{ style: { background: activeIndicatorColor } }}
@@ -59,7 +57,7 @@ function Tabs({
           ))}
         </MuiTabs>
       )}
-    </ThemeProvider>
+    </>
   );
 }
 

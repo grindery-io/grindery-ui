@@ -1,7 +1,5 @@
 import React from "react";
 import { Alert as MuiAlert } from "@mui/material";
-import { ThemeProvider } from "@mui/material/styles";
-import { theme } from "./Style";
 import PropTypes from "prop-types";
 
 /**
@@ -10,11 +8,9 @@ import PropTypes from "prop-types";
  */
 function Alert({ color, icon, ...props }) {
   return (
-    <ThemeProvider theme={theme}>
-      <MuiAlert icon={icon} severity={color}>
-        {props.children}
-      </MuiAlert>
-    </ThemeProvider>
+    <MuiAlert icon={icon} severity={color}>
+      {props.children}
+    </MuiAlert>
   );
 }
 
