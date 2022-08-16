@@ -10,9 +10,7 @@ import {
   Paper,
   Button,
 } from "@mui/material";
-import { ThemeProvider } from "@mui/material/styles";
 import PropTypes from "prop-types";
-import { theme } from "./Style";
 
 const styleDescription = {
   fontFamily: "Roboto",
@@ -74,7 +72,7 @@ function Autocomplete({
   };
 
   return (
-    <ThemeProvider theme={theme}>
+    <>
       <Box component={"div"} sx={{ marginBottom: "20px" }}>
         <Box
           component={"div"}
@@ -295,7 +293,7 @@ function Autocomplete({
           </>
         )}
       </Box>
-    </ThemeProvider>
+    </>
   );
 }
 
