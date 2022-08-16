@@ -2,8 +2,9 @@ Variants:
 
 ```js
 import Text from "./Text.js";
+import ThemeProvider from "../ThemeProvider";
 
-<div>
+<ThemeProvider>
   <Text value="H1 Heading" variant="h1" />
   <Text value="H2 Heading" variant="h2" />
   <Text value="H3 Heading" variant="h3" />
@@ -30,5 +31,5 @@ import Text from "./Text.js";
   <div>
     <Text value="Caption text" variant="caption" />
   </div>
-</div>;
+</ThemeProvider>;
 ```

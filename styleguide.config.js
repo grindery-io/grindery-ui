@@ -57,7 +57,8 @@ module.exports = {
     },
   },
   template: {
-    favicon: "assets/favicon.ico",
+    favicon:
+      "https://raw.githubusercontent.com/grindery-io/grindery-ui/master/assets/favicon.ico",
     head: {
       links: [
         {

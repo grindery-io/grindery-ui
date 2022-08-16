@@ -3,6 +3,8 @@ import PropTypes from "prop-types";
 import { ThemeProvider as MuiThemeProvider } from "@mui/material/styles";
 import { theme } from "./Style";
 
+export const grinderyTheme = theme;
+
 /**
  * Grindery UI theme provider. All other components must be children of the Provider component. It is a good practice to add ThemeProvider at the highest level, for example in the App.js file.
  *

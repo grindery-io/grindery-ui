@@ -5,7 +5,6 @@ import {
   IconButton,
   InputAdornment,
   TextField,
-  ThemeProvider,
   Tooltip,
   Typography,
 } from "@mui/material";
@@ -15,7 +14,6 @@ import { Slate, Editable, withReact, ReactEditor } from "slate-react";
 import { withHistory } from "slate-history";
 import Foco from "react-foco";
 import _ from "lodash";
-import { theme } from "./Style";
 import SearchIcon from "@mui/icons-material/Search";
 import Tabs from "../Tabs/Tabs";
 import { styled } from "@mui/material/styles";
@@ -427,53 +425,51 @@ function RichInput({
   };
 
   return (
-    <ThemeProvider theme={theme}>
-      <Foco
-        onClickOutside={() => {
-          setFocused(false);
-        }}
-        onFocusOutside={() => {
-          setFocused(false);
-          setSearchText("");
-        }}
-      >
-        <RichInputWrapper ref={inputRef}>
-          <Box className={`rich-input ${error ? "has-error" : ""}`}>
-            {renderLabel()}
-            <div style={{ position: "relative" }}>
-              <Slate
+    <Foco
+      onClickOutside={() => {
+        setFocused(false);
+      }}
+      onFocusOutside={() => {
+        setFocused(false);
+        setSearchText("");
+      }}
+    >
+      <RichInputWrapper ref={inputRef}>
+        <Box className={`rich-input ${error ? "has-error" : ""}`}>
+          {renderLabel()}
+          <div style={{ position: "relative" }}>
+            <Slate
+              editor={editor}
+              value={initialValue}
+              onChange={(value) => {
+                const isAstChange = editor.operations.some(
+                  (op) => "set_selection" !== op.type
+                );
+                if (isAstChange) {
+                  onChange(serializeValue(value));
+                }
+              }}
+            >
+              <Editable
+                placeholder={placeholder || ""}
+                renderPlaceholder={({ children, attributes }) => (
+                  <span {...attributes}>
+                    <span>{children}</span>
+                  </span>
+                )}
                 editor={editor}
-                value={initialValue}
-                onChange={(value) => {
-                  const isAstChange = editor.operations.some(
-                    (op) => "set_selection" !== op.type
-                  );
-                  if (isAstChange) {
-                    onChange(serializeValue(value));
-                  }
+                renderElement={renderElement}
+                onFocus={() => {
+                  setFocused(true);
                 }}
-              >
-                <Editable
-                  placeholder={placeholder || ""}
-                  renderPlaceholder={({ children, attributes }) => (
-                    <span {...attributes}>
-                      <span>{children}</span>
-                    </span>
-                  )}
-                  editor={editor}
-                  renderElement={renderElement}
-                  onFocus={() => {
-                    setFocused(true);
-                  }}
-                />
-                {(options.length > 0 || hasAddressBook) && renderDropdown()}
-              </Slate>
-            </div>
-            {Boolean(error) && <div className="error-message">{error}</div>}
-          </Box>
-        </RichInputWrapper>
-      </Foco>
-    </ThemeProvider>
+              />
+              {(options.length > 0 || hasAddressBook) && renderDropdown()}
+            </Slate>
+          </div>
+          {Boolean(error) && <div className="error-message">{error}</div>}
+        </Box>
+      </RichInputWrapper>
+    </Foco>
   );
 }
 
@@ -732,6 +728,9 @@ const RichInputWrapper = styled("div")({
       boxSizing: "border-box",
       //display: "none",
       zIndex: 2,
+      "& .MuiOutlinedInput-input": {
+        padding: "10px 70px 10px 15px",
+      },
     },
     "& .rich-input__dropdown-search-wrapper": {
       margin: 10,

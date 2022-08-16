@@ -1,18 +1,12 @@
 import React from "react";
 import { Typography } from "@mui/material";
-import { ThemeProvider } from "@mui/material/styles";
-import { theme } from "./Style";
 import PropTypes from "prop-types";
 
 /**
  * @example ./Example.md
  */
 function Text({ variant, value }) {
-  return (
-    <ThemeProvider theme={theme}>
-      <Typography variant={variant}>{value}</Typography>
-    </ThemeProvider>
-  );
+  return <Typography variant={variant}>{value}</Typography>;
 }
 
 Text.propTypes = {
@@ -22,7 +16,6 @@ Text.propTypes = {
 
 Text.defaultProps = {
   variant: "h3",
-  value: "Connecting...",
 };
 
 export default Text;

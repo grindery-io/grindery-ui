@@ -6,6 +6,14 @@ All Grindery apps must use the theme included in this library. Third-party apps 
 
 ```js
 import { theme } from "./src/components/ThemeProvider/Style.js";
+import ReactJson from "react-json-view";
 
-<pre>{JSON.stringify(theme, null, 2)}</pre>;
+//<pre>{JSON.stringify(theme, null, 2)}</pre>;
+<ReactJson
+  src={JSON.parse(JSON.stringify(theme))}
+  name="theme"
+  collapsed={1}
+  displayObjectSize={false}
+  displayDataTypes={false}
+/>;
 ```
