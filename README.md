@@ -18,17 +18,36 @@ or
 
 ### Add components to your React app
 
-```js
-import { CircularProgress } from "grindery-ui";
+Add Theme Provider at the highest level possible.
+
+```jsx static
+import { ThemeProvider } from "grindery-ui";
 
 const App = () => {
-  return <CircularProgress color="success" />;
+  return (
+    <ThemeProvider>
+      <RestOfTheApp />
+    </ThemeProvider>
+  );
 };
 ```
+
+Then you can import and use the rest of the components inside your app:
+
+```jsx static
+import { CircularProgress } from "grindery-ui";
+
+const RestOfTheApp = () => {
+  return <CircularProgress />;
+};
+```
+
+See [documentation](https://grindery-io.github.io/grindery-ui/) for more examples.
 
 ## Development
 
 See [DEVELOPMENT.md](https://github.com/grindery-io/grindery-ui/blob/master/DEVELOPMENT.md) file.
 
 ## License
+
 MIT

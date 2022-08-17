@@ -15,3 +15,4 @@ export { default as CircularProgress } from "./CircularProgress";
 export { default as RichInput } from "./RichInput";
 export { default as Tooltip } from "./Tooltip";
 export { default as Menu } from "./Menu";
+export { default as ThemeProvider } from "./ThemeProvider";
