@@ -1,8 +1,62 @@
 import React from "react";
 import { Select, FormControl, InputLabel, MenuItem } from "@mui/material";
-import { ThemeProvider } from "@mui/material/styles";
-import { theme } from "./Style";
 import PropTypes from "prop-types";
+import { styled } from "@mui/system";
+
+const SimpleSelectWrapper = styled("div")({
+  "& .MuiOutlinedInput-root": {
+    background: "none",
+    border: "0px",
+    padding: "0 !important",
+    "&:hover": {
+      background: "#F4F5F7",
+    },
+    "& fieldset": {
+      border: "0px",
+    },
+    "& > div": {
+      paddingTop: "10px",
+      paddingBottom: "9px",
+      fontFamily: "Roboto",
+      fontStyle: "normal",
+      fontWeight: "400",
+      fontSize: "16px",
+      lineHeight: "150%",
+      color: "#0B0D17",
+    },
+    "& > .MuiSvgIcon-root": {
+      fill: "#898989",
+    },
+  },
+
+  "& .MuiFormControl-root": {
+    width: "auto",
+    "& > label": {
+      color: "#898989!important",
+      left: "-5px",
+      top: "-10px",
+    },
+  },
+  "& .MuiList-root": {
+    "& > li": {
+      fontFamily: "Roboto",
+      fontStyle: "normal",
+      fontWeight: "400",
+      fontSize: "16px",
+      lineHeight: "150%",
+      color: "#141416",
+    },
+    "& > li:hover": {
+      background: "#FDFBFF",
+    },
+    "& > .Mui-selected": {
+      background: "#FDFBFF",
+    },
+    "& > .Mui-selected:hover": {
+      background: "#FDFBFF",
+    },
+  },
+});
 
 /**
  *
@@ -10,7 +64,7 @@ import PropTypes from "prop-types";
  */
 function SelectSimple({ value, options, placeholder, onChange }) {
   return (
-    <ThemeProvider theme={theme}>
+    <SimpleSelectWrapper>
       <FormControl fullWidth>
         {value === "" ? (
           <InputLabel id="simple-select-label" shrink={false}>
@@ -27,13 +81,17 @@ function SelectSimple({ value, options, placeholder, onChange }) {
           onChange={onChange}
         >
           {options.map((option, index) => (
-            <MenuItem key={option.value} value={option.value}>
+            <MenuItem
+              key={option.value}
+              value={option.value}
+              className="simple-select-item"
+            >
               {option.label}
             </MenuItem>
           ))}
         </Select>
       </FormControl>
-    </ThemeProvider>
+    </SimpleSelectWrapper>
   );
 }
 

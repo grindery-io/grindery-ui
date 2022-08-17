@@ -93,6 +93,7 @@ const [selectValue, setSelectValue] = React.useState("");
     }}
     placeholder={"Choose sheet..."}
     error="The field is required"
+    tooltip="Help text"
   ></Select>
 </ThemeProvider>;
 ```

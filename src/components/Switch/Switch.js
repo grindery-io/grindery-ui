@@ -13,8 +13,8 @@ function Switch({ value, color, on, off, onChange }) {
           checked={value}
           onChange={onChange}
           sx={{
-            ".MuiSwitch-thumb": { background: color },
-            ".MuiSwitch-track": { borderColor: color },
+            ".MuiSwitch-thumb": { background: value ? color : "#758796" },
+            ".MuiSwitch-track": { borderColor: value ? color : "#758796" },
             ".MuiSwitch-track:after": {
               content: '"On"',
               left: "6px",
@@ -50,8 +50,8 @@ function Switch({ value, color, on, off, onChange }) {
           checked={value}
           onChange={onChange}
           sx={{
-            ".MuiSwitch-thumb": { background: color },
-            ".MuiSwitch-track": { borderColor: color },
+            ".MuiSwitch-thumb": { background: value ? color : "#758796" },
+            ".MuiSwitch-track": { borderColor: value ? color : "#758796" },
           }}
           name="check"
           inputProps={{ "aria-label": "secondary checkbox" }}
@@ -71,7 +71,7 @@ Switch.propTypes = {
 
 Switch.defaultProps = {
   value: false,
-  color: "primary",
+  color: "#00B674",
   onChange: undefined,
 };
 

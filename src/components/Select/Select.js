@@ -7,7 +7,6 @@ import {
   Typography,
   TextField,
   InputAdornment,
-  ThemeProvider,
   InputLabel,
   Tooltip,
   Icon,
@@ -15,7 +14,6 @@ import {
 } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import { styled } from "@mui/system";
-//import { theme } from "./Style";
 
 const styleDescription = {
   fontFamily: "Roboto",
@@ -185,91 +183,9 @@ const SelectWrapper = styled("div")({
   },
 
   "& .MuiIcon-root": {
-    fontSize: "24px",
-  },
-
-  "& .MuiMenuItem": {
-    margin: "4px 0px",
-    padding: "0px 15px 0px 15px",
-    "&:hover": {
-      backgroundColor: "#FDFBFF",
-    },
-    "& .icon_second": {
-      marginLeft: "-17px",
-      background: "#FFFFFF",
-    },
-    "& .icon_first": {
-      zIndex: "1",
-      background: "#FFFFFF",
-    },
-    "& .full_img_box": {
-      display: "inline-flex",
-      alignItems: "center",
-      gap: "5px",
-      border: "1px solid #DCDCDC",
-      padding: "4px",
-      borderRadius: "5px",
-      background: "#fff",
-      fontFamily: "Roboto",
-      fontStyle: "normal",
-      fontWeight: "400",
-      fontSize: "16px",
-      lineHeight: "150%",
-      textOverflow: "ellipsis",
-      overflow: "hidden",
-      whiteSpace: "nowrap",
-    },
-    "& .img_box_icon img": {
-      border: "1px solid #DCDCDC",
-      padding: "5px",
-      gap: "5px",
-      borderRadius: "5px",
-      background: "#FFFFFF",
-    },
-    "& .full_img_box .icon_second": {
-      marginLeft: "0px",
-    },
-    "& .img_box_icon .icon_second": {
-      marginLeft: "-10px",
-    },
-    "& .onlyImg": {
-      border: 0,
-      background: "initial",
-    },
-    "& .onlyImg img": {
-      display: "flex",
-      alignItems: "center",
-      border: "1px solid #DCDCDC",
-      padding: "5px",
-      gap: "5px",
-      borderRadius: "5px",
-      background: "#FFFFFF",
-    },
-    "& > div": {
-      display: "flex",
-      alignItems: "center",
-      padding: "5px",
-      gap: "5px",
-    },
-    "& h5": {
-      fontStyle: "normal",
-      fontWeight: "700",
-      fontSize: "16px",
-      lineHeight: "150%",
-      color: "#141416",
-      margin: "0px",
-    },
-    "& span": {
-      fontStyle: "normal",
-      fontWeight: "400",
-      fontSize: "16px",
-      lineHeight: "150%",
-      color: "#898989",
-      margin: "0px",
-      width: "280px",
-      overflow: "hidden",
-      textOverflow: "ellipsis",
-    },
+    fontSize: "18px",
+    marginTop: "3px",
+    marginLeft: "6px",
   },
 });
 
@@ -437,7 +353,11 @@ function Select({
               )}
             >
               {displayedOptions.map((option, i) => (
-                <MenuItem key={option.value} value={option}>
+                <MenuItem
+                  key={option.value}
+                  value={option}
+                  className="select-item"
+                >
                   <Box
                     component="div"
                     sx={{
@@ -679,6 +599,7 @@ function Select({
                     e.stopPropagation();
                     e.preventDefault();
                   }}
+                  className="select-item"
                 >
                   <TextField
                     size="small"
@@ -703,7 +624,11 @@ function Select({
                 </MenuItem>
               }
               {displayedOptions.map((option, i) => (
-                <MenuItem key={option.value} value={option}>
+                <MenuItem
+                  key={option.value}
+                  value={option}
+                  className="select-item"
+                >
                   <Box
                     component="div"
                     className={
