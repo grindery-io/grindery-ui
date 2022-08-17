@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { ThemeProvider as MuiThemeProvider } from "@mui/material/styles";
-import { theme } from "./Style";
+import theme from "../../theme";
 
 export const grinderyTheme = theme;
 
