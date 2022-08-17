@@ -4,14 +4,15 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 var React = require('react');
 var material = require('@mui/material');
-var styles = require('@mui/material/styles');
 var PropTypes = require('prop-types');
 var SearchIcon = require('@mui/icons-material/Search');
+var system = require('@mui/system');
 var slate = require('slate');
 var slateReact = require('slate-react');
 var slateHistory = require('slate-history');
 var Foco = require('react-foco');
 var _ = require('lodash');
+var styles = require('@mui/material/styles');
 
 function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
 
@@ -21,81 +22,7 @@ var SearchIcon__default = /*#__PURE__*/_interopDefaultLegacy(SearchIcon);
 var Foco__default = /*#__PURE__*/_interopDefaultLegacy(Foco);
 var ___default = /*#__PURE__*/_interopDefaultLegacy(_);
 
-var palette = {
-  primary: {
-    main: "#8C30F5"
-  },
-  secondary: {
-    main: "#0B0D17"
-  }
-};
-var theme$f = styles.createTheme({
-  palette: palette,
-  components: {
-    MuiButton: {
-      styleOverrides: {
-        root: {
-          borderRadius: 5,
-          padding: "10px 20px",
-          fontFamily: "Roboto",
-          fontStyle: "normal",
-          fontWeight: "700",
-          fontSize: 16,
-          lineHeight: "150%",
-          textAlign: "center",
-          textTransform: "none",
-          color: "#FFFFFF",
-          boxShadow: "initial",
-          margin: "10px 0px",
-          "& span": {
-            marginRight: "10px",
-            "& img": {
-              padding: "4px",
-              backgroundColor: "#FFFFFF",
-              borderRadius: 5,
-              border: "1px solid #DCDCDC"
-            }
-          },
-          "&:hover": {
-            opacity: 0.7
-          }
-        },
-        containedPrimary: {
-          "&:disabled": {
-            opacity: 0.4,
-            backgroundColor: palette.primary.main,
-            color: "#FFFFFF"
-          }
-        },
-        containedSecondary: {
-          "&:disabled": {
-            opacity: 0.4,
-            backgroundColor: palette.secondary.main,
-            color: "#FFFFFF"
-          }
-        },
-        sizeSmall: {
-          width: 167
-        },
-        sizeLarge: {
-          width: "100%"
-        },
-        outlinedPrimary: {
-          color: "#8C30F5",
-          border: "1px solid #8C30F5"
-        },
-        outlinedSecondary: {
-          color: "#0B0D17",
-          border: "1px solid #0B0D17"
-        }
-      }
-    }
-  }
-});
-
 /**
- * Button component
- *
  * @example ./Example.md
  */
 
@@ -109,9 +36,7 @@ function Button(_ref) {
       type = _ref.type,
       loading = _ref.loading,
       onClick = _ref.onClick;
-  return /*#__PURE__*/React__default["default"].createElement(styles.ThemeProvider, {
-    theme: theme$f
-  }, icon ? /*#__PURE__*/React__default["default"].createElement(material.Button, {
+  return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, icon ? /*#__PURE__*/React__default["default"].createElement(material.Button, {
     variant: variant,
     size: size,
     color: color,
@@ -335,310 +260,6 @@ function _nonIterableRest() {
   throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
 }
 
-var theme$e = styles.createTheme({
-  typography: {
-    p: {
-      fontSize: 16,
-      fontFamily: '"Roboto"',
-      color: "#0B0D17",
-      fontStyle: "normal",
-      fontWeight: "400",
-      lineHeight: "150%"
-    },
-    span: {
-      fontFamily: '"Roboto"',
-      fontStyle: "normal",
-      fontWeight: "400",
-      fontSize: "14px",
-      lineHeight: "150%",
-      color: "#898989"
-    }
-  },
-  components: {
-    MuiOutlinedInput: {
-      styleOverrides: {
-        root: {
-          marginTop: "4px",
-          border: "1px solid #DCDCDC",
-          borderRadius: 5,
-          background: "#F4F5F7",
-          padding: "0px 10px 0px 10px!important",
-          "& > img": {
-            border: "1px solid #DCDCDC",
-            padding: "4px",
-            borderRadius: "5px",
-            background: "#FFFFFF"
-          },
-          "& .icon_second": {
-            marginLeft: "-5px"
-          },
-          "& .icon_first": {
-            zIndex: "1"
-          }
-        },
-        notchedOutline: {
-          border: 0
-        },
-        input: {
-          padding: "15px 70px 15px 15px"
-        }
-      }
-    },
-    MuiFilledInput: {
-      styleOverrides: {
-        root: {
-          borderRadius: 4,
-          border: "1px solid #DCDCDC",
-          paddingTop: "0px!important",
-          background: "#F4F5F7!important",
-          "& img": {
-            marginRight: "0px"
-          },
-          "& li": {
-            listStyle: "none",
-            display: "flex",
-            alignItems: "center",
-            backgroundColor: "#FFFFFF",
-            padding: "4px",
-            borderRadius: "4px",
-            border: "1px solid #DCDCDC",
-            marginRight: "5px",
-            marginTop: "10px",
-            marginBottom: "10px",
-            overflow: "hidden",
-            whiteSpace: "normal",
-            textOverflow: "ellipsis",
-            "& > img": {
-              border: 0
-            }
-          },
-          "& .icon_second": {
-            marginLeft: "-4px",
-            backgroundColor: "#FFFFFF"
-          },
-          "& .icon_first": {
-            marginRight: "0px",
-            backgroundColor: "#FFFFFF"
-          },
-          "&:hover:not(.Mui-disabled):before": {
-            border: 0
-          },
-          "&:hover": {
-            background: "#F4F5F7!important"
-          },
-          "&:after": {
-            border: 0
-          },
-          "&:before": {
-            border: 0
-          }
-        }
-      }
-    },
-    MuiAutocomplete: {
-      styleOverrides: {
-        root: {
-          "& .MuiInputBase-sizeSmall": {
-            width: "240px"
-          },
-          "& > div > .Mui-focused": {
-            boxShadow: "inset 0px 0px 0px 1px #8C30F5",
-            border: "1px solid #8C30F5"
-          },
-          position: "relative",
-          "& .paid-label": {
-            position: "absolute",
-            top: "25px",
-            right: "50px",
-            backgroundColor: "#FF5858",
-            borderRadius: "2px"
-          },
-          "& .paid-label span": {
-            padding: "2px 6px",
-            textTransform: "uppercase",
-            color: "#FFFFFF",
-            fontFamily: "Roboto",
-            fontStyle: "normal",
-            fontWeight: "700",
-            fontSize: "8px",
-            margin: "0px",
-            display: "flex"
-          }
-        },
-        listbox: {
-          "& > li:first-of-type > .MuiListSubheader-root": {
-            border: "0px",
-            padding: "0px"
-          },
-          '& .MuiAutocomplete-option[aria-disabled="true"]': {
-            opacity: 1
-          }
-        },
-        option: {
-          fontSize: "16px",
-          color: "#0B0D17",
-          textOverflow: "ellipsis",
-          overflow: "hidden",
-          "&:hover": {
-            backgroundColor: "#FDFBFF"
-          },
-          "& .icon_second": {
-            marginLeft: "-5px",
-            backgroundColor: "#FFFFFF"
-          },
-          "& .icon_first": {
-            zIndex: "1",
-            backgroundColor: "#FFFFFF"
-          },
-          "& img": {
-            backgroundColor: "#FFFFFF"
-          },
-          "& h5": {
-            fontStyle: "normal",
-            fontWeight: "700",
-            fontSize: "16px",
-            lineHeight: "150%",
-            color: "#141416",
-            margin: "0px"
-          },
-          "& span": {
-            fontStyle: "normal",
-            fontWeight: "400",
-            fontSize: "16px",
-            lineHeight: "150%",
-            color: "#898989",
-            margin: "0px",
-            textOverflow: "ellipsis",
-            overflow: "hidden",
-            whiteSpace: "nowrap",
-            width: "260px"
-          },
-          "& .full_img_box": {
-            display: "inline-flex",
-            alignItems: "center",
-            gap: "5px",
-            border: "1px solid #DCDCDC",
-            padding: "4px",
-            borderRadius: "5px",
-            background: "#fff",
-            fontFamily: "Roboto",
-            fontStyle: "normal",
-            fontWeight: "400",
-            fontSize: "16px",
-            lineHeight: "150%",
-            textOverflow: "ellipsis",
-            overflow: "hidden",
-            whiteSpace: "nowrap"
-          },
-          "& .paid-label": {
-            backgroundColor: "#FF5858",
-            borderRadius: "2px",
-            right: "15px",
-            margin: "0px",
-            display: "flex",
-            marginLeft: "auto"
-          },
-          "& .paid-label span": {
-            padding: "2px 6px",
-            textTransform: "uppercase",
-            color: "#FFFFFF",
-            fontFamily: "Roboto",
-            fontStyle: "normal",
-            fontWeight: "700",
-            fontSize: "8px",
-            margin: "0px",
-            overflow: "inherit",
-            whiteSpace: "inherit",
-            width: "inherit"
-          }
-        },
-        groupLabel: {
-          marginLeft: "10px",
-          marginRight: "10px",
-          marginTop: "10px",
-          padding: "8px 0px",
-          borderTop: "1px solid #DCDCDC",
-          fontFamily: "Roboto",
-          fontStyle: "normal",
-          fontWeight: "400",
-          fontSize: "14px",
-          lineHeight: "150%",
-          color: "#898989"
-        },
-        groupUl: {
-          padding: "0px",
-          "& > .MuiAutocomplete-option": {
-            paddingLeft: "15px"
-          }
-        },
-        input: {
-          padding: "15px 70px 15px 5px!important"
-        },
-        endAdornment: {
-          "& > button": {
-            visibility: "visible",
-            background: "#898989",
-            padding: "2px",
-            marginRight: "10px",
-            "& > svg": {
-              fill: "#fff",
-              fontSize: "16px"
-            }
-          }
-        }
-      }
-    },
-    MuiTooltip: {
-      styleOverrides: {
-        tooltip: {
-          background: "#000",
-          width: "160px",
-          padding: "10px",
-          fontFamily: "Roboto",
-          fontStyle: "normal",
-          fontWeight: "400",
-          fontSize: "12px",
-          lineHeight: "150%"
-        },
-        arrow: {
-          color: "#000"
-        }
-      }
-    },
-    MuiInputAdornment: {
-      styleOverrides: {
-        root: {
-          marginLeft: "0px",
-          marginRight: "0px",
-          width: "24px",
-          height: "24px",
-          "& > img": {
-            border: "1px solid #DCDCDC",
-            padding: "4px",
-            borderRadius: "5px",
-            marginLeft: "-5px",
-            background: "#FFFFFF"
-          }
-        }
-      }
-    },
-    MuiIcon: {
-      styleOverrides: {
-        root: {
-          fontSize: "24px"
-        }
-      }
-    },
-    Mui: {
-      focused: {
-        "& .MuiFilledInput-root": {
-          boxShadow: "inset 0px 0px 0px 1px #8C30F5"
-        }
-      }
-    }
-  }
-});
-
 var styleDescription$1 = {
   fontFamily: "Roboto",
   fontStyle: "normal",
@@ -695,9 +316,7 @@ function Autocomplete(_ref) {
     onChange(obj && obj.value || "");
   };
 
-  return /*#__PURE__*/React__default["default"].createElement(styles.ThemeProvider, {
-    theme: theme$e
-  }, /*#__PURE__*/React__default["default"].createElement(material.Box, {
+  return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement(material.Box, {
     component: "div",
     sx: {
       marginBottom: "20px"
@@ -883,116 +502,6 @@ Autocomplete.propTypes = {
   error: PropTypes__default["default"].string
 };
 
-var theme$d = styles.createTheme({
-  typography: {
-    p: {
-      fontSize: 14,
-      color: "#0B0D17",
-      fontStyle: "normal",
-      fontWeight: "400",
-      lineHeight: "150%",
-      fontFamily: "Roboto"
-    },
-    span: {
-      fontFamily: '"Roboto"',
-      fontStyle: "normal",
-      fontWeight: "400",
-      fontSize: "14px",
-      lineHeight: "150%",
-      color: "#898989"
-    }
-  },
-  components: {
-    MuiFormControl: {
-      styleOverrides: {
-        root: {
-          "&& .input-icon": {
-            backgroundColor: "#000"
-          },
-          ".input-filled": {
-            backgroundColor: "#000"
-          }
-        }
-      }
-    },
-    MuiOutlinedInput: {
-      styleOverrides: {
-        root: {
-          marginTop: "4px",
-          padding: "0px",
-          "& input": {
-            padding: "15px 5px 15px 15px",
-            border: "1px solid #DCDCDC",
-            background: "#F4F5F7",
-            borderRadius: "5px"
-          },
-          "& textarea": {
-            padding: "15px 5px 15px 15px",
-            border: "1px solid #DCDCDC",
-            background: "#F4F5F7",
-            borderRadius: "5px",
-            width: "100%",
-            "&:focus": {
-              boxShadow: "inset 0px 0px 0px 1px #8C30F5",
-              border: "1px solid #8C30F5"
-            }
-          },
-          "& fieldset": {
-            border: "none"
-          },
-          ".input-filled": {
-            border: "1px solid #8C30F5"
-          }
-        }
-      }
-    },
-    MuiTooltip: {
-      styleOverrides: {
-        tooltip: {
-          background: "#000",
-          width: "160px",
-          padding: "10px",
-          fontFamily: "Roboto",
-          fontStyle: "normal",
-          fontWeight: "400",
-          fontSize: "12px",
-          lineHeight: "150%"
-        },
-        arrow: {
-          color: "#000"
-        }
-      }
-    },
-    MuiTextField: {
-      styleOverrides: {
-        root: {
-          display: "flex"
-        }
-      }
-    },
-    MuiBox: {
-      styleOverrides: {
-        root: {
-          "& .texthelper ": {
-            fontStyle: "normal",
-            fontWeight: "400",
-            fontSize: "14px",
-            lineHeight: "150%",
-            color: "#898989"
-          }
-        }
-      }
-    },
-    MuiInputAdornment: {
-      styleOverrides: {
-        root: {
-          marginRight: "0px"
-        }
-      }
-    }
-  }
-});
-
 /**
  * @example ./Example.md
  */
@@ -1024,9 +533,7 @@ function TextInput(_ref) {
   React.useEffect(function () {
     changeValue(currentValue);
   }, [currentValue, changeValue]);
-  return /*#__PURE__*/React__default["default"].createElement(styles.ThemeProvider, {
-    theme: theme$d
-  }, /*#__PURE__*/React__default["default"].createElement(material.Box, {
+  return /*#__PURE__*/React__default["default"].createElement(material.Box, {
     component: "div",
     sx: {
       marginBottom: "20px"
@@ -1053,7 +560,9 @@ function TextInput(_ref) {
       fontSize: "18px",
       ".": {
         backgroundColor: "#000"
-      }
+      },
+      marginTop: "3px",
+      marginLeft: "6px"
     }
   }, "error")) : "", required ? /*#__PURE__*/React__default["default"].createElement(material.Typography, {
     variant: "p",
@@ -1061,7 +570,7 @@ function TextInput(_ref) {
   }, "(required)") : ""), type === "text" ? /*#__PURE__*/React__default["default"].createElement(material.TextField, {
     fullWidth: true,
     placeholder: placeholder,
-    className: currentValue !== "" ? "input-filled" : "",
+    className: currentValue !== "" ? "custom-text-input input-filled" : "custom-text-input",
     size: size,
     onChange: handleChange,
     value: currentValue
@@ -1072,23 +581,18 @@ function TextInput(_ref) {
     value: currentValue,
     multiline: true,
     rows: 3,
-    maxRows: 4
+    maxRows: 4,
+    className: "custom-text-input"
   }) : /*#__PURE__*/React__default["default"].createElement(material.TextField, {
     placeholder: placeholder,
-    classes: {
-      root: currentValue !== "" ? "input-filled" : ""
-    },
+    className: currentValue !== "" ? "custom-text-input input-filled" : "custom-text-input",
     sx: {
       background: "#F4F5F7",
       borderRadius: "5px",
-      ".Mui-focused": {
-        boxShadow: "0px 0px 0px 2px #8C30F5!important"
-      },
       ".MuiOutlinedInput-root": {
         height: "auto",
         marginTop: "0px",
-        padding: "0px 15px",
-        border: "1px solid #DCDCDC"
+        padding: "0px 15px"
       },
       input: {
         padding: "10px 15px 10px 15px!important",
@@ -1107,7 +611,7 @@ function TextInput(_ref) {
   }), texthelper ? /*#__PURE__*/React__default["default"].createElement(material.Typography, {
     variant: "span",
     className: "texthelper"
-  }, texthelper) : ""));
+  }, texthelper) : "");
 }
 
 TextInput.propTypes = {
@@ -1128,294 +632,6 @@ TextInput.defaultProps = {
   label: ""
 };
 
-var theme$c = styles.createTheme({
-  typography: {
-    p: {
-      fontSize: 16,
-      fontFamily: '"Roboto"',
-      color: "#0B0D17",
-      fontStyle: "normal",
-      fontWeight: "400",
-      lineHeight: "150%"
-    }
-  },
-  "& .header-labels": {
-    display: "flex"
-  },
-  components: {
-    MuiOutlinedInput: {
-      styleOverrides: {
-        root: {
-          border: "1px solid #DCDCDC",
-          borderRadius: 5,
-          background: "#F4F5F7",
-          padding: "0px!important",
-          "& #search-select": {
-            boxShadow: "inset 0px 0px 0px 1px #8C30F5",
-            border: "1px solid #8C30F5"
-          }
-        },
-        notchedOutline: {
-          border: 0
-        },
-        input: {
-          padding: "15px 15px 15px 15px",
-          display: "flex"
-        }
-      }
-    },
-    MuiFormControl: {
-      styleOverrides: {
-        root: {
-          marginTop: "4px",
-          "& .Mui-focused": {
-            "& #search-select": {
-              boxShadow: "inset 0px 0px 0px 1px #8C30F5",
-              border: "1px solid #8C30F5",
-              padding: "10px 15px 10px 15px!important"
-            },
-            "& #search-select-empty": {
-              boxShadow: "inset 0px 0px 0px 1px #8C30F5",
-              border: "1px solid #8C30F5"
-            }
-          },
-          "& .MuiInputLabel-root.Mui-error": {
-            color: "rgba(0, 0, 0, 0.6)"
-          },
-          "& .MuiOutlinedInput-root.Mui-error": {
-            boxShadow: "inset 0px 0px 0px 1px #FF5858 !important",
-            border: "1px solid #FF5858 !important",
-            "& #search-select": {
-              boxShadow: "none",
-              border: "none"
-            },
-            "& #search-select-empty": {
-              boxShadow: "none",
-              border: "none"
-            }
-          },
-          "& #search-select": {
-            padding: "10px 15px 10px 15px!important"
-          },
-          "& .texthelper ": {
-            fontStyle: "normal",
-            fontWeight: "400",
-            fontSize: "14px",
-            lineHeight: "150%",
-            color: "#898989"
-          },
-          "& .boxItems": {
-            display: "flex",
-            flexWrap: "wrap",
-            rowGap: "5px",
-            textOverflow: "ellipsis",
-            overflow: "hidden",
-            whiteSpace: "normal"
-          },
-          "& #search-input": {
-            padding: "10px 5px 10px 10px"
-          },
-          "& .full_img_box": {
-            display: "inline-flex",
-            alignItems: "center",
-            gap: "5px",
-            border: "1px solid #DCDCDC",
-            padding: "4px",
-            borderRadius: "5px",
-            background: "#fff",
-            fontFamily: "Roboto",
-            fontStyle: "normal",
-            fontWeight: "400",
-            fontSize: "16px",
-            lineHeight: "150%",
-            marginRight: "10px",
-            textOverflow: "ellipsis",
-            overflow: "hidden",
-            whiteSpace: "nowrap"
-          },
-          "& .full_img_box img": {
-            border: 0,
-            marginRight: -5
-          },
-          "& .img_box_icon": {
-            display: "flex",
-            alignItems: "center",
-            marginRight: "5px",
-            padding: "5px",
-            "& .icon_second": {
-              marginLeft: "-12px"
-            }
-          },
-          "& .img_box_icon > img": {
-            background: "#fff"
-          },
-          "& .img_box_icon > span": {
-            overflow: "hidden",
-            textOverflow: "ellipsis",
-            whiteSpace: "nowrap",
-            width: "260px"
-          },
-          "& .img_box > img": {
-            border: 0,
-            padding: 0,
-            borderRadius: 0,
-            marginRight: 0
-          },
-          "& .MuiSelect-select": {
-            paddingLeft: "45px"
-          }
-        }
-      }
-    },
-    MuiSelect: {
-      styleOverrides: {
-        select: {
-          "& .box-seleted-icon": {
-            position: "absolute",
-            left: "15px",
-            top: "10px",
-            display: "flex",
-            alignItems: "center",
-            border: "1px solid #DCDCDC",
-            padding: "5px",
-            gap: "5px",
-            borderRadius: "5px",
-            background: "#FFFFFF"
-          }
-        }
-      }
-    },
-    MuiInputAdornment: {
-      styleOverrides: {
-        root: {
-          marginLeft: "15px",
-          marginRight: "0px",
-          width: "24px",
-          height: "24px",
-          "& > img": {
-            border: "1px solid #DCDCDC",
-            padding: "4px",
-            borderRadius: "5px",
-            marginLeft: "-5px",
-            background: "#FFFFFF"
-          }
-        }
-      }
-    },
-    MuiIcon: {
-      styleOverrides: {
-        root: {
-          fontSize: "24px"
-        }
-      }
-    },
-    MuiTooltip: {
-      styleOverrides: {
-        tooltip: {
-          background: "#000",
-          width: "160px",
-          padding: "10px",
-          fontFamily: "Roboto",
-          fontStyle: "normal",
-          fontWeight: "400",
-          fontSize: "12px",
-          lineHeight: "150%"
-        },
-        arrow: {
-          color: "#000"
-        }
-      }
-    },
-    MuiMenuItem: {
-      styleOverrides: {
-        root: {
-          margin: "4px 0px",
-          padding: "0px 15px 0px 15px",
-          "&:hover": {
-            backgroundColor: "#FDFBFF"
-          },
-          "& .icon_second": {
-            marginLeft: "-17px",
-            background: "#FFFFFF"
-          },
-          "& .icon_first": {
-            zIndex: "1",
-            background: "#FFFFFF"
-          },
-          "& .full_img_box": {
-            display: "inline-flex",
-            alignItems: "center",
-            gap: "5px",
-            border: "1px solid #DCDCDC",
-            padding: "4px",
-            borderRadius: "5px",
-            background: "#fff",
-            fontFamily: "Roboto",
-            fontStyle: "normal",
-            fontWeight: "400",
-            fontSize: "16px",
-            lineHeight: "150%",
-            textOverflow: "ellipsis",
-            overflow: "hidden",
-            whiteSpace: "nowrap"
-          },
-          "& .img_box_icon img": {
-            border: "1px solid #DCDCDC",
-            padding: "5px",
-            gap: "5px",
-            borderRadius: "5px",
-            background: "#FFFFFF"
-          },
-          "& .full_img_box .icon_second": {
-            marginLeft: "0px"
-          },
-          "& .img_box_icon .icon_second": {
-            marginLeft: "-10px"
-          },
-          "& .onlyImg": {
-            border: 0,
-            background: "initial"
-          },
-          "& .onlyImg img": {
-            display: "flex",
-            alignItems: "center",
-            border: "1px solid #DCDCDC",
-            padding: "5px",
-            gap: "5px",
-            borderRadius: "5px",
-            background: "#FFFFFF"
-          },
-          "& > div": {
-            display: "flex",
-            alignItems: "center",
-            padding: "5px",
-            gap: "5px"
-          },
-          "& h5": {
-            fontStyle: "normal",
-            fontWeight: "700",
-            fontSize: "16px",
-            lineHeight: "150%",
-            color: "#141416",
-            margin: "0px"
-          },
-          "& span": {
-            fontStyle: "normal",
-            fontWeight: "400",
-            fontSize: "16px",
-            lineHeight: "150%",
-            color: "#898989",
-            margin: "0px",
-            width: "280px",
-            overflow: "hidden",
-            textOverflow: "ellipsis"
-          }
-        }
-      }
-    }
-  }
-});
-
 var styleDescription = {
   fontFamily: "Roboto",
   fontStyle: "normal",
@@ -1425,6 +641,166 @@ var styleDescription = {
   color: "#898989!important",
   margin: "0px"
 };
+var SelectWrapper = system.styled("div")({
+  "& .MuiInputLabel-root": {
+    top: "5px"
+  },
+  "& .MuiOutlinedInput-root": {
+    border: "none",
+    borderRadius: 5,
+    background: "#F4F5F7",
+    padding: "0px!important",
+    "& #search-select": {
+      boxShadow: "inset 0px 0px 0px 1px #8C30F5",
+      border: "1px solid #8C30F5"
+    },
+    "& #search-select-empty": {
+      boxShadow: "none",
+      border: "1px solid #DCDCDC"
+    },
+    "&.Mui-focused": {
+      border: "none"
+    }
+  },
+  "& .MuiOutlinedInput-notchedOutline": {
+    border: 0
+  },
+  "& .MuiOutlinedInput-input": {
+    padding: "15px 15px 15px 15px",
+    display: "flex"
+  },
+  "& .MuiFormControl-root": {
+    marginTop: "4px",
+    "& .Mui-focused": {
+      "& #search-select": {
+        boxShadow: "inset 0px 0px 0px 1px #8C30F5",
+        border: "1px solid #8C30F5",
+        padding: "10px 15px 10px 15px!important"
+      },
+      "& #search-select-empty": {
+        boxShadow: "inset 0px 0px 0px 1px #8C30F5",
+        border: "1px solid #8C30F5"
+      }
+    },
+    "& .MuiInputLabel-root.Mui-error": {
+      color: "rgba(0, 0, 0, 0.6)"
+    },
+    "& .MuiOutlinedInput-root.Mui-error": {
+      boxShadow: "inset 0px 0px 0px 1px #FF5858 !important",
+      border: "1px solid #FF5858 !important",
+      "& #search-select": {
+        boxShadow: "none",
+        border: "none"
+      },
+      "& #search-select-empty": {
+        boxShadow: "none",
+        border: "none"
+      }
+    },
+    "& #search-select": {
+      padding: "10px 15px 10px 15px!important"
+    },
+    "& .texthelper ": {
+      fontStyle: "normal",
+      fontWeight: "400",
+      fontSize: "14px",
+      lineHeight: "150%",
+      color: "#898989"
+    },
+    "& .boxItems": {
+      display: "flex",
+      flexWrap: "wrap",
+      rowGap: "5px",
+      textOverflow: "ellipsis",
+      overflow: "hidden",
+      whiteSpace: "normal"
+    },
+    "& #search-input": {
+      padding: "10px 5px 10px 10px"
+    },
+    "& .full_img_box": {
+      display: "inline-flex",
+      alignItems: "center",
+      gap: "5px",
+      border: "1px solid #DCDCDC",
+      padding: "4px",
+      borderRadius: "5px",
+      background: "#fff",
+      fontFamily: "Roboto",
+      fontStyle: "normal",
+      fontWeight: "400",
+      fontSize: "16px",
+      lineHeight: "150%",
+      marginRight: "10px",
+      textOverflow: "ellipsis",
+      overflow: "hidden",
+      whiteSpace: "nowrap"
+    },
+    "& .full_img_box img": {
+      border: 0,
+      marginRight: -5
+    },
+    "& .img_box_icon": {
+      display: "flex",
+      alignItems: "center",
+      marginRight: "5px",
+      padding: "5px",
+      "& .icon_second": {
+        marginLeft: "-12px"
+      }
+    },
+    "& .img_box_icon > img": {
+      background: "#fff"
+    },
+    "& .img_box_icon > span": {
+      overflow: "hidden",
+      textOverflow: "ellipsis",
+      whiteSpace: "nowrap",
+      width: "260px"
+    },
+    "& .img_box > img": {
+      border: 0,
+      padding: 0,
+      borderRadius: 0,
+      marginRight: 0
+    },
+    "& .MuiSelect-select": {
+      paddingLeft: "45px"
+    }
+  },
+  "& .MuiSelect-select": {
+    "& .box-seleted-icon": {
+      position: "absolute",
+      left: "15px",
+      top: "10px",
+      display: "flex",
+      alignItems: "center",
+      border: "1px solid #DCDCDC",
+      padding: "5px",
+      gap: "5px",
+      borderRadius: "5px",
+      background: "#FFFFFF"
+    }
+  },
+  "& .MuiInputAdornment-root": {
+    marginLeft: "15px",
+    marginRight: "0px",
+    width: "24px",
+    height: "24px",
+    "& > img": {
+      border: "1px solid #DCDCDC",
+      padding: "4px",
+      borderRadius: "5px",
+      marginLeft: "-5px",
+      background: "#FFFFFF"
+    }
+  },
+  "& .MuiIcon-root": {
+    fontSize: "18px",
+    marginTop: "3px",
+    marginLeft: "6px"
+  }
+});
 /**
  * Select input component
  *
@@ -1465,13 +841,12 @@ function Select(_ref) {
     }) : event.target.value.value);
   };
 
-  return /*#__PURE__*/React__default["default"].createElement(material.ThemeProvider, {
-    theme: theme$c
-  }, type === "default" ? /*#__PURE__*/React__default["default"].createElement(material.Box, {
+  return /*#__PURE__*/React__default["default"].createElement(SelectWrapper, null, type === "default" ? /*#__PURE__*/React__default["default"].createElement(material.Box, {
     component: "div",
     sx: {
       marginBottom: "20px"
-    }
+    },
+    className: "test-class"
   }, /*#__PURE__*/React__default["default"].createElement(material.Box, {
     component: "div",
     sx: {
@@ -1572,7 +947,8 @@ function Select(_ref) {
   }, displayedOptions.map(function (option, i) {
     return /*#__PURE__*/React__default["default"].createElement(material.MenuItem, {
       key: option.value,
-      value: option
+      value: option,
+      className: "select-item"
     }, /*#__PURE__*/React__default["default"].createElement(material.Box, {
       component: "div",
       sx: {
@@ -1759,7 +1135,8 @@ function Select(_ref) {
     onClickCapture: function onClickCapture(e) {
       e.stopPropagation();
       e.preventDefault();
-    }
+    },
+    className: "select-item"
   }, /*#__PURE__*/React__default["default"].createElement(material.TextField, {
     size: "small",
     autoFocus: true,
@@ -1782,7 +1159,8 @@ function Select(_ref) {
   })), displayedOptions.map(function (option, i) {
     return /*#__PURE__*/React__default["default"].createElement(material.MenuItem, {
       key: option.value,
-      value: option
+      value: option,
+      className: "select-item"
     }, /*#__PURE__*/React__default["default"].createElement(material.Box, {
       component: "div",
       className: variant === "full" ? "full_img_box" : "img_box_icon"
@@ -1847,25 +1225,6 @@ Select.defaultProps = {
   }
 };
 
-var theme$b = styles.createTheme({
-  typography: {
-    h3: {
-      fontSize: 30,
-      color: "#0B0D17",
-      fontStyle: "normal",
-      fontWeight: "700",
-      lineHeight: "120%"
-    },
-    h2: {
-      fontSize: 20,
-      color: "#0B0D17",
-      fontStyle: "normal",
-      fontWeight: "700",
-      lineHeight: "110%"
-    }
-  }
-});
-
 /**
  * @example ./Example.md
  */
@@ -1873,11 +1232,9 @@ var theme$b = styles.createTheme({
 function Text(_ref) {
   var variant = _ref.variant,
       value = _ref.value;
-  return /*#__PURE__*/React__default["default"].createElement(styles.ThemeProvider, {
-    theme: theme$b
-  }, /*#__PURE__*/React__default["default"].createElement(material.Typography, {
+  return /*#__PURE__*/React__default["default"].createElement(material.Typography, {
     variant: variant
-  }, value));
+  }, value);
 }
 
 Text.propTypes = {
@@ -1885,64 +1242,49 @@ Text.propTypes = {
   value: PropTypes__default["default"].string
 };
 Text.defaultProps = {
-  variant: "h3",
-  value: "Connecting..."
+  variant: "h3"
 };
 
-var theme$a = styles.createTheme({
-  components: {
-    MuiTextField: {
-      styleOverrides: {
-        root: {
-          background: "#F4F5F7",
-          borderRadius: "5px",
-          border: "1px solid #DCDCDC",
-          "& fieldset": {
-            border: "0px"
-          },
-          height: "34px",
-          fontFamily: "Roboto",
-          fontStyle: "normal",
-          fontWeight: "400",
-          fontSize: "16px",
-          lineHeight: "150%",
-          alignItems: "center",
-          color: "#0B0D17"
-        }
-      }
+var SuffixInputWrapper = system.styled("div")({
+  "& .MuiTextField-root": {
+    background: "#F4F5F7",
+    borderRadius: "5px",
+    border: "1px solid #DCDCDC",
+    "& fieldset": {
+      border: "0px"
     },
-    MuiInputAdornment: {
-      styleOverrides: {
-        root: {
-          "& .MuiTypography-root": {
-            fontFamily: "Roboto",
-            fontStyle: "normal",
-            fontWeight: "400",
-            fontSize: "16px",
-            lineHeight: "150%",
-            alignItems: "center",
-            color: "#898989"
-          }
-        }
-      }
+    height: "34px",
+    fontFamily: "Roboto",
+    fontStyle: "normal",
+    fontWeight: "400",
+    fontSize: "16px",
+    lineHeight: "150%",
+    alignItems: "center",
+    color: "#0B0D17"
+  },
+  "& .MuiInputAdornment-root": {
+    "& .MuiTypography-root": {
+      fontFamily: "Roboto",
+      fontStyle: "normal",
+      fontWeight: "400",
+      fontSize: "16px",
+      lineHeight: "150%",
+      alignItems: "center",
+      color: "#898989"
+    }
+  },
+  "& .MuiOutlinedInput-root": {
+    border: "0px",
+    padding: "5px 10px",
+    marginTop: "6px",
+    "&:hover .MuiOutlinedInput-notchedOutline": {
+      border: "0px"
     },
-    MuiOutlinedInput: {
-      styleOverrides: {
-        root: {
-          border: "0px",
-          padding: "5px 10px",
-          "&:hover .MuiOutlinedInput-notchedOutline": {
-            border: "0px"
-          },
-          "& input": {
-            padding: "0px"
-          }
-        }
-      }
+    "& input": {
+      padding: "0px"
     }
   }
 });
-
 /**
  * @example ./Example.md
  */
@@ -1952,9 +1294,7 @@ function SuffixInput(_ref) {
       placeholder = _ref.placeholder,
       suffix = _ref.suffix,
       onChange = _ref.onChange;
-  return /*#__PURE__*/React__default["default"].createElement(styles.ThemeProvider, {
-    theme: theme$a
-  }, /*#__PURE__*/React__default["default"].createElement(material.TextField, {
+  return /*#__PURE__*/React__default["default"].createElement(SuffixInputWrapper, null, /*#__PURE__*/React__default["default"].createElement(material.TextField, {
     id: "input-with-suffix",
     value: value,
     onChange: onChange,
@@ -1974,46 +1314,6 @@ SuffixInput.propTypes = {
   onChange: PropTypes__default["default"].func.isRequired
 };
 
-var theme$9 = styles.createTheme({
-  components: {
-    MuiAlert: {
-      styleOverrides: {
-        message: {
-          fontFamily: 'Roboto',
-          fontStyle: 'normal',
-          fontWeight: '400',
-          fontSize: '14px',
-          lineHeight: '150%',
-          textAlign: 'right',
-          color: '#0B0D17'
-        },
-        icon: {
-          marginRight: '10px',
-          fontSize: '20px'
-        },
-        standardError: {
-          backgroundColor: '#FFE7E7!important',
-          '& .MuiAlert-icon': {
-            color: '#FF5858!important'
-          }
-        },
-        standardWarning: {
-          backgroundColor: '#FFF1D7!important',
-          '& .MuiAlert-icon': {
-            color: '#FFB930!important'
-          }
-        },
-        standardInfo: {
-          backgroundColor: '#F1E4FF!important',
-          '& .MuiAlert-icon': {
-            color: '#8C30F5!important'
-          }
-        }
-      }
-    }
-  }
-});
-
 var _excluded$2 = ["color", "icon"];
 /**
  *
@@ -2025,71 +1325,16 @@ function Alert(_ref) {
       icon = _ref.icon,
       props = _objectWithoutProperties(_ref, _excluded$2);
 
-  return /*#__PURE__*/React__default["default"].createElement(styles.ThemeProvider, {
-    theme: theme$9
-  }, /*#__PURE__*/React__default["default"].createElement(material.Alert, {
+  return /*#__PURE__*/React__default["default"].createElement(material.Alert, {
     icon: icon,
     severity: color
-  }, props.children));
+  }, props.children);
 }
 
 Alert.propTypes = {
   color: PropTypes__default["default"].string,
   icon: PropTypes__default["default"].element
 };
-
-var theme$8 = styles.createTheme({
-  typography: {
-    p: {
-      fontSize: 16,
-      fontFamily: '"Roboto"',
-      color: "#0B0D17",
-      fontStyle: "normal",
-      fontWeight: "400",
-      lineHeight: "150%"
-    }
-  },
-  "& .header-labels": {
-    display: "flex"
-  },
-  components: {
-    MuiSwitch: {
-      styleOverrides: {
-        root: {
-          width: "45px",
-          height: "auto",
-          padding: "0px",
-          " & .Mui-checked+.MuiSwitch-track": {
-            backgroundColor: "#fff!important",
-            border: "1px solid #00B674",
-            opacity: 1
-          },
-          " & .Mui-checked > .MuiSwitch-thumb": {
-            backgroundColor: "#00B674"
-          }
-        },
-        track: {
-          height: "24px",
-          borderRadius: "16px",
-          border: "1px solid #758796",
-          backgroundColor: "#fff!important"
-        },
-        thumb: {
-          width: "18px",
-          height: "18px",
-          background: "#758796",
-          boxShadow: "none"
-        },
-        switchBase: {
-          padding: "3px",
-          "&:hover": {
-            background: "none"
-          }
-        }
-      }
-    }
-  }
-});
 
 /**
  * @example ./Example.md
@@ -2101,17 +1346,15 @@ function Switch(_ref) {
       on = _ref.on;
       _ref.off;
       var onChange = _ref.onChange;
-  return /*#__PURE__*/React__default["default"].createElement(material.ThemeProvider, {
-    theme: theme$8
-  }, on ? /*#__PURE__*/React__default["default"].createElement(material.Switch, {
+  return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, on ? /*#__PURE__*/React__default["default"].createElement(material.Switch, {
     checked: value,
     onChange: onChange,
     sx: {
       ".MuiSwitch-thumb": {
-        background: color
+        background: value ? color : "#758796"
       },
       ".MuiSwitch-track": {
-        borderColor: color
+        borderColor: value ? color : "#758796"
       },
       ".MuiSwitch-track:after": {
         content: '"On"',
@@ -2149,10 +1392,10 @@ function Switch(_ref) {
     onChange: onChange,
     sx: {
       ".MuiSwitch-thumb": {
-        background: color
+        background: value ? color : "#758796"
       },
       ".MuiSwitch-track": {
-        borderColor: color
+        borderColor: value ? color : "#758796"
       }
     },
     name: "check",
@@ -2171,41 +1414,9 @@ Switch.propTypes = {
 };
 Switch.defaultProps = {
   value: false,
-  color: "primary",
+  color: "#00B674",
   onChange: undefined
 };
-
-var theme$7 = styles.createTheme({
-  components: {
-    MuiModal: {
-      styleOverrides: {
-        root: {
-          margin: "0 auto"
-        }
-      }
-    },
-    MuiBackdrop: {
-      styleOverrides: {
-        root: {
-          background: "rgba(11, 13, 23, 0.5)",
-          backdropFilter: "blur(20px)"
-        }
-      }
-    },
-    MuiDialog: {
-      styleOverrides: {
-        container: {
-          "& > div": {
-            width: "100%",
-            margin: "30px",
-            padding: "20px",
-            borderRadius: 10
-          }
-        }
-      }
-    }
-  }
-});
 
 var _excluded$1 = ["open", "onClose", "maxWidth"];
 /**
@@ -2218,15 +1429,13 @@ function Dialog(_ref) {
       maxWidth = _ref.maxWidth,
       props = _objectWithoutProperties(_ref, _excluded$1);
 
-  return /*#__PURE__*/React__default["default"].createElement(styles.ThemeProvider, {
-    theme: theme$7
-  }, /*#__PURE__*/React__default["default"].createElement(material.Dialog, {
+  return /*#__PURE__*/React__default["default"].createElement(material.Dialog, {
     sx: {
       maxWidth: maxWidth
     },
     onClose: onClose,
     open: open
-  }, props.children));
+  }, props.children);
 }
 
 Dialog.propTypes = {
@@ -2235,67 +1444,59 @@ Dialog.propTypes = {
   maxWidth: PropTypes__default["default"].string
 };
 
-var theme$6 = styles.createTheme({
-  components: {
-    MuiOutlinedInput: {
-      styleOverrides: {
-        root: {
-          "& fieldset": {
-            border: "0px"
-          },
-          "& > div": {
-            paddingTop: "5px",
-            paddingBottom: "5px",
-            fontFamily: "Roboto",
-            fontStyle: "normal",
-            fontWeight: "400",
-            fontSize: "16px",
-            lineHeight: "150%",
-            color: "#0B0D17"
-          },
-          "& > .MuiSvgIcon-root": {
-            fill: "#898989"
-          }
-        }
-      }
+var SimpleSelectWrapper = system.styled("div")({
+  "& .MuiOutlinedInput-root": {
+    background: "none",
+    border: "0px",
+    padding: "0 !important",
+    "&:hover": {
+      background: "#F4F5F7"
     },
-    MuiFormControl: {
-      styleOverrides: {
-        root: {
-          "& > label": {
-            color: "#898989!important",
-            left: "-5px",
-            top: "-10px"
-          }
-        }
-      }
+    "& fieldset": {
+      border: "0px"
     },
-    MuiList: {
-      styleOverrides: {
-        root: {
-          "& > li": {
-            fontFamily: "Roboto",
-            fontStyle: "normal",
-            fontWeight: "400",
-            fontSize: "16px",
-            lineHeight: "150%",
-            color: "#141416"
-          },
-          "& > li:hover": {
-            background: "#FDFBFF"
-          },
-          "& > .Mui-selected": {
-            background: "#FDFBFF"
-          },
-          "& > .Mui-selected:hover": {
-            background: "#FDFBFF"
-          }
-        }
-      }
+    "& > div": {
+      paddingTop: "10px",
+      paddingBottom: "9px",
+      fontFamily: "Roboto",
+      fontStyle: "normal",
+      fontWeight: "400",
+      fontSize: "16px",
+      lineHeight: "150%",
+      color: "#0B0D17"
+    },
+    "& > .MuiSvgIcon-root": {
+      fill: "#898989"
+    }
+  },
+  "& .MuiFormControl-root": {
+    width: "auto",
+    "& > label": {
+      color: "#898989!important",
+      left: "-5px",
+      top: "-10px"
+    }
+  },
+  "& .MuiList-root": {
+    "& > li": {
+      fontFamily: "Roboto",
+      fontStyle: "normal",
+      fontWeight: "400",
+      fontSize: "16px",
+      lineHeight: "150%",
+      color: "#141416"
+    },
+    "& > li:hover": {
+      background: "#FDFBFF"
+    },
+    "& > .Mui-selected": {
+      background: "#FDFBFF"
+    },
+    "& > .Mui-selected:hover": {
+      background: "#FDFBFF"
     }
   }
 });
-
 /**
  *
  * @example ./Example.md
@@ -2306,9 +1507,7 @@ function SelectSimple(_ref) {
       options = _ref.options,
       placeholder = _ref.placeholder,
       onChange = _ref.onChange;
-  return /*#__PURE__*/React__default["default"].createElement(styles.ThemeProvider, {
-    theme: theme$6
-  }, /*#__PURE__*/React__default["default"].createElement(material.FormControl, {
+  return /*#__PURE__*/React__default["default"].createElement(SimpleSelectWrapper, null, /*#__PURE__*/React__default["default"].createElement(material.FormControl, {
     fullWidth: true
   }, value === "" ? /*#__PURE__*/React__default["default"].createElement(material.InputLabel, {
     id: "simple-select-label",
@@ -2322,7 +1521,8 @@ function SelectSimple(_ref) {
   }, options.map(function (option, index) {
     return /*#__PURE__*/React__default["default"].createElement(material.MenuItem, {
       key: option.value,
-      value: option.value
+      value: option.value,
+      className: "simple-select-item"
     }, option.label);
   }))));
 }
@@ -2332,46 +1532,6 @@ SelectSimple.propTypes = {
   placeholder: PropTypes__default["default"].string.isRequired,
   onChange: PropTypes__default["default"].func.isRequired
 };
-
-var theme$5 = styles.createTheme({
-  components: {
-    MuiAlert: {
-      styleOverrides: {
-        message: {
-          fontFamily: "Roboto",
-          fontStyle: "normal",
-          fontWeight: "400",
-          fontSize: "14px",
-          lineHeight: "150%",
-          textAlign: "right",
-          color: "#0B0D17"
-        },
-        icon: {
-          marginRight: "10px",
-          fontSize: "20px"
-        },
-        standardError: {
-          backgroundColor: "#FFE7E7!important",
-          "& .MuiAlert-icon": {
-            color: "#FF5858!important"
-          }
-        },
-        standardWarning: {
-          backgroundColor: "#FFF1D7!important",
-          "& .MuiAlert-icon": {
-            color: "#FFB930!important"
-          }
-        },
-        standardInfo: {
-          backgroundColor: "#F1E4FF!important",
-          "& .MuiAlert-icon": {
-            color: "#8C30F5!important"
-          }
-        }
-      }
-    }
-  }
-});
 
 var _excluded = ["variant", "open", "anchor", "sx", "hideBackdrop", "elevation", "PaperProps", "ModalProps", "container"];
 /**
@@ -2390,9 +1550,7 @@ function Drawer(_ref) {
       container = _ref.container,
       props = _objectWithoutProperties(_ref, _excluded);
 
-  return /*#__PURE__*/React__default["default"].createElement(styles.ThemeProvider, {
-    theme: theme$5
-  }, /*#__PURE__*/React__default["default"].createElement(material.Drawer, {
+  return /*#__PURE__*/React__default["default"].createElement(material.Drawer, {
     container: container,
     variant: variant,
     open: open,
@@ -2400,7 +1558,7 @@ function Drawer(_ref) {
     sx: sx,
     anchor: anchor,
     PaperProps: PaperProps
-  }, props.children));
+  }, props.children);
 }
 
 Drawer.propTypes = {
@@ -2413,40 +1571,6 @@ Drawer.propTypes = {
   hideBackdrop: PropTypes__default["default"].bool
 };
 
-var severity = {
-  info: {
-    main: "#F1E4FF"
-  },
-  error: {
-    main: "#FFE7E7"
-  },
-  warning: {
-    main: "#FFF1D7"
-  }
-};
-var theme$4 = styles.createTheme({
-  severity: severity,
-  components: {
-    MuiAlert: {
-      styleOverrides: {
-        message: {
-          fontFamily: "Roboto",
-          fontStyle: "normal",
-          fontWeight: "400",
-          fontSize: "14px",
-          lineHeight: "150%",
-          textAlign: "right",
-          color: "#0B0D17"
-        },
-        icon: {
-          marginRight: "10px",
-          fontSize: "20px"
-        }
-      }
-    }
-  }
-});
-
 /**
  * @example ./Example.md
  */
@@ -2456,9 +1580,7 @@ function IconButton(_ref) {
       type = _ref.type,
       icon = _ref.icon,
       onClick = _ref.onClick;
-  return /*#__PURE__*/React__default["default"].createElement(styles.ThemeProvider, {
-    theme: theme$4
-  }, /*#__PURE__*/React__default["default"].createElement(material.IconButton, {
+  return /*#__PURE__*/React__default["default"].createElement(material.IconButton, {
     onClick: onClick,
     "aria-label": "delete"
   }, type === "text" ? /*#__PURE__*/React__default["default"].createElement(material.Icon, {
@@ -2471,7 +1593,7 @@ function IconButton(_ref) {
     height: "24",
     src: icon,
     alt: icon
-  })));
+  }));
 }
 
 IconButton.propTypes = {
@@ -2479,30 +1601,6 @@ IconButton.propTypes = {
   icon: PropTypes__default["default"].string,
   type: PropTypes__default["default"].string
 };
-
-var theme$3 = styles.createTheme({
-  components: {
-    MuiTabs: {
-      styleOverrides: {
-        root: {
-          background: "#FDFBFF"
-        }
-      }
-    },
-    MuiTab: {
-      styleOverrides: {
-        root: {
-          fontFamily: "Roboto",
-          fontStyle: "normal",
-          fontWeight: "400",
-          fontSize: "12px",
-          lineHeight: "150%",
-          textAlign: "right"
-        }
-      }
-    }
-  }
-});
 
 /**
  * @example ./Example.md
@@ -2523,9 +1621,7 @@ function Tabs(_ref) {
     onChange(newValue);
   };
 
-  return /*#__PURE__*/React__default["default"].createElement(styles.ThemeProvider, {
-    theme: theme$3
-  }, type === "text" ? /*#__PURE__*/React__default["default"].createElement(material.Tabs, {
+  return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, type === "text" ? /*#__PURE__*/React__default["default"].createElement(material.Tabs, {
     TabIndicatorProps: {
       style: {
         background: activeIndicatorColor
@@ -2594,157 +1690,6 @@ Tabs.propTypes = {
 function CircularProgress(props) {
   return /*#__PURE__*/React__default["default"].createElement(material.CircularProgress, props);
 }
-
-var theme$2 = styles.createTheme({
-  typography: {
-    p: {
-      fontSize: 16,
-      fontFamily: '"Roboto"',
-      color: '#0B0D17',
-      fontStyle: 'normal',
-      fontWeight: '400',
-      lineHeight: '150%'
-    },
-    span: {
-      fontFamily: '"Roboto"',
-      fontStyle: 'normal',
-      fontWeight: '400',
-      fontSize: '14px',
-      lineHeight: '150%',
-      color: '#898989'
-    }
-  },
-  components: {
-    MuiOutlinedInput: {
-      styleOverrides: {
-        root: {
-          marginTop: '4px',
-          border: '1px solid #DCDCDC',
-          borderRadius: 5,
-          background: '#F4F5F7',
-          padding: '0px 10px 0px 10px!important',
-          '& > img': {
-            border: '1px solid #DCDCDC',
-            padding: '4px',
-            borderRadius: '5px',
-            background: '#FFFFFF'
-          },
-          '& .icon_second': {
-            marginLeft: '-5px'
-          },
-          '& .icon_first': {
-            zIndex: '1'
-          }
-        },
-        notchedOutline: {
-          border: 0
-        },
-        input: {
-          padding: '10px 70px 10px 15px'
-        }
-      }
-    },
-    MuiFilledInput: {
-      styleOverrides: {
-        root: {
-          borderRadius: 4,
-          border: '1px solid #DCDCDC',
-          paddingTop: '0px!important',
-          background: '#F4F5F7!important',
-          '& img': {
-            marginRight: '0px'
-          },
-          '& li': {
-            listStyle: 'none',
-            display: 'flex',
-            alignItems: 'center',
-            backgroundColor: '#FFFFFF',
-            padding: '4px',
-            borderRadius: '4px',
-            border: '1px solid #DCDCDC',
-            marginRight: '5px',
-            marginTop: '10px',
-            marginBottom: '10px',
-            overflow: 'hidden',
-            whiteSpace: 'normal',
-            textOverflow: 'ellipsis',
-            '& > img': {
-              border: 0
-            }
-          },
-          '& .icon_second': {
-            marginLeft: '-4px',
-            backgroundColor: '#FFFFFF'
-          },
-          '& .icon_first': {
-            marginRight: '0px',
-            backgroundColor: '#FFFFFF'
-          },
-          '&:hover:not(.Mui-disabled):before': {
-            border: 0
-          },
-          '&:hover': {
-            background: '#F4F5F7!important'
-          },
-          '&:after': {
-            border: 0
-          },
-          '&:before': {
-            border: 0
-          }
-        }
-      }
-    },
-    MuiTooltip: {
-      styleOverrides: {
-        tooltip: {
-          background: '#000',
-          width: '160px',
-          padding: '10px',
-          fontFamily: 'Roboto',
-          fontStyle: 'normal',
-          fontWeight: '400',
-          fontSize: '12px',
-          lineHeight: '150%'
-        },
-        arrow: {
-          color: '#000'
-        }
-      }
-    },
-    MuiInputAdornment: {
-      styleOverrides: {
-        root: {
-          marginLeft: '0px',
-          marginRight: '0px',
-          width: '24px',
-          height: '24px',
-          '& > img': {
-            border: '1px solid #DCDCDC',
-            padding: '4px',
-            borderRadius: '5px',
-            marginLeft: '-5px',
-            background: '#FFFFFF'
-          }
-        }
-      }
-    },
-    MuiIcon: {
-      styleOverrides: {
-        root: {
-          fontSize: '24px'
-        }
-      }
-    },
-    Mui: {
-      focused: {
-        '& .MuiFilledInput-root': {
-          border: '2px solid #8C30F5'
-        }
-      }
-    }
-  }
-});
 
 /**
  *
@@ -3066,9 +2011,7 @@ function RichInput(_ref) {
     setAddressBook(newAddressBook);
   };
 
-  return /*#__PURE__*/React__default["default"].createElement(material.ThemeProvider, {
-    theme: theme$2
-  }, /*#__PURE__*/React__default["default"].createElement(Foco__default["default"], {
+  return /*#__PURE__*/React__default["default"].createElement(Foco__default["default"], {
     onClickOutside: function onClickOutside() {
       setFocused(false);
     },
@@ -3110,7 +2053,7 @@ function RichInput(_ref) {
     }
   }), (options.length > 0 || hasAddressBook) && renderDropdown())), Boolean(error) && /*#__PURE__*/React__default["default"].createElement("div", {
     className: "error-message"
-  }, error)))));
+  }, error))));
 }
 
 var withReferences = function withReferences(editor) {
@@ -3371,7 +2314,10 @@ var RichInputWrapper = styles.styled("div")({
       borderRadius: "5px",
       boxSizing: "border-box",
       //display: "none",
-      zIndex: 2
+      zIndex: 2,
+      "& .MuiOutlinedInput-input": {
+        padding: "10px 70px 10px 15px"
+      }
     },
     "& .rich-input__dropdown-search-wrapper": {
       margin: 10,
@@ -3689,28 +2635,6 @@ RichInput.propTypes = {
   setAddressBook: PropTypes__default["default"].func
 };
 
-var theme$1 = styles.createTheme({
-  components: {
-    MuiTooltip: {
-      styleOverrides: {
-        tooltip: {
-          background: "#000",
-          width: "160px",
-          padding: "10px",
-          fontFamily: "Roboto",
-          fontStyle: "normal",
-          fontWeight: "400",
-          fontSize: "12px",
-          lineHeight: "150%"
-        },
-        arrow: {
-          color: "#000"
-        }
-      }
-    }
-  }
-});
-
 /**
  *
  * @example ./Example.md
@@ -3719,41 +2643,16 @@ var theme$1 = styles.createTheme({
 function Tooltip(_ref) {
   var title = _ref.title,
       children = _ref.children;
-  return /*#__PURE__*/React__default["default"].createElement(styles.ThemeProvider, {
-    theme: theme$1
-  }, /*#__PURE__*/React__default["default"].createElement(material.Tooltip, {
+  return /*#__PURE__*/React__default["default"].createElement(material.Tooltip, {
     title: title,
     placement: "top",
     arrow: true
-  }, children));
+  }, children);
 }
 
 Tooltip.propTypes = {
   title: PropTypes__default["default"].string.isRequired
 };
-
-var theme = styles.createTheme({
-  components: {
-    MuiMenu: {
-      styleOverrides: {
-        paper: {
-          background: "#FFFFFF !important",
-          border: "1px solid #DCDCDC !important",
-          boxShadow: "2px 2px 24px rgba(0, 0, 0, 0.15) !important",
-          borderRadius: "5px !important",
-          color: "#0B0D17",
-          padding: "0 10px !important"
-        },
-        list: {
-          "& li:hover": {
-            background: "#FDFBFF !important",
-            borderRadius: "5px !important"
-          }
-        }
-      }
-    }
-  }
-});
 
 /**
  *
@@ -3773,14 +2672,13 @@ function Menu(_ref) {
     onClose();
   };
 
-  return /*#__PURE__*/React__default["default"].createElement(styles.ThemeProvider, {
-    theme: theme
-  }, /*#__PURE__*/React__default["default"].createElement(material.Menu, {
+  return /*#__PURE__*/React__default["default"].createElement(material.Menu, {
     anchorEl: anchorEl,
     open: open,
     onClose: handleClose,
     anchorOrigin: anchorOrigin,
-    transformOrigin: transformOrigin
+    transformOrigin: transformOrigin //hideBackdrop
+
   }, items.map(function (item) {
     return /*#__PURE__*/React__default["default"].createElement(material.MenuItem, {
       key: item.key,
@@ -3794,7 +2692,7 @@ function Menu(_ref) {
         }
       }
     }, item.label ? item.label : item.Component ? item.Component : null);
-  })));
+  }));
 }
 
 Menu.propTypes = {
