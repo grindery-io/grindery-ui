@@ -62,6 +62,8 @@ function TextInput({
                 color: "#898989",
                 fontSize: "18px",
                 ".": { backgroundColor: "#000" },
+                marginTop: "3px",
+                marginLeft: "6px",
               }}
             >
               error
