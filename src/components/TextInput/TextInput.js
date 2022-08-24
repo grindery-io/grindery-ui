@@ -23,6 +23,7 @@ function TextInput({
   type,
   icon,
   tooltip,
+  readonly,
 }) {
   const [currentValue, setCurrentValue] = useState(value);
 
@@ -85,13 +86,14 @@ function TextInput({
           fullWidth
           placeholder={placeholder}
           className={
-            currentValue !== ""
+            currentValue !== "" && !readonly
               ? "custom-text-input input-filled"
               : "custom-text-input"
           }
           size={size}
           onChange={handleChange}
           value={currentValue}
+          disabled={readonly}
         />
       ) : type === "textarea" ? (
         <TextField
@@ -103,12 +105,13 @@ function TextInput({
           rows={3}
           maxRows={4}
           className="custom-text-input"
+          disabled={readonly}
         />
       ) : (
         <TextField
           placeholder={placeholder}
           className={
-            currentValue !== ""
+            currentValue !== "" && !readonly
               ? "custom-text-input input-filled"
               : "custom-text-input"
           }
@@ -136,6 +139,7 @@ function TextInput({
               </InputAdornment>
             ),
           }}
+          disabled={readonly}
         />
       )}
       {texthelper ? (
@@ -157,6 +161,7 @@ TextInput.propTypes = {
   type: PropTypes.string,
   label: PropTypes.string,
   tooltip: PropTypes.string,
+  readonly: PropTypes.bool,
 };
 
 TextInput.defaultProps = {

@@ -504,7 +504,8 @@ function TextInput(_ref) {
       texthelper = _ref.texthelper,
       type = _ref.type,
       icon = _ref.icon,
-      tooltip = _ref.tooltip;
+      tooltip = _ref.tooltip,
+      readonly = _ref.readonly;
 
   var _useState = useState(value),
       _useState2 = _slicedToArray(_useState, 2),
@@ -558,10 +559,11 @@ function TextInput(_ref) {
   }, "(required)") : ""), type === "text" ? /*#__PURE__*/React.createElement(TextField, {
     fullWidth: true,
     placeholder: placeholder,
-    className: currentValue !== "" ? "custom-text-input input-filled" : "custom-text-input",
+    className: currentValue !== "" && !readonly ? "custom-text-input input-filled" : "custom-text-input",
     size: size,
     onChange: handleChange,
-    value: currentValue
+    value: currentValue,
+    disabled: readonly
   }) : type === "textarea" ? /*#__PURE__*/React.createElement(TextField, {
     placeholder: placeholder,
     size: size,
@@ -570,10 +572,11 @@ function TextInput(_ref) {
     multiline: true,
     rows: 3,
     maxRows: 4,
-    className: "custom-text-input"
+    className: "custom-text-input",
+    disabled: readonly
   }) : /*#__PURE__*/React.createElement(TextField, {
     placeholder: placeholder,
-    className: currentValue !== "" ? "custom-text-input input-filled" : "custom-text-input",
+    className: currentValue !== "" && !readonly ? "custom-text-input input-filled" : "custom-text-input",
     sx: {
       background: "#F4F5F7",
       borderRadius: "5px",
@@ -595,7 +598,8 @@ function TextInput(_ref) {
       startAdornment: /*#__PURE__*/React.createElement(InputAdornment, {
         position: "start"
       }, /*#__PURE__*/React.createElement(Icon, null, icon))
-    }
+    },
+    disabled: readonly
   }), texthelper ? /*#__PURE__*/React.createElement(Typography, {
     variant: "span",
     className: "texthelper"
@@ -609,7 +613,8 @@ TextInput.propTypes = {
   value: PropTypes.string,
   type: PropTypes.string,
   label: PropTypes.string,
-  tooltip: PropTypes.string
+  tooltip: PropTypes.string,
+  readonly: PropTypes.bool
 };
 TextInput.defaultProps = {
   placeholder: "0x...",
@@ -2715,6 +2720,7 @@ var palette = {
     main: "#0B0D17"
   }
 };
+
 var severity = {
   info: {
     main: "#F1E4FF"
@@ -2726,718 +2732,762 @@ var severity = {
     main: "#FFF1D7"
   }
 };
-var theme = createTheme({
-  palette: palette,
-  severity: severity,
-  typography: {
-    h2: {
-      fontSize: 20,
-      color: "#0B0D17",
-      fontStyle: "normal",
-      fontWeight: "700",
-      lineHeight: "110%"
+
+var typography = {
+  h2: {
+    fontSize: 20,
+    color: "#0B0D17",
+    fontStyle: "normal",
+    fontWeight: "700",
+    lineHeight: "110%"
+  },
+  h3: {
+    fontSize: 30,
+    color: "#0B0D17",
+    fontStyle: "normal",
+    fontWeight: "700",
+    lineHeight: "120%"
+  },
+  p: {
+    fontSize: 16,
+    fontFamily: '"Roboto"',
+    color: "#0B0D17",
+    fontStyle: "normal",
+    fontWeight: "400",
+    lineHeight: "150%"
+  },
+  span: {
+    fontFamily: '"Roboto"',
+    fontStyle: "normal",
+    fontWeight: "400",
+    fontSize: "14px",
+    lineHeight: "150%",
+    color: "#898989"
+  }
+};
+
+var MuiAlert = {
+  styleOverrides: {
+    message: function message(_ref) {
+      var theme = _ref.theme;
+      return {
+        fontFamily: "Roboto",
+        fontStyle: "normal",
+        fontWeight: "400",
+        fontSize: "14px",
+        lineHeight: "150%",
+        textAlign: "left",
+        color: theme.palette.secondary.main
+      };
     },
-    h3: {
-      fontSize: 30,
-      color: "#0B0D17",
-      fontStyle: "normal",
-      fontWeight: "700",
-      lineHeight: "120%"
+    icon: {
+      marginRight: "10px",
+      fontSize: "20px"
     },
-    p: {
-      fontSize: 16,
-      fontFamily: '"Roboto"',
-      color: "#0B0D17",
+    standardError: {
+      backgroundColor: "#FFE7E7!important",
+      "& .MuiAlert-icon": {
+        color: "#FF5858!important"
+      }
+    },
+    standardWarning: {
+      backgroundColor: "#FFF1D7!important",
+      "& .MuiAlert-icon": {
+        color: "#FFB930!important"
+      }
+    },
+    standardInfo: {
+      backgroundColor: "#F1E4FF!important",
+      "& .MuiAlert-icon": {
+        color: "#8C30F5!important"
+      }
+    }
+  }
+};
+
+var MuiSwitch = {
+  styleOverrides: {
+    root: {
+      width: "45px",
+      height: "auto",
+      padding: "0px",
+      "& .Mui-checked+.MuiSwitch-track": {
+        backgroundColor: "#fff!important",
+        opacity: 1
+      },
+      "& .Mui-checked > .MuiSwitch-thumb": {}
+    },
+    track: {
+      height: "24px",
+      borderRadius: "16px",
+      border: "1px solid #758796",
+      backgroundColor: "#fff!important"
+    },
+    thumb: {
+      width: "18px",
+      height: "18px",
+      background: "#758796",
+      boxShadow: "none",
+      marginTop: "1px"
+    },
+    switchBase: {
+      padding: "3px",
+      "&:hover": {
+        background: "none"
+      }
+    }
+  }
+};
+
+var MuiTooltip = {
+  styleOverrides: {
+    tooltip: {
+      background: "#000",
+      width: "160px",
+      padding: "10px",
+      fontFamily: "Roboto",
       fontStyle: "normal",
       fontWeight: "400",
+      fontSize: "12px",
       lineHeight: "150%"
     },
-    span: {
-      fontFamily: '"Roboto"',
+    arrow: {
+      color: "#000"
+    }
+  }
+};
+
+var MuiFormControl = {
+  styleOverrides: {
+    root: {
+      "&.custom-text-input": {
+        marginTop: "4px",
+        padding: "0px",
+        width: "100%",
+        "& input": {
+          padding: "15px 5px 15px 15px !important"
+        },
+        "& textarea": {
+          padding: "15px 5px 15px 15px"
+        },
+        "& fieldset": {
+          border: "none"
+        },
+        "&.input-filled .MuiOutlinedInput-root": {
+          boxShadow: "inset 0px 0px 0px 1px #8C30F5",
+          border: "1px solid #8C30F5"
+        },
+        "& .MuiOutlinedInput-root.Mui-focused": {
+          boxShadow: "inset 0px 0px 0px 1px #8C30F5",
+          border: "1px solid #8C30F5"
+        }
+      }
+    }
+  }
+};
+
+var MuiOutlinedInput = {
+  styleOverrides: {
+    root: {
+      marginTop: "4px",
+      border: "1px solid #DCDCDC",
+      borderRadius: 5,
+      background: "#F4F5F7",
+      padding: "0px 10px 0px 10px!important",
+      "& > img": {
+        border: "1px solid #DCDCDC",
+        padding: "4px",
+        borderRadius: "5px",
+        background: "#FFFFFF"
+      },
+      "& .icon_second": {
+        marginLeft: "-5px"
+      },
+      "& .icon_first": {
+        zIndex: "1"
+      }
+    },
+    notchedOutline: {
+      border: 0
+    },
+    input: {
+      padding: "15px 70px 15px 15px"
+    }
+  }
+};
+
+var MuiFilledInput = {
+  styleOverrides: {
+    root: {
+      borderRadius: 4,
+      border: "1px solid #DCDCDC",
+      paddingTop: "0px!important",
+      background: "#F4F5F7!important",
+      "& img": {
+        marginRight: "0px"
+      },
+      "& li": {
+        listStyle: "none",
+        display: "flex",
+        alignItems: "center",
+        backgroundColor: "#FFFFFF",
+        padding: "4px",
+        borderRadius: "4px",
+        border: "1px solid #DCDCDC",
+        marginRight: "5px",
+        marginTop: "10px",
+        marginBottom: "10px",
+        overflow: "hidden",
+        whiteSpace: "normal",
+        textOverflow: "ellipsis",
+        "& > img": {
+          border: 0
+        }
+      },
+      "& .icon_second": {
+        marginLeft: "-4px",
+        backgroundColor: "#FFFFFF"
+      },
+      "& .icon_first": {
+        marginRight: "0px",
+        backgroundColor: "#FFFFFF"
+      },
+      "&:hover:not(.Mui-disabled):before": {
+        border: 0
+      },
+      "&:hover": {
+        background: "#F4F5F7!important"
+      },
+      "&:after": {
+        border: 0
+      },
+      "&:before": {
+        border: 0
+      }
+    }
+  }
+};
+
+var MuiAutocomplete = {
+  styleOverrides: {
+    root: {
+      "& .MuiInputAdornment-root": {
+        marginLeft: "0px",
+        marginRight: "0px",
+        width: "24px",
+        height: "24px",
+        "& > img": {
+          border: "1px solid #DCDCDC",
+          padding: "4px",
+          borderRadius: "5px",
+          marginLeft: "-5px",
+          background: "#FFFFFF"
+        }
+      },
+      "& .MuiOutlinedInput-root": {
+        marginTop: "4px",
+        border: "1px solid #DCDCDC",
+        borderRadius: "5px",
+        background: "#F4F5F7",
+        padding: "0px 10px 0px 10px!important",
+        "& > img": {
+          border: "1px solid #DCDCDC",
+          padding: "4px",
+          borderRadius: "5px",
+          background: "#FFFFFF"
+        },
+        "& .icon_second": {
+          marginLeft: "-5px"
+        },
+        "& .icon_first": {
+          zIndex: "1"
+        }
+      },
+      "& .MuiFilledInput-root": {
+        borderRadius: 4,
+        border: "1px solid #DCDCDC",
+        paddingTop: "0px!important",
+        background: "#F4F5F7!important",
+        "& img": {
+          marginRight: "0px"
+        },
+        "& li": {
+          listStyle: "none",
+          display: "flex",
+          alignItems: "center",
+          backgroundColor: "#FFFFFF",
+          padding: "4px",
+          borderRadius: "4px",
+          border: "1px solid #DCDCDC",
+          marginRight: "5px",
+          marginTop: "10px",
+          marginBottom: "10px",
+          overflow: "hidden",
+          whiteSpace: "normal",
+          textOverflow: "ellipsis",
+          "& > img": {
+            border: 0
+          }
+        },
+        "& .icon_second": {
+          marginLeft: "-4px",
+          backgroundColor: "#FFFFFF"
+        },
+        "& .icon_first": {
+          marginRight: "0px",
+          backgroundColor: "#FFFFFF"
+        },
+        "&:hover:not(.Mui-disabled):before": {
+          border: "0 !important"
+        },
+        "&:hover": {
+          background: "#F4F5F7!important"
+        },
+        "&:after": {
+          border: "0 !important"
+        },
+        "&:before": {
+          border: "0 !important"
+        }
+      },
+      "& .MuiInputBase-sizeSmall": {
+        width: "240px"
+      },
+      "& > div > .Mui-focused": {
+        boxShadow: "inset 0px 0px 0px 1px #8C30F5",
+        border: "1px solid #8C30F5"
+      },
+      position: "relative",
+      "& .paid-label": {
+        position: "absolute",
+        top: "25px",
+        right: "50px",
+        backgroundColor: "#FF5858",
+        borderRadius: "2px"
+      },
+      "& .paid-label span": {
+        padding: "2px 6px",
+        textTransform: "uppercase",
+        color: "#FFFFFF",
+        fontFamily: "Roboto",
+        fontStyle: "normal",
+        fontWeight: "700",
+        fontSize: "8px",
+        margin: "0px",
+        display: "flex"
+      },
+      "& .MuiIcon-root": {
+        fontSize: "24px"
+      },
+      "&.Mui-focused": {
+        "& .MuiFilledInput-root": {
+          boxShadow: "inset 0px 0px 0px 1px #8C30F5"
+        }
+      },
+      notchedOutline: {
+        border: 0
+      },
+      input: {
+        padding: "15px 70px 15px 15px"
+      }
+    },
+    listbox: {
+      "& > li:first-of-type > .MuiListSubheader-root": {
+        border: "0px",
+        padding: "0px"
+      },
+      '& .MuiAutocomplete-option[aria-disabled="true"]': {
+        opacity: 1
+      }
+    },
+    option: {
+      fontSize: "16px",
+      color: "#0B0D17",
+      textOverflow: "ellipsis",
+      overflow: "hidden",
+      "&:hover": {
+        backgroundColor: "#FDFBFF"
+      },
+      "& .icon_second": {
+        marginLeft: "-5px",
+        backgroundColor: "#FFFFFF"
+      },
+      "& .icon_first": {
+        zIndex: "1",
+        backgroundColor: "#FFFFFF"
+      },
+      "& img": {
+        backgroundColor: "#FFFFFF"
+      },
+      "& h5": {
+        fontStyle: "normal",
+        fontWeight: "700",
+        fontSize: "16px",
+        lineHeight: "150%",
+        color: "#141416",
+        margin: "0px"
+      },
+      "& span": {
+        fontStyle: "normal",
+        fontWeight: "400",
+        fontSize: "16px",
+        lineHeight: "150%",
+        color: "#898989",
+        margin: "0px",
+        textOverflow: "ellipsis",
+        overflow: "hidden",
+        whiteSpace: "nowrap",
+        width: "260px"
+      },
+      "& .full_img_box": {
+        display: "inline-flex",
+        alignItems: "center",
+        gap: "5px",
+        border: "1px solid #DCDCDC",
+        padding: "4px",
+        borderRadius: "5px",
+        background: "#fff",
+        fontFamily: "Roboto",
+        fontStyle: "normal",
+        fontWeight: "400",
+        fontSize: "16px",
+        lineHeight: "150%",
+        textOverflow: "ellipsis",
+        overflow: "hidden",
+        whiteSpace: "nowrap"
+      },
+      "& .paid-label": {
+        backgroundColor: "#FF5858",
+        borderRadius: "2px",
+        right: "15px",
+        margin: "0px",
+        display: "flex",
+        marginLeft: "auto"
+      },
+      "& .paid-label span": {
+        padding: "2px 6px",
+        textTransform: "uppercase",
+        color: "#FFFFFF",
+        fontFamily: "Roboto",
+        fontStyle: "normal",
+        fontWeight: "700",
+        fontSize: "8px",
+        margin: "0px",
+        overflow: "inherit",
+        whiteSpace: "inherit",
+        width: "inherit"
+      }
+    },
+    groupLabel: {
+      marginLeft: "10px",
+      marginRight: "10px",
+      marginTop: "10px",
+      padding: "8px 0px",
+      borderTop: "1px solid #DCDCDC",
+      fontFamily: "Roboto",
       fontStyle: "normal",
       fontWeight: "400",
       fontSize: "14px",
       lineHeight: "150%",
       color: "#898989"
-    }
-  },
-  components: {
-    MuiAlert: {
-      styleOverrides: {
-        message: {
-          fontFamily: "Roboto",
-          fontStyle: "normal",
-          fontWeight: "400",
-          fontSize: "14px",
-          lineHeight: "150%",
-          textAlign: "right",
-          color: "#0B0D17"
-        },
-        icon: {
-          marginRight: "10px",
-          fontSize: "20px"
-        },
-        standardError: {
-          backgroundColor: "#FFE7E7!important",
-          "& .MuiAlert-icon": {
-            color: "#FF5858!important"
-          }
-        },
-        standardWarning: {
-          backgroundColor: "#FFF1D7!important",
-          "& .MuiAlert-icon": {
-            color: "#FFB930!important"
-          }
-        },
-        standardInfo: {
-          backgroundColor: "#F1E4FF!important",
-          "& .MuiAlert-icon": {
-            color: "#8C30F5!important"
-          }
-        }
+    },
+    groupUl: {
+      padding: "0px",
+      "& > .MuiAutocomplete-option": {
+        paddingLeft: "15px"
       }
     },
-    MuiFormControl: {
-      styleOverrides: {
-        root: {
-          "&.custom-text-input": {
-            marginTop: "4px",
-            padding: "0px",
-            width: "100%",
-            "& input": {
-              padding: "15px 5px 15px 15px !important"
-            },
-            "& textarea": {
-              padding: "15px 5px 15px 15px"
-            },
-            "& fieldset": {
-              border: "none"
-            },
-            "&.input-filled .MuiOutlinedInput-root": {
-              boxShadow: "inset 0px 0px 0px 1px #8C30F5",
-              border: "1px solid #8C30F5"
-            },
-            "& .MuiOutlinedInput-root.Mui-focused": {
-              boxShadow: "inset 0px 0px 0px 1px #8C30F5",
-              border: "1px solid #8C30F5"
-            }
-          }
-        }
-      }
+    input: {
+      padding: "15px 70px 15px 5px!important"
     },
-    MuiOutlinedInput: {
-      styleOverrides: {
-        root: {
-          marginTop: "4px",
-          border: "1px solid #DCDCDC",
-          borderRadius: 5,
-          background: "#F4F5F7",
-          padding: "0px 10px 0px 10px!important",
-          "& > img": {
-            border: "1px solid #DCDCDC",
-            padding: "4px",
-            borderRadius: "5px",
-            background: "#FFFFFF"
-          },
-          "& .icon_second": {
-            marginLeft: "-5px"
-          },
-          "& .icon_first": {
-            zIndex: "1"
-          }
-        },
-        notchedOutline: {
-          border: 0
-        },
-        input: {
-          padding: "15px 70px 15px 15px"
-        }
-      }
-    },
-    MuiFilledInput: {
-      styleOverrides: {
-        root: {
-          borderRadius: 4,
-          border: "1px solid #DCDCDC",
-          paddingTop: "0px!important",
-          background: "#F4F5F7!important",
-          "& img": {
-            marginRight: "0px"
-          },
-          "& li": {
-            listStyle: "none",
-            display: "flex",
-            alignItems: "center",
-            backgroundColor: "#FFFFFF",
-            padding: "4px",
-            borderRadius: "4px",
-            border: "1px solid #DCDCDC",
-            marginRight: "5px",
-            marginTop: "10px",
-            marginBottom: "10px",
-            overflow: "hidden",
-            whiteSpace: "normal",
-            textOverflow: "ellipsis",
-            "& > img": {
-              border: 0
-            }
-          },
-          "& .icon_second": {
-            marginLeft: "-4px",
-            backgroundColor: "#FFFFFF"
-          },
-          "& .icon_first": {
-            marginRight: "0px",
-            backgroundColor: "#FFFFFF"
-          },
-          "&:hover:not(.Mui-disabled):before": {
-            border: 0
-          },
-          "&:hover": {
-            background: "#F4F5F7!important"
-          },
-          "&:after": {
-            border: 0
-          },
-          "&:before": {
-            border: 0
-          }
-        }
-      }
-    },
-    MuiAutocomplete: {
-      styleOverrides: {
-        root: {
-          "& .MuiInputAdornment-root": {
-            marginLeft: "0px",
-            marginRight: "0px",
-            width: "24px",
-            height: "24px",
-            "& > img": {
-              border: "1px solid #DCDCDC",
-              padding: "4px",
-              borderRadius: "5px",
-              marginLeft: "-5px",
-              background: "#FFFFFF"
-            }
-          },
-          "& .MuiOutlinedInput-root": {
-            marginTop: "4px",
-            border: "1px solid #DCDCDC",
-            borderRadius: "5px",
-            background: "#F4F5F7",
-            padding: "0px 10px 0px 10px!important",
-            "& > img": {
-              border: "1px solid #DCDCDC",
-              padding: "4px",
-              borderRadius: "5px",
-              background: "#FFFFFF"
-            },
-            "& .icon_second": {
-              marginLeft: "-5px"
-            },
-            "& .icon_first": {
-              zIndex: "1"
-            }
-          },
-          "& .MuiFilledInput-root": {
-            borderRadius: 4,
-            border: "1px solid #DCDCDC",
-            paddingTop: "0px!important",
-            background: "#F4F5F7!important",
-            "& img": {
-              marginRight: "0px"
-            },
-            "& li": {
-              listStyle: "none",
-              display: "flex",
-              alignItems: "center",
-              backgroundColor: "#FFFFFF",
-              padding: "4px",
-              borderRadius: "4px",
-              border: "1px solid #DCDCDC",
-              marginRight: "5px",
-              marginTop: "10px",
-              marginBottom: "10px",
-              overflow: "hidden",
-              whiteSpace: "normal",
-              textOverflow: "ellipsis",
-              "& > img": {
-                border: 0
-              }
-            },
-            "& .icon_second": {
-              marginLeft: "-4px",
-              backgroundColor: "#FFFFFF"
-            },
-            "& .icon_first": {
-              marginRight: "0px",
-              backgroundColor: "#FFFFFF"
-            },
-            "&:hover:not(.Mui-disabled):before": {
-              border: "0 !important"
-            },
-            "&:hover": {
-              background: "#F4F5F7!important"
-            },
-            "&:after": {
-              border: "0 !important"
-            },
-            "&:before": {
-              border: "0 !important"
-            }
-          },
-          "& .MuiInputBase-sizeSmall": {
-            width: "240px"
-          },
-          "& > div > .Mui-focused": {
-            boxShadow: "inset 0px 0px 0px 1px #8C30F5",
-            border: "1px solid #8C30F5"
-          },
-          position: "relative",
-          "& .paid-label": {
-            position: "absolute",
-            top: "25px",
-            right: "50px",
-            backgroundColor: "#FF5858",
-            borderRadius: "2px"
-          },
-          "& .paid-label span": {
-            padding: "2px 6px",
-            textTransform: "uppercase",
-            color: "#FFFFFF",
-            fontFamily: "Roboto",
-            fontStyle: "normal",
-            fontWeight: "700",
-            fontSize: "8px",
-            margin: "0px",
-            display: "flex"
-          },
-          "& .MuiIcon-root": {
-            fontSize: "24px"
-          },
-          "&.Mui-focused": {
-            "& .MuiFilledInput-root": {
-              boxShadow: "inset 0px 0px 0px 1px #8C30F5"
-            }
-          },
-          notchedOutline: {
-            border: 0
-          },
-          input: {
-            padding: "15px 70px 15px 15px"
-          }
-        },
-        listbox: {
-          "& > li:first-of-type > .MuiListSubheader-root": {
-            border: "0px",
-            padding: "0px"
-          },
-          '& .MuiAutocomplete-option[aria-disabled="true"]': {
-            opacity: 1
-          }
-        },
-        option: {
-          fontSize: "16px",
-          color: "#0B0D17",
-          textOverflow: "ellipsis",
-          overflow: "hidden",
-          "&:hover": {
-            backgroundColor: "#FDFBFF"
-          },
-          "& .icon_second": {
-            marginLeft: "-5px",
-            backgroundColor: "#FFFFFF"
-          },
-          "& .icon_first": {
-            zIndex: "1",
-            backgroundColor: "#FFFFFF"
-          },
-          "& img": {
-            backgroundColor: "#FFFFFF"
-          },
-          "& h5": {
-            fontStyle: "normal",
-            fontWeight: "700",
-            fontSize: "16px",
-            lineHeight: "150%",
-            color: "#141416",
-            margin: "0px"
-          },
-          "& span": {
-            fontStyle: "normal",
-            fontWeight: "400",
-            fontSize: "16px",
-            lineHeight: "150%",
-            color: "#898989",
-            margin: "0px",
-            textOverflow: "ellipsis",
-            overflow: "hidden",
-            whiteSpace: "nowrap",
-            width: "260px"
-          },
-          "& .full_img_box": {
-            display: "inline-flex",
-            alignItems: "center",
-            gap: "5px",
-            border: "1px solid #DCDCDC",
-            padding: "4px",
-            borderRadius: "5px",
-            background: "#fff",
-            fontFamily: "Roboto",
-            fontStyle: "normal",
-            fontWeight: "400",
-            fontSize: "16px",
-            lineHeight: "150%",
-            textOverflow: "ellipsis",
-            overflow: "hidden",
-            whiteSpace: "nowrap"
-          },
-          "& .paid-label": {
-            backgroundColor: "#FF5858",
-            borderRadius: "2px",
-            right: "15px",
-            margin: "0px",
-            display: "flex",
-            marginLeft: "auto"
-          },
-          "& .paid-label span": {
-            padding: "2px 6px",
-            textTransform: "uppercase",
-            color: "#FFFFFF",
-            fontFamily: "Roboto",
-            fontStyle: "normal",
-            fontWeight: "700",
-            fontSize: "8px",
-            margin: "0px",
-            overflow: "inherit",
-            whiteSpace: "inherit",
-            width: "inherit"
-          }
-        },
-        groupLabel: {
-          marginLeft: "10px",
-          marginRight: "10px",
-          marginTop: "10px",
-          padding: "8px 0px",
-          borderTop: "1px solid #DCDCDC",
-          fontFamily: "Roboto",
-          fontStyle: "normal",
-          fontWeight: "400",
-          fontSize: "14px",
-          lineHeight: "150%",
-          color: "#898989"
-        },
-        groupUl: {
-          padding: "0px",
-          "& > .MuiAutocomplete-option": {
-            paddingLeft: "15px"
-          }
-        },
-        input: {
-          padding: "15px 70px 15px 5px!important"
-        },
-        endAdornment: {
-          "& > button": {
-            visibility: "visible",
-            background: "#898989",
-            padding: "2px",
-            marginRight: "10px",
-            "& > svg": {
-              fill: "#fff",
-              fontSize: "16px"
-            }
-          }
-        }
-      }
-    },
-    MuiButton: {
-      styleOverrides: {
-        root: {
-          borderRadius: 5,
-          padding: "10px 20px",
-          fontFamily: "Roboto",
-          fontStyle: "normal",
-          fontWeight: "700",
-          fontSize: 16,
-          lineHeight: "150%",
-          textAlign: "center",
-          textTransform: "none",
-          color: "#FFFFFF",
-          boxShadow: "initial",
-          margin: "10px 0px",
-          "& span": {
-            marginRight: "10px",
-            "& img": {
-              padding: "4px",
-              backgroundColor: "#FFFFFF",
-              borderRadius: 5,
-              border: "1px solid #DCDCDC"
-            }
-          },
-          "&:hover": {
-            opacity: 0.7
-          }
-        },
-        containedPrimary: {
-          "&:disabled": {
-            opacity: 0.4,
-            backgroundColor: palette.primary.main,
-            color: "#FFFFFF"
-          }
-        },
-        containedSecondary: {
-          "&:disabled": {
-            opacity: 0.4,
-            backgroundColor: palette.secondary.main,
-            color: "#FFFFFF"
-          }
-        },
-        sizeSmall: {
-          width: 167
-        },
-        sizeLarge: {
-          width: "100%"
-        },
-        outlinedPrimary: {
-          color: "#8C30F5",
-          border: "1px solid #8C30F5"
-        },
-        outlinedSecondary: {
-          color: "#0B0D17",
-          border: "1px solid #0B0D17"
-        }
-      }
-    },
-    MuiModal: {
-      styleOverrides: {
-        root: {
-          margin: "0 auto"
-        }
-      }
-    },
-    MuiBackdrop: {
-      styleOverrides: {
-        root: {
-          background: "rgba(11, 13, 23, 0.5)",
-          backdropFilter: "blur(20px)"
-        }
-      }
-    },
-    MuiDialog: {
-      styleOverrides: {
-        container: {
-          "& > div": {
-            width: "100%",
-            margin: "30px",
-            padding: "20px",
-            borderRadius: 10
-          }
-        }
-      }
-    },
-    MuiMenu: {
-      styleOverrides: {
-        root: {
-          "& .MuiBackdrop-root": {
-            opacity: "0 !important"
-          }
-        },
-        paper: {
-          background: "#FFFFFF !important",
-          border: "1px solid #DCDCDC !important",
-          boxShadow: "2px 2px 24px rgba(0, 0, 0, 0.15) !important",
-          borderRadius: "5px !important",
-          color: "#0B0D17",
-          padding: "0 10px !important"
-        },
-        list: {
-          "& li:hover": {
-            background: "#FDFBFF !important",
-            borderRadius: "5px !important"
-          }
-        }
-      }
-    },
-    MuiSwitch: {
-      styleOverrides: {
-        root: {
-          width: "45px",
-          height: "auto",
-          padding: "0px",
-          "& .Mui-checked+.MuiSwitch-track": {
-            backgroundColor: "#fff!important",
-            opacity: 1
-          },
-          "& .Mui-checked > .MuiSwitch-thumb": {}
-        },
-        track: {
-          height: "24px",
-          borderRadius: "16px",
-          border: "1px solid #758796",
-          backgroundColor: "#fff!important"
-        },
-        thumb: {
-          width: "18px",
-          height: "18px",
-          background: "#758796",
-          boxShadow: "none",
-          marginTop: "1px"
-        },
-        switchBase: {
-          padding: "3px",
-          "&:hover": {
-            background: "none"
-          }
-        }
-      }
-    },
-    MuiTabs: {
-      styleOverrides: {
-        root: {
-          background: "#FDFBFF"
-        }
-      }
-    },
-    MuiTab: {
-      styleOverrides: {
-        root: {
-          fontFamily: "Roboto",
-          fontStyle: "normal",
-          fontWeight: "400",
-          fontSize: "12px",
-          lineHeight: "150%",
-          textAlign: "right"
-        }
-      }
-    },
-    MuiTooltip: {
-      styleOverrides: {
-        tooltip: {
-          background: "#000",
-          width: "160px",
-          padding: "10px",
-          fontFamily: "Roboto",
-          fontStyle: "normal",
-          fontWeight: "400",
-          fontSize: "12px",
-          lineHeight: "150%"
-        },
-        arrow: {
-          color: "#000"
-        }
-      }
-    },
-    MuiList: {
-      styleOverrides: {
-        root: {
-          "& .MuiMenuItem-root.select-item": {
-            margin: "4px 0px",
-            padding: "0px 5px 0px 5px",
-            "&:hover": {
-              backgroundColor: "#FDFBFF"
-            },
-            "&.Mui-selected": {
-              backgroundColor: "#FDFBFF"
-            },
-            "& #search-input": {
-              padding: "10px 70px 10px 15px"
-            },
-            "& .MuiOutlinedInput-root": {
-              justifyContent: "flex-start",
-              "& .MuiInputAdornment-root": {
-                maxWidth: "16px"
-              }
-            },
-            "& .icon_second": {
-              marginLeft: "-17px",
-              background: "#FFFFFF"
-            },
-            "& .icon_first": {
-              zIndex: "1",
-              background: "#FFFFFF"
-            },
-            "& .full_img_box": {
-              display: "inline-flex",
-              alignItems: "center",
-              gap: "5px",
-              border: "1px solid #DCDCDC",
-              padding: "4px",
-              borderRadius: "5px",
-              background: "#fff",
-              fontFamily: "Roboto",
-              fontStyle: "normal",
-              fontWeight: "400",
-              fontSize: "16px",
-              lineHeight: "150%",
-              textOverflow: "ellipsis",
-              overflow: "hidden",
-              whiteSpace: "nowrap"
-            },
-            "& .img_box_icon img": {
-              border: "1px solid #DCDCDC",
-              padding: "5px",
-              gap: "5px",
-              borderRadius: "5px",
-              background: "#FFFFFF"
-            },
-            "& .full_img_box .icon_second": {
-              marginLeft: "0px"
-            },
-            "& .img_box_icon .icon_second": {
-              marginLeft: "-10px"
-            },
-            "& .onlyImg": {
-              border: 0,
-              background: "initial"
-            },
-            "& .onlyImg img": {
-              display: "flex",
-              alignItems: "center",
-              border: "1px solid #DCDCDC",
-              padding: "5px",
-              gap: "5px",
-              borderRadius: "5px",
-              background: "#FFFFFF"
-            },
-            "& > div": {
-              display: "flex",
-              alignItems: "center",
-              padding: "5px",
-              gap: "5px"
-            },
-            "& h5": {
-              fontStyle: "normal",
-              fontWeight: "700",
-              fontSize: "16px",
-              lineHeight: "150%",
-              color: "#141416",
-              margin: "0px"
-            },
-            "& span": {
-              fontStyle: "normal",
-              fontWeight: "400",
-              fontSize: "16px",
-              lineHeight: "150%",
-              color: "#898989",
-              margin: "0px",
-              width: "280px",
-              overflow: "hidden",
-              textOverflow: "ellipsis"
-            }
-          },
-          "& .MuiMenuItem-root.simple-select-item": {
-            "&:hover": {
-              backgroundColor: "#FDFBFF"
-            },
-            "&.Mui-selected": {
-              backgroundColor: "#FDFBFF"
-            }
-          }
+    endAdornment: {
+      "& > button": {
+        visibility: "visible",
+        background: "#898989",
+        padding: "2px",
+        marginRight: "10px",
+        "& > svg": {
+          fill: "#fff",
+          fontSize: "16px"
         }
       }
     }
   }
+};
+
+var MuiButton = {
+  styleOverrides: {
+    root: {
+      borderRadius: 5,
+      padding: "10px 20px",
+      fontFamily: "Roboto",
+      fontStyle: "normal",
+      fontWeight: "700",
+      fontSize: 16,
+      lineHeight: "150%",
+      textAlign: "center",
+      textTransform: "none",
+      color: "#FFFFFF",
+      boxShadow: "initial",
+      margin: "10px 0px",
+      "& span": {
+        marginRight: "10px",
+        "& img": {
+          padding: "4px",
+          backgroundColor: "#FFFFFF",
+          borderRadius: 5,
+          border: "1px solid #DCDCDC"
+        }
+      },
+      "&:hover": {
+        opacity: 0.7
+      }
+    },
+    containedPrimary: function containedPrimary(_ref) {
+      var theme = _ref.theme;
+      return {
+        "&:disabled": {
+          opacity: 0.4,
+          backgroundColor: theme.palette.primary.main,
+          color: "#FFFFFF"
+        }
+      };
+    },
+    containedSecondary: function containedSecondary(_ref2) {
+      var theme = _ref2.theme;
+      return {
+        "&:disabled": {
+          opacity: 0.4,
+          backgroundColor: theme.palette.secondary.main,
+          color: "#FFFFFF"
+        }
+      };
+    },
+    sizeSmall: {
+      width: 167
+    },
+    sizeLarge: {
+      width: "100%"
+    },
+    outlinedPrimary: {
+      color: "#8C30F5",
+      border: "1px solid #8C30F5"
+    },
+    outlinedSecondary: {
+      color: "#0B0D17",
+      border: "1px solid #0B0D17"
+    }
+  }
+};
+
+var MuiModal = {
+  styleOverrides: {
+    root: {
+      margin: "0 auto"
+    }
+  }
+};
+
+var MuiBackdrop = {
+  styleOverrides: {
+    root: {
+      background: "rgba(11, 13, 23, 0.5)",
+      backdropFilter: "blur(20px)"
+    }
+  }
+};
+
+var MuiDialog = {
+  styleOverrides: {
+    container: {
+      "& > div": {
+        width: "100%",
+        margin: "30px",
+        padding: "20px",
+        borderRadius: 10
+      }
+    }
+  }
+};
+
+var MuiMenu = {
+  styleOverrides: {
+    root: {
+      "& .MuiBackdrop-root": {
+        opacity: "0 !important"
+      }
+    },
+    paper: {
+      background: "#FFFFFF !important",
+      border: "1px solid #DCDCDC !important",
+      boxShadow: "2px 2px 24px rgba(0, 0, 0, 0.15) !important",
+      borderRadius: "5px !important",
+      color: "#0B0D17",
+      padding: "0 10px !important"
+    },
+    list: {
+      "& li:hover": {
+        background: "#FDFBFF !important",
+        borderRadius: "5px !important"
+      }
+    }
+  }
+};
+
+var MuiTabs = {
+  styleOverrides: {
+    root: {
+      background: "#FDFBFF"
+    }
+  }
+};
+
+var MuiTab = {
+  styleOverrides: {
+    root: {
+      fontFamily: "Roboto",
+      fontStyle: "normal",
+      fontWeight: "400",
+      fontSize: "12px",
+      lineHeight: "150%",
+      textAlign: "right"
+    }
+  }
+};
+
+var MuiList = {
+  styleOverrides: {
+    root: {
+      "& .MuiMenuItem-root.select-item": {
+        margin: "4px 0px",
+        padding: "0px 5px 0px 5px",
+        "&:hover": {
+          backgroundColor: "#FDFBFF"
+        },
+        "&.Mui-selected": {
+          backgroundColor: "#FDFBFF"
+        },
+        "& #search-input": {
+          padding: "10px 70px 10px 15px"
+        },
+        "& .MuiOutlinedInput-root": {
+          justifyContent: "flex-start",
+          "& .MuiInputAdornment-root": {
+            maxWidth: "16px"
+          }
+        },
+        "& .icon_second": {
+          marginLeft: "-17px",
+          background: "#FFFFFF"
+        },
+        "& .icon_first": {
+          zIndex: "1",
+          background: "#FFFFFF"
+        },
+        "& .full_img_box": {
+          display: "inline-flex",
+          alignItems: "center",
+          gap: "5px",
+          border: "1px solid #DCDCDC",
+          padding: "4px",
+          borderRadius: "5px",
+          background: "#fff",
+          fontFamily: "Roboto",
+          fontStyle: "normal",
+          fontWeight: "400",
+          fontSize: "16px",
+          lineHeight: "150%",
+          textOverflow: "ellipsis",
+          overflow: "hidden",
+          whiteSpace: "nowrap"
+        },
+        "& .img_box_icon img": {
+          border: "1px solid #DCDCDC",
+          padding: "5px",
+          gap: "5px",
+          borderRadius: "5px",
+          background: "#FFFFFF"
+        },
+        "& .full_img_box .icon_second": {
+          marginLeft: "0px"
+        },
+        "& .img_box_icon .icon_second": {
+          marginLeft: "-10px"
+        },
+        "& .onlyImg": {
+          border: 0,
+          background: "initial"
+        },
+        "& .onlyImg img": {
+          display: "flex",
+          alignItems: "center",
+          border: "1px solid #DCDCDC",
+          padding: "5px",
+          gap: "5px",
+          borderRadius: "5px",
+          background: "#FFFFFF"
+        },
+        "& > div": {
+          display: "flex",
+          alignItems: "center",
+          padding: "5px",
+          gap: "5px"
+        },
+        "& h5": {
+          fontStyle: "normal",
+          fontWeight: "700",
+          fontSize: "16px",
+          lineHeight: "150%",
+          color: "#141416",
+          margin: "0px"
+        },
+        "& span": {
+          fontStyle: "normal",
+          fontWeight: "400",
+          fontSize: "16px",
+          lineHeight: "150%",
+          color: "#898989",
+          margin: "0px",
+          width: "280px",
+          overflow: "hidden",
+          textOverflow: "ellipsis"
+        }
+      },
+      "& .MuiMenuItem-root.simple-select-item": {
+        "&:hover": {
+          backgroundColor: "#FDFBFF"
+        },
+        "&.Mui-selected": {
+          backgroundColor: "#FDFBFF"
+        }
+      }
+    }
+  }
+};
+
+var components = {
+  MuiAlert: MuiAlert,
+  MuiAutocomplete: MuiAutocomplete,
+  MuiBackdrop: MuiBackdrop,
+  MuiButton: MuiButton,
+  MuiDialog: MuiDialog,
+  MuiFilledInput: MuiFilledInput,
+  MuiFormControl: MuiFormControl,
+  MuiList: MuiList,
+  MuiMenu: MuiMenu,
+  MuiModal: MuiModal,
+  MuiOutlinedInput: MuiOutlinedInput,
+  MuiSwitch: MuiSwitch,
+  MuiTab: MuiTab,
+  MuiTabs: MuiTabs,
+  MuiTooltip: MuiTooltip
+};
+
+var theme = createTheme({
+  palette: palette,
+  severity: severity,
+  typography: typography,
+  components: components
 });
 
 /**

@@ -86,3 +86,21 @@ const [textValue, setTextValue] = React.useState("");
   />
 </ThemeProvider>;
 ```
+
+Read only:
+
+```js
+import TextInput from "./TextInput.js";
+import ThemeProvider from "../ThemeProvider";
+
+const [textValue, setTextValue] = React.useState("Some text");
+
+<ThemeProvider>
+  <TextInput
+    onChange={(v) => setTextValue(v)}
+    label="Field label"
+    readonly
+    value={textValue}
+  />
+</ThemeProvider>;
+```
