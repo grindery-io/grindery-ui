@@ -61,25 +61,31 @@ function RichInput({
       return (
         (val &&
           val.split("\n").map((row) => {
+            const preparedRow = row
+              .replace(/{{/g, "{grinderyvirtualspace}{{")
+              .replace(/}}/g, "}}{grinderyvirtualspace}");
             return {
               type: "paragraph",
-              children: (row &&
-                row.split(" ").map((v) => {
-                  if (
-                    /\{\{\s*([^}]+)\s*\}\}/g.test(v) &&
-                    options.find((opt) => opt.value === v)
-                  ) {
-                    return {
-                      type: "reference",
-                      children: [{ text: "" }],
-                      ...(options.find((opt) => opt.value === v) || {}),
-                    };
-                  } else {
-                    return {
-                      text: v + " ",
-                    };
-                  }
-                })) || [{ text: "" }],
+              children: (preparedRow &&
+                preparedRow
+                  .split(/(?:\{grinderyvirtualspace\})/)
+                  .filter(Boolean)
+                  .map((v) => {
+                    if (
+                      /\{\{\s*([^}]+)\s*\}\}/g.test(v) &&
+                      options.find((opt) => opt.value === v)
+                    ) {
+                      return {
+                        type: "reference",
+                        children: [{ text: "" }],
+                        ...(options.find((opt) => opt.value === v) || {}),
+                      };
+                    } else {
+                      return {
+                        text: v,
+                      };
+                    }
+                  })) || [{ text: "" }],
             };
           })) || [
           {
@@ -108,7 +114,7 @@ function RichInput({
                 }
                 return v.text;
               })
-              .join(" ")) ||
+              .join("")) ||
           ""
         );
       })

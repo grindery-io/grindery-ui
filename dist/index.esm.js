@@ -1743,9 +1743,10 @@ function RichInput(_ref) {
   var initialValue = useMemo(function () {
     var unserializeValue = function unserializeValue(val) {
       return val && val.split("\n").map(function (row) {
+        var preparedRow = row.replace(/{{/g, "{grinderyvirtualspace}{{").replace(/}}/g, "}}{grinderyvirtualspace}");
         return {
           type: "paragraph",
-          children: row && row.split(" ").map(function (v) {
+          children: preparedRow && preparedRow.split(/(?:\{grinderyvirtualspace\})/).filter(Boolean).map(function (v) {
             if (/\{\{\s*([^}]+)\s*\}\}/g.test(v) && options.find(function (opt) {
               return opt.value === v;
             })) {
@@ -1759,7 +1760,7 @@ function RichInput(_ref) {
               }) || {});
             } else {
               return {
-                text: v + " "
+                text: v
               };
             }
           }) || [{
@@ -1789,7 +1790,7 @@ function RichInput(_ref) {
         }
 
         return v.text;
-      }).join(" ") || "";
+      }).join("") || "";
     }).join("\n");
   };
 
