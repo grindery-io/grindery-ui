@@ -2,7 +2,7 @@ const MuiTooltip = {
   styleOverrides: {
     tooltip: {
       background: "#000",
-      width: "160px",
+      maxWidth: "160px",
       padding: "10px",
       fontFamily: "Roboto",
       fontStyle: "normal",

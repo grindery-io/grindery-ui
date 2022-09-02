@@ -14,6 +14,7 @@ import { Slate, Editable, withReact, ReactEditor } from "slate-react";
 import { withHistory } from "slate-history";
 import Foco from "react-foco";
 import _ from "lodash";
+import { CopyToClipboard } from "react-copy-to-clipboard";
 import SearchIcon from "@mui/icons-material/Search";
 import Tabs from "../Tabs/Tabs";
 import { styled } from "@mui/material/styles";
@@ -39,6 +40,9 @@ function RichInput({
   addressBook,
   setAddressBook,
   error,
+  readonly,
+  copy,
+  singleLine,
 }) {
   const editor = useMemo(
     () => withReferences(withReact(withHistory(createEditor()))),
@@ -50,6 +54,9 @@ function RichInput({
   const [searchText, setSearchText] = useState("");
   const [addressBookView, setAddressBookView] = useState("list"); // add, edit
   const [selectedAddress, setSelectedAddress] = useState(null);
+  const [currentValue, setCurentValue] = useState(value);
+  const [copyTooltip, setCopyTooltip] = useState("Copy");
+
   const [focused, setFocused] = useState(false);
 
   const renderElement = useCallback((props) => {
@@ -430,6 +437,14 @@ function RichInput({
     setAddressBook(newAddressBook);
   };
 
+  React.useEffect(() => {
+    if (copyTooltip && copyTooltip !== "Copy") {
+      setTimeout(() => {
+        setCopyTooltip("Copy");
+      }, 2000);
+    }
+  }, [copyTooltip]);
+
   return (
     <Foco
       onClickOutside={() => {
@@ -443,7 +458,7 @@ function RichInput({
       <RichInputWrapper ref={inputRef}>
         <Box className={`rich-input ${error ? "has-error" : ""}`}>
           {renderLabel()}
-          <div style={{ position: "relative" }}>
+          <div className="rich-input-box" style={{ position: "relative" }}>
             <Slate
               editor={editor}
               value={initialValue}
@@ -453,24 +468,48 @@ function RichInput({
                 );
                 if (isAstChange) {
                   onChange(serializeValue(value));
+                  setCurentValue(serializeValue(value));
                 }
               }}
             >
               <Editable
+                readOnly={readonly}
                 placeholder={placeholder || ""}
                 renderPlaceholder={({ children, attributes }) => (
                   <span {...attributes}>
                     <span>{children}</span>
                   </span>
                 )}
-                editor={editor}
+                //editor={editor}
                 renderElement={renderElement}
                 onFocus={() => {
                   setFocused(true);
                 }}
+                onKeyDown={(event) => {
+                  if (singleLine && event.key === "Enter") {
+                    event.preventDefault();
+                    return;
+                  }
+                }}
               />
               {(options.length > 0 || hasAddressBook) && renderDropdown()}
             </Slate>
+            {readonly && copy && (
+              <Tooltip title={copyTooltip} placement="top" arrow>
+                <div className="copy-to-clipboard">
+                  <CopyToClipboard
+                    text={currentValue}
+                    onCopy={() => {
+                      setCopyTooltip("Copied");
+                    }}
+                  >
+                    <div>
+                      <CopyIcon />
+                    </div>
+                  </CopyToClipboard>
+                </div>
+              </Tooltip>
+            )}
           </div>
           {Boolean(error) && <div className="error-message">{error}</div>}
         </Box>
@@ -687,16 +726,35 @@ const RichInputWrapper = styled("div")({
     '& [data-slate-placeholder="true"] p': {
       margin: 0,
     },
-    '& div[role="textbox"]': {
+    "& .rich-input-box": {
       background: "#F4F5F7",
       borderRadius: "5px",
       padding: "12px 15px",
+      border: "1px solid #DCDCDC",
+    },
+    '& div[data-slate-editor="true"]': {
+      padding: 0,
       margin: 0,
       overflow: "hidden",
       boxSizing: "border-box",
-      minHeight: "54px !important",
-      border: "1px solid #DCDCDC",
+      //minHeight: "54px !important",
+      background: "none",
+      border: "none",
       boxShadow: "none",
+    },
+    '& div[contenteditable="false"] p[data-slate-node="element"]': {
+      opacity: 0.75,
+      marginRight: "25px",
+    },
+    "& .copy-to-clipboard": {
+      position: "absolute",
+      right: "10px",
+      top: "20px",
+      cursor: "pointer",
+      "& svg": {
+        width: "20px",
+        height: "20px",
+      },
     },
     "& .rich-input__search-input .MuiOutlinedInput-root.Mui-focused": {
       border: "1px solid #8C30F5",
@@ -916,7 +974,7 @@ const RichInputWrapper = styled("div")({
   "& .rich-input.has-error": {
     '& p[data-slate-node="element"]': {},
     '& [data-slate-placeholder="true"] p': {},
-    '& div[role="textbox"]': {
+    "& .rich-input-box": {
       border: "1px solid #FF5858",
       boxShadow: "inset 0px 0px 0px 1px #FF5858",
     },
@@ -1027,6 +1085,28 @@ const CloseIcon = () => (
   </svg>
 );
 
+const CopyIcon = () => (
+  <svg
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <g clipPath="url(#clip0_3205_266)">
+      <path
+        d="M13 20C14.3256 19.9984 15.5964 19.4711 16.5338 18.5338C17.4711 17.5965 17.9984 16.3256 18 15V6.24302C18.0016 5.71738 17.8988 5.19665 17.6976 4.71104C17.4964 4.22542 17.2008 3.78456 16.828 3.41402L14.586 1.17202C14.2155 0.799191 13.7746 0.50362 13.289 0.302438C12.8034 0.101255 12.2826 -0.00153795 11.757 1.73896e-05H7C5.67441 0.00160525 4.40356 0.528899 3.46622 1.46624C2.52888 2.40358 2.00159 3.67442 2 5.00002V15C2.00159 16.3256 2.52888 17.5965 3.46622 18.5338C4.40356 19.4711 5.67441 19.9984 7 20H13ZM4 15V5.00002C4 4.20437 4.31607 3.44131 4.87868 2.8787C5.44129 2.31609 6.20435 2.00002 7 2.00002C7 2.00002 11.919 2.01402 12 2.02402V4.00002C12 4.53045 12.2107 5.03916 12.5858 5.41423C12.9609 5.7893 13.4696 6.00002 14 6.00002H15.976C15.986 6.08102 16 15 16 15C16 15.7957 15.6839 16.5587 15.1213 17.1213C14.5587 17.6839 13.7956 18 13 18H7C6.20435 18 5.44129 17.6839 4.87868 17.1213C4.31607 16.5587 4 15.7957 4 15ZM22 8.00002V19C21.9984 20.3256 21.4711 21.5965 20.5338 22.5338C19.5964 23.4711 18.3256 23.9984 17 24H8C7.73478 24 7.48043 23.8947 7.29289 23.7071C7.10536 23.5196 7 23.2652 7 23C7 22.7348 7.10536 22.4804 7.29289 22.2929C7.48043 22.1054 7.73478 22 8 22H17C17.7956 22 18.5587 21.6839 19.1213 21.1213C19.6839 20.5587 20 19.7957 20 19V8.00002C20 7.7348 20.1054 7.48045 20.2929 7.29291C20.4804 7.10537 20.7348 7.00002 21 7.00002C21.2652 7.00002 21.5196 7.10537 21.7071 7.29291C21.8946 7.48045 22 7.7348 22 8.00002Z"
+        fill="#0B0D17"
+      />
+    </g>
+    <defs>
+      <clipPath id="clip0_3205_266">
+        <rect width="24" height="24" fill="white" />
+      </clipPath>
+    </defs>
+  </svg>
+);
+
 RichInput.propTypes = {
   /** The field value */
   value: PropTypes.string.isRequired,
@@ -1063,6 +1143,15 @@ RichInput.propTypes = {
 
   /** Address Book change handler, required if `hasAddressBook` is `true` */
   setAddressBook: PropTypes.func,
+
+  /** Is field a read only */
+  readonly: PropTypes.bool,
+
+  /** Show "copy" icon in the field (only works with readonly=true) */
+  copy: PropTypes.bool,
+
+  /** Allow single line input only */
+  singleLine: PropTypes.bool,
 };
 
 export default RichInput;

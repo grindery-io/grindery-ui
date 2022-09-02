@@ -16,6 +16,7 @@ const [richInputValue, setRichInputValue] = React.useState("");
     onChange={(val) => {
       setRichInputValue(val);
     }}
+    placeholder="Enter some value here"
   />
 </ThemeProvider>;
 ```
@@ -104,6 +105,53 @@ const [addressBook, setAddressBook] = React.useState(
     }}
     addressBook={addressBook}
     setAddressBook={setAddressBook}
+  />
+</ThemeProvider>;
+```
+
+Read only:
+
+```js
+import RichInput from "./RichInput";
+import ThemeProvider from "../ThemeProvider";
+import { ICONS } from "../../constants.js";
+import { richInputOptions } from "../../mockup.js";
+
+const [richInputValue, setRichInputValue] = React.useState("Read only text");
+
+<ThemeProvider>
+  <RichInput
+    label="Field Label"
+    value={richInputValue}
+    options={richInputOptions}
+    onChange={(val) => {
+      setRichInputValue(val);
+    }}
+    readonly
+  />
+</ThemeProvider>;
+```
+
+Read only with "copy" button:
+
+```js
+import RichInput from "./RichInput";
+import ThemeProvider from "../ThemeProvider";
+import { ICONS } from "../../constants.js";
+import { richInputOptions } from "../../mockup.js";
+
+const [richInputValue, setRichInputValue] = React.useState("Read only text");
+
+<ThemeProvider>
+  <RichInput
+    label="Field Label"
+    value={richInputValue}
+    options={richInputOptions}
+    onChange={(val) => {
+      setRichInputValue(val);
+    }}
+    readonly
+    copy
   />
 </ThemeProvider>;
 ```

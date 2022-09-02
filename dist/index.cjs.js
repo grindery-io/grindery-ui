@@ -12,6 +12,7 @@ var slateReact = require('slate-react');
 var slateHistory = require('slate-history');
 var Foco = require('react-foco');
 var _ = require('lodash');
+var reactCopyToClipboard = require('react-copy-to-clipboard');
 var styles = require('@mui/material/styles');
 
 function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
@@ -1715,7 +1716,10 @@ function RichInput(_ref) {
       user = _ref.user,
       addressBook = _ref.addressBook,
       setAddressBook = _ref.setAddressBook,
-      error = _ref.error;
+      error = _ref.error,
+      readonly = _ref.readonly,
+      copy = _ref.copy,
+      singleLine = _ref.singleLine;
   var editor = React.useMemo(function () {
     return withReferences(slateReact.withReact(slateHistory.withHistory(slate.createEditor())));
   }, []);
@@ -1744,10 +1748,20 @@ function RichInput(_ref) {
       selectedAddress = _useState8[0],
       setSelectedAddress = _useState8[1];
 
-  var _useState9 = React.useState(false),
+  var _useState9 = React.useState(value),
       _useState10 = _slicedToArray(_useState9, 2),
-      focused = _useState10[0],
-      setFocused = _useState10[1];
+      currentValue = _useState10[0],
+      setCurentValue = _useState10[1];
+
+  var _useState11 = React.useState("Copy"),
+      _useState12 = _slicedToArray(_useState11, 2),
+      copyTooltip = _useState12[0],
+      setCopyTooltip = _useState12[1];
+
+  var _useState13 = React.useState(false),
+      _useState14 = _slicedToArray(_useState13, 2),
+      focused = _useState14[0],
+      setFocused = _useState14[1];
 
   var renderElement = React.useCallback(function (props) {
     return /*#__PURE__*/React__default["default"].createElement(Element, props);
@@ -2017,6 +2031,13 @@ function RichInput(_ref) {
     setAddressBook(newAddressBook);
   };
 
+  React__default["default"].useEffect(function () {
+    if (copyTooltip && copyTooltip !== "Copy") {
+      setTimeout(function () {
+        setCopyTooltip("Copy");
+      }, 2000);
+    }
+  }, [copyTooltip]);
   return /*#__PURE__*/React__default["default"].createElement(Foco__default["default"], {
     onClickOutside: function onClickOutside() {
       setFocused(false);
@@ -2030,6 +2051,7 @@ function RichInput(_ref) {
   }, /*#__PURE__*/React__default["default"].createElement(material.Box, {
     className: "rich-input ".concat(error ? "has-error" : "")
   }, renderLabel(), /*#__PURE__*/React__default["default"].createElement("div", {
+    className: "rich-input-box",
     style: {
       position: "relative"
     }
@@ -2043,21 +2065,41 @@ function RichInput(_ref) {
 
       if (isAstChange) {
         _onChange(serializeValue(value));
+
+        setCurentValue(serializeValue(value));
       }
     }
   }, /*#__PURE__*/React__default["default"].createElement(slateReact.Editable, {
+    readOnly: readonly,
     placeholder: placeholder || "",
     renderPlaceholder: function renderPlaceholder(_ref2) {
       var children = _ref2.children,
           attributes = _ref2.attributes;
       return /*#__PURE__*/React__default["default"].createElement("span", attributes, /*#__PURE__*/React__default["default"].createElement("span", null, children));
-    },
-    editor: editor,
+    } //editor={editor}
+    ,
     renderElement: renderElement,
     onFocus: function onFocus() {
       setFocused(true);
+    },
+    onKeyDown: function onKeyDown(event) {
+      if (singleLine && event.key === "Enter") {
+        event.preventDefault();
+        return;
+      }
     }
-  }), (options.length > 0 || hasAddressBook) && renderDropdown())), Boolean(error) && /*#__PURE__*/React__default["default"].createElement("div", {
+  }), (options.length > 0 || hasAddressBook) && renderDropdown()), readonly && copy && /*#__PURE__*/React__default["default"].createElement(material.Tooltip, {
+    title: copyTooltip,
+    placement: "top",
+    arrow: true
+  }, /*#__PURE__*/React__default["default"].createElement("div", {
+    className: "copy-to-clipboard"
+  }, /*#__PURE__*/React__default["default"].createElement(reactCopyToClipboard.CopyToClipboard, {
+    text: currentValue,
+    onCopy: function onCopy() {
+      setCopyTooltip("Copied");
+    }
+  }, /*#__PURE__*/React__default["default"].createElement("div", null, /*#__PURE__*/React__default["default"].createElement(CopyIcon, null)))))), Boolean(error) && /*#__PURE__*/React__default["default"].createElement("div", {
     className: "error-message"
   }, error))));
 }
@@ -2139,15 +2181,15 @@ var AddAddressForm = function AddAddressForm(_ref4) {
       editor = _ref4.editor,
       user = _ref4.user;
 
-  var _useState11 = React.useState(""),
-      _useState12 = _slicedToArray(_useState11, 2),
-      name = _useState12[0],
-      setName = _useState12[1];
+  var _useState15 = React.useState(""),
+      _useState16 = _slicedToArray(_useState15, 2),
+      name = _useState16[0],
+      setName = _useState16[1];
 
-  var _useState13 = React.useState(""),
-      _useState14 = _slicedToArray(_useState13, 2),
-      address = _useState14[0],
-      setAddress = _useState14[1];
+  var _useState17 = React.useState(""),
+      _useState18 = _slicedToArray(_useState17, 2),
+      address = _useState18[0],
+      setAddress = _useState18[1];
 
   var handleSubmit = function handleSubmit() {
     if (name && address) {
@@ -2199,15 +2241,15 @@ var EditAddressForm = function EditAddressForm(_ref5) {
       setSelectedAddress = _ref5.setSelectedAddress,
       user = _ref5.user;
 
-  var _useState15 = React.useState(selectedAddress.label || ""),
-      _useState16 = _slicedToArray(_useState15, 2),
-      name = _useState16[0],
-      setName = _useState16[1];
+  var _useState19 = React.useState(selectedAddress.label || ""),
+      _useState20 = _slicedToArray(_useState19, 2),
+      name = _useState20[0],
+      setName = _useState20[1];
 
-  var _useState17 = React.useState(selectedAddress.value || ""),
-      _useState18 = _slicedToArray(_useState17, 2),
-      address = _useState18[0],
-      setAddress = _useState18[1];
+  var _useState21 = React.useState(selectedAddress.value || ""),
+      _useState22 = _slicedToArray(_useState21, 2),
+      address = _useState22[0],
+      setAddress = _useState22[1];
 
   var handleSubmit = function handleSubmit() {
     if (name && address) {
@@ -2269,16 +2311,35 @@ var RichInputWrapper = styles.styled("div")({
     '& [data-slate-placeholder="true"] p': {
       margin: 0
     },
-    '& div[role="textbox"]': {
+    "& .rich-input-box": {
       background: "#F4F5F7",
       borderRadius: "5px",
       padding: "12px 15px",
+      border: "1px solid #DCDCDC"
+    },
+    '& div[data-slate-editor="true"]': {
+      padding: 0,
       margin: 0,
       overflow: "hidden",
       boxSizing: "border-box",
-      minHeight: "54px !important",
-      border: "1px solid #DCDCDC",
+      //minHeight: "54px !important",
+      background: "none",
+      border: "none",
       boxShadow: "none"
+    },
+    '& div[contenteditable="false"] p[data-slate-node="element"]': {
+      opacity: 0.75,
+      marginRight: "25px"
+    },
+    "& .copy-to-clipboard": {
+      position: "absolute",
+      right: "10px",
+      top: "20px",
+      cursor: "pointer",
+      "& svg": {
+        width: "20px",
+        height: "20px"
+      }
     },
     "& .rich-input__search-input .MuiOutlinedInput-root.Mui-focused": {
       border: "1px solid #8C30F5",
@@ -2502,7 +2563,7 @@ var RichInputWrapper = styles.styled("div")({
   "& .rich-input.has-error": {
     '& p[data-slate-node="element"]': {},
     '& [data-slate-placeholder="true"] p': {},
-    '& div[role="textbox"]': {
+    "& .rich-input-box": {
       border: "1px solid #FF5858",
       boxShadow: "inset 0px 0px 0px 1px #FF5858"
     },
@@ -2603,6 +2664,27 @@ var CloseIcon = function CloseIcon() {
   }));
 };
 
+var CopyIcon = function CopyIcon() {
+  return /*#__PURE__*/React__default["default"].createElement("svg", {
+    width: "24",
+    height: "24",
+    viewBox: "0 0 24 24",
+    fill: "none",
+    xmlns: "http://www.w3.org/2000/svg"
+  }, /*#__PURE__*/React__default["default"].createElement("g", {
+    clipPath: "url(#clip0_3205_266)"
+  }, /*#__PURE__*/React__default["default"].createElement("path", {
+    d: "M13 20C14.3256 19.9984 15.5964 19.4711 16.5338 18.5338C17.4711 17.5965 17.9984 16.3256 18 15V6.24302C18.0016 5.71738 17.8988 5.19665 17.6976 4.71104C17.4964 4.22542 17.2008 3.78456 16.828 3.41402L14.586 1.17202C14.2155 0.799191 13.7746 0.50362 13.289 0.302438C12.8034 0.101255 12.2826 -0.00153795 11.757 1.73896e-05H7C5.67441 0.00160525 4.40356 0.528899 3.46622 1.46624C2.52888 2.40358 2.00159 3.67442 2 5.00002V15C2.00159 16.3256 2.52888 17.5965 3.46622 18.5338C4.40356 19.4711 5.67441 19.9984 7 20H13ZM4 15V5.00002C4 4.20437 4.31607 3.44131 4.87868 2.8787C5.44129 2.31609 6.20435 2.00002 7 2.00002C7 2.00002 11.919 2.01402 12 2.02402V4.00002C12 4.53045 12.2107 5.03916 12.5858 5.41423C12.9609 5.7893 13.4696 6.00002 14 6.00002H15.976C15.986 6.08102 16 15 16 15C16 15.7957 15.6839 16.5587 15.1213 17.1213C14.5587 17.6839 13.7956 18 13 18H7C6.20435 18 5.44129 17.6839 4.87868 17.1213C4.31607 16.5587 4 15.7957 4 15ZM22 8.00002V19C21.9984 20.3256 21.4711 21.5965 20.5338 22.5338C19.5964 23.4711 18.3256 23.9984 17 24H8C7.73478 24 7.48043 23.8947 7.29289 23.7071C7.10536 23.5196 7 23.2652 7 23C7 22.7348 7.10536 22.4804 7.29289 22.2929C7.48043 22.1054 7.73478 22 8 22H17C17.7956 22 18.5587 21.6839 19.1213 21.1213C19.6839 20.5587 20 19.7957 20 19V8.00002C20 7.7348 20.1054 7.48045 20.2929 7.29291C20.4804 7.10537 20.7348 7.00002 21 7.00002C21.2652 7.00002 21.5196 7.10537 21.7071 7.29291C21.8946 7.48045 22 7.7348 22 8.00002Z",
+    fill: "#0B0D17"
+  })), /*#__PURE__*/React__default["default"].createElement("defs", null, /*#__PURE__*/React__default["default"].createElement("clipPath", {
+    id: "clip0_3205_266"
+  }, /*#__PURE__*/React__default["default"].createElement("rect", {
+    width: "24",
+    height: "24",
+    fill: "white"
+  }))));
+};
+
 RichInput.propTypes = {
   /** The field value */
   value: PropTypes__default["default"].string.isRequired,
@@ -2638,7 +2720,16 @@ RichInput.propTypes = {
   addressBook: PropTypes__default["default"].array,
 
   /** Address Book change handler, required if `hasAddressBook` is `true` */
-  setAddressBook: PropTypes__default["default"].func
+  setAddressBook: PropTypes__default["default"].func,
+
+  /** Is field a read only */
+  readonly: PropTypes__default["default"].bool,
+
+  /** Show "copy" icon in the field (only works with readonly=true) */
+  copy: PropTypes__default["default"].bool,
+
+  /** Allow single line input only */
+  singleLine: PropTypes__default["default"].bool
 };
 
 /**
@@ -2856,7 +2947,7 @@ var MuiTooltip = {
   styleOverrides: {
     tooltip: {
       background: "#000",
-      width: "160px",
+      maxWidth: "160px",
       padding: "10px",
       fontFamily: "Roboto",
       fontStyle: "normal",
