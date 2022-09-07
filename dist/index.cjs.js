@@ -1320,7 +1320,7 @@ SuffixInput.propTypes = {
   onChange: PropTypes__default["default"].func.isRequired
 };
 
-var _excluded$2 = ["color", "icon"];
+var _excluded$2 = ["color", "icon", "action", "onClose", "elevation"];
 /**
  *
  * @example ./Example.md
@@ -1329,17 +1329,26 @@ var _excluded$2 = ["color", "icon"];
 function Alert(_ref) {
   var color = _ref.color,
       icon = _ref.icon,
+      action = _ref.action,
+      onClose = _ref.onClose,
+      elevation = _ref.elevation,
       props = _objectWithoutProperties(_ref, _excluded$2);
 
   return /*#__PURE__*/React__default["default"].createElement(material.Alert, {
     icon: icon,
-    severity: color
+    severity: color,
+    action: action,
+    onClose: onClose,
+    elevation: elevation
   }, props.children);
 }
 
 Alert.propTypes = {
   color: PropTypes__default["default"].string,
-  icon: PropTypes__default["default"].element
+  icon: PropTypes__default["default"].element,
+  onClose: PropTypes__default["default"].func,
+  action: PropTypes__default["default"].node,
+  elevation: PropTypes__default["default"].number
 };
 
 /**
@@ -2816,6 +2825,56 @@ Menu.defaultProps = {
   items: []
 };
 
+/**
+ * @example ./Example.md
+ */
+
+function Snackbar(_ref) {
+  var open = _ref.open,
+      autoHideDuration = _ref.autoHideDuration,
+      handleClose = _ref.handleClose,
+      action = _ref.action,
+      message = _ref.message,
+      severity = _ref.severity,
+      icon = _ref.icon,
+      hideCloseButton = _ref.hideCloseButton;
+  return /*#__PURE__*/React__default["default"].createElement(material.Snackbar, {
+    open: open,
+    autoHideDuration: autoHideDuration,
+    onClose: handleClose,
+    message: severity ? undefined : message,
+    action: severity ? undefined : action,
+    anchorOrigin: {
+      vertical: "top",
+      horizontal: "right"
+    }
+  }, severity ? /*#__PURE__*/React__default["default"].createElement("div", {
+    style: {
+      maxWidth: "323px"
+    }
+  }, /*#__PURE__*/React__default["default"].createElement(Alert, {
+    onClose: hideCloseButton ? undefined : handleClose,
+    color: severity === "success" ? undefined : severity,
+    action: action,
+    icon: icon,
+    elevation: 0
+  }, message)) : null);
+}
+
+Snackbar.propTypes = {
+  open: PropTypes__default["default"].bool.isRequired,
+  autoHideDuration: PropTypes__default["default"].number,
+  handleClose: PropTypes__default["default"].func.isRequired,
+  action: PropTypes__default["default"].node,
+  message: PropTypes__default["default"].string.isRequired,
+  severity: PropTypes__default["default"].string,
+  icon: PropTypes__default["default"].element,
+  hideCloseButton: PropTypes__default["default"].bool
+};
+Snackbar.defaultProps = {
+  autoHideDuration: 6000
+};
+
 var palette = {
   primary: {
     main: "#8C30F5"
@@ -3569,6 +3628,55 @@ var MuiList = {
   }
 };
 
+var MuiSnackbar = {
+  styleOverrides: {
+    anchorOriginTopRight: {
+      top: "88px !important",
+      "& .MuiPaper-root": {
+        background: "#0B0D17 !important",
+        boxShadow: "none !important",
+        borderRadius: "5px !important",
+        padding: "8px !important"
+      },
+      "& .MuiSnackbarContent-message": {
+        color: "#ffffff !important",
+        fontWeight: "400 !important",
+        fontSize: "16px !important",
+        lineHeight: "150% !important",
+        padding: "0 !important"
+      },
+      "& .MuiAlert-root": {
+        background: "#0B0D17 !important",
+        borderRadius: "5px !important",
+        padding: "8px !important"
+      },
+      "& .MuiAlert-message": {
+        color: "#ffffff !important",
+        fontWeight: "400 !important",
+        fontSize: "16px !important",
+        lineHeight: "150% !important",
+        padding: "0 !important"
+      },
+      "& .MuiAlert-icon": {
+        padding: "0 !important"
+      },
+      "& .MuiAlert-action": {
+        padding: "0 0 0 10px !important"
+      },
+      "& .MuiAlert-action > .MuiButtonBase-root": {
+        padding: "2px 5px !important"
+      },
+      "& .MuiAlert-icon svg": {
+        width: "24px !important",
+        height: "24px !important"
+      },
+      "& .MuiAlert-action svg path": {
+        fill: "#ffffff"
+      }
+    }
+  }
+};
+
 var components = {
   MuiAlert: MuiAlert,
   MuiAutocomplete: MuiAutocomplete,
@@ -3584,7 +3692,8 @@ var components = {
   MuiSwitch: MuiSwitch,
   MuiTab: MuiTab,
   MuiTabs: MuiTabs,
-  MuiTooltip: MuiTooltip
+  MuiTooltip: MuiTooltip,
+  MuiSnackbar: MuiSnackbar
 };
 
 var theme = styles.createTheme({
@@ -3625,6 +3734,7 @@ exports.Menu = Menu;
 exports.RichInput = RichInput;
 exports.Select = Select;
 exports.SelectSimple = SelectSimple;
+exports.Snackbar = Snackbar;
 exports.SuffixInput = SuffixInput;
 exports.Switch = Switch;
 exports.Tabs = Tabs;

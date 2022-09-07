@@ -13,6 +13,7 @@ import MuiMenu from "./MuiMenu";
 import MuiTabs from "./MuiTabs";
 import MuiTab from "./MuiTab";
 import MuiList from "./MuiList";
+import MuiSnackbar from "./MuiSnackbar";
 
 const components = {
   MuiAlert,
@@ -30,6 +31,7 @@ const components = {
   MuiTab,
   MuiTabs,
   MuiTooltip,
+  MuiSnackbar,
 };
 
 export default components;

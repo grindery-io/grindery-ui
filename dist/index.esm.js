@@ -1,5 +1,5 @@
 import React, { useState, useCallback, useEffect, useMemo, useRef } from 'react';
-import { Button as Button$1, CircularProgress as CircularProgress$1, Box, Typography, Tooltip as Tooltip$1, Icon, Autocomplete as Autocomplete$1, TextField, InputAdornment, Paper, FormControl, InputLabel, Select as Select$1, MenuItem, Alert as Alert$1, Switch as Switch$1, Dialog as Dialog$1, Drawer as Drawer$1, IconButton as IconButton$1, Tabs as Tabs$1, Tab, Menu as Menu$1 } from '@mui/material';
+import { Button as Button$1, CircularProgress as CircularProgress$1, Box, Typography, Tooltip as Tooltip$1, Icon, Autocomplete as Autocomplete$1, TextField, InputAdornment, Paper, FormControl, InputLabel, Select as Select$1, MenuItem, Alert as Alert$1, Switch as Switch$1, Dialog as Dialog$1, Drawer as Drawer$1, IconButton as IconButton$1, Tabs as Tabs$1, Tab, Menu as Menu$1, Snackbar as Snackbar$1 } from '@mui/material';
 import PropTypes from 'prop-types';
 import SearchIcon from '@mui/icons-material/Search';
 import { styled } from '@mui/system';
@@ -1308,7 +1308,7 @@ SuffixInput.propTypes = {
   onChange: PropTypes.func.isRequired
 };
 
-var _excluded$2 = ["color", "icon"];
+var _excluded$2 = ["color", "icon", "action", "onClose", "elevation"];
 /**
  *
  * @example ./Example.md
@@ -1317,17 +1317,26 @@ var _excluded$2 = ["color", "icon"];
 function Alert(_ref) {
   var color = _ref.color,
       icon = _ref.icon,
+      action = _ref.action,
+      onClose = _ref.onClose,
+      elevation = _ref.elevation,
       props = _objectWithoutProperties(_ref, _excluded$2);
 
   return /*#__PURE__*/React.createElement(Alert$1, {
     icon: icon,
-    severity: color
+    severity: color,
+    action: action,
+    onClose: onClose,
+    elevation: elevation
   }, props.children);
 }
 
 Alert.propTypes = {
   color: PropTypes.string,
-  icon: PropTypes.element
+  icon: PropTypes.element,
+  onClose: PropTypes.func,
+  action: PropTypes.node,
+  elevation: PropTypes.number
 };
 
 /**
@@ -2804,6 +2813,56 @@ Menu.defaultProps = {
   items: []
 };
 
+/**
+ * @example ./Example.md
+ */
+
+function Snackbar(_ref) {
+  var open = _ref.open,
+      autoHideDuration = _ref.autoHideDuration,
+      handleClose = _ref.handleClose,
+      action = _ref.action,
+      message = _ref.message,
+      severity = _ref.severity,
+      icon = _ref.icon,
+      hideCloseButton = _ref.hideCloseButton;
+  return /*#__PURE__*/React.createElement(Snackbar$1, {
+    open: open,
+    autoHideDuration: autoHideDuration,
+    onClose: handleClose,
+    message: severity ? undefined : message,
+    action: severity ? undefined : action,
+    anchorOrigin: {
+      vertical: "top",
+      horizontal: "right"
+    }
+  }, severity ? /*#__PURE__*/React.createElement("div", {
+    style: {
+      maxWidth: "323px"
+    }
+  }, /*#__PURE__*/React.createElement(Alert, {
+    onClose: hideCloseButton ? undefined : handleClose,
+    color: severity === "success" ? undefined : severity,
+    action: action,
+    icon: icon,
+    elevation: 0
+  }, message)) : null);
+}
+
+Snackbar.propTypes = {
+  open: PropTypes.bool.isRequired,
+  autoHideDuration: PropTypes.number,
+  handleClose: PropTypes.func.isRequired,
+  action: PropTypes.node,
+  message: PropTypes.string.isRequired,
+  severity: PropTypes.string,
+  icon: PropTypes.element,
+  hideCloseButton: PropTypes.bool
+};
+Snackbar.defaultProps = {
+  autoHideDuration: 6000
+};
+
 var palette = {
   primary: {
     main: "#8C30F5"
@@ -3557,6 +3616,55 @@ var MuiList = {
   }
 };
 
+var MuiSnackbar = {
+  styleOverrides: {
+    anchorOriginTopRight: {
+      top: "88px !important",
+      "& .MuiPaper-root": {
+        background: "#0B0D17 !important",
+        boxShadow: "none !important",
+        borderRadius: "5px !important",
+        padding: "8px !important"
+      },
+      "& .MuiSnackbarContent-message": {
+        color: "#ffffff !important",
+        fontWeight: "400 !important",
+        fontSize: "16px !important",
+        lineHeight: "150% !important",
+        padding: "0 !important"
+      },
+      "& .MuiAlert-root": {
+        background: "#0B0D17 !important",
+        borderRadius: "5px !important",
+        padding: "8px !important"
+      },
+      "& .MuiAlert-message": {
+        color: "#ffffff !important",
+        fontWeight: "400 !important",
+        fontSize: "16px !important",
+        lineHeight: "150% !important",
+        padding: "0 !important"
+      },
+      "& .MuiAlert-icon": {
+        padding: "0 !important"
+      },
+      "& .MuiAlert-action": {
+        padding: "0 0 0 10px !important"
+      },
+      "& .MuiAlert-action > .MuiButtonBase-root": {
+        padding: "2px 5px !important"
+      },
+      "& .MuiAlert-icon svg": {
+        width: "24px !important",
+        height: "24px !important"
+      },
+      "& .MuiAlert-action svg path": {
+        fill: "#ffffff"
+      }
+    }
+  }
+};
+
 var components = {
   MuiAlert: MuiAlert,
   MuiAutocomplete: MuiAutocomplete,
@@ -3572,7 +3680,8 @@ var components = {
   MuiSwitch: MuiSwitch,
   MuiTab: MuiTab,
   MuiTabs: MuiTabs,
-  MuiTooltip: MuiTooltip
+  MuiTooltip: MuiTooltip,
+  MuiSnackbar: MuiSnackbar
 };
 
 var theme = createTheme({
@@ -3602,4 +3711,4 @@ ThemeProvider.defaultProps = {
   theme: theme
 };
 
-export { Alert, Autocomplete, Button, CircularProgress, Dialog, Drawer, IconButton, Menu, RichInput, Select, SelectSimple, SuffixInput, Switch, Tabs, Text, TextInput, ThemeProvider, Tooltip };
+export { Alert, Autocomplete, Button, CircularProgress, Dialog, Drawer, IconButton, Menu, RichInput, Select, SelectSimple, Snackbar, SuffixInput, Switch, Tabs, Text, TextInput, ThemeProvider, Tooltip };
