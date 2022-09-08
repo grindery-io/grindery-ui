@@ -2789,7 +2789,7 @@ function Menu(_ref) {
     transformOrigin: transformOrigin //hideBackdrop
 
   }, items.map(function (item) {
-    return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, item.children ? /*#__PURE__*/React__default["default"].createElement(muiNestedMenu.NestedMenuItem, {
+    return item.children ? /*#__PURE__*/React__default["default"].createElement(muiNestedMenu.NestedMenuItem, {
       className: "nested-menu-item",
       leftIcon: item.icon,
       rightIcon: /*#__PURE__*/React__default["default"].createElement(ArrowRightIcon__default["default"], null),
@@ -2819,7 +2819,7 @@ function Menu(_ref) {
           handleClose();
         }
       }
-    }, item.label ? item.label : item.Component ? item.Component : null));
+    }, item.label ? item.label : item.Component ? item.Component : null);
   }));
 }
 
