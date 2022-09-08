@@ -1,6 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Menu as MuiMenu, MenuItem } from "@mui/material";
+import { NestedMenuItem } from "mui-nested-menu";
+import ArrowRightIcon from "@mui/icons-material/ArrowRight";
 
 /**
  *
@@ -28,19 +30,51 @@ function Menu({
       //hideBackdrop
     >
       {items.map((item) => (
-        <MenuItem
-          key={item.key}
-          onClick={() => {
-            if (item.onClick) {
-              item.onClick();
-            }
-            if (closeOnClick) {
-              handleClose();
-            }
-          }}
-        >
-          {item.label ? item.label : item.Component ? item.Component : null}
-        </MenuItem>
+        <>
+          {item.children ? (
+            <NestedMenuItem
+              className="nested-menu-item"
+              leftIcon={item.icon}
+              rightIcon={<ArrowRightIcon />}
+              label={item.label}
+              parentMenuOpen={open}
+            >
+              {item.children.map((subitem) => (
+                <MenuItem
+                  key={subitem.key}
+                  onClick={() => {
+                    if (subitem.onClick) {
+                      subitem.onClick();
+                    }
+                    if (closeOnClick) {
+                      handleClose();
+                    }
+                  }}
+                >
+                  {subitem.label
+                    ? subitem.label
+                    : subitem.Component
+                    ? subitem.Component
+                    : null}
+                </MenuItem>
+              ))}
+            </NestedMenuItem>
+          ) : (
+            <MenuItem
+              key={item.key}
+              onClick={() => {
+                if (item.onClick) {
+                  item.onClick();
+                }
+                if (closeOnClick) {
+                  handleClose();
+                }
+              }}
+            >
+              {item.label ? item.label : item.Component ? item.Component : null}
+            </MenuItem>
+          )}
+        </>
       ))}
     </MuiMenu>
   );

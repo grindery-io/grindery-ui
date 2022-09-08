@@ -10,6 +10,8 @@ import Foco from 'react-foco';
 import _ from 'lodash';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { styled as styled$1, createTheme, ThemeProvider as ThemeProvider$1 } from '@mui/material/styles';
+import { NestedMenuItem } from 'mui-nested-menu';
+import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 
 /**
  * @example ./Example.md
@@ -2774,7 +2776,26 @@ function Menu(_ref) {
     transformOrigin: transformOrigin //hideBackdrop
 
   }, items.map(function (item) {
-    return /*#__PURE__*/React.createElement(MenuItem, {
+    return /*#__PURE__*/React.createElement(React.Fragment, null, item.children ? /*#__PURE__*/React.createElement(NestedMenuItem, {
+      className: "nested-menu-item",
+      leftIcon: item.icon,
+      rightIcon: /*#__PURE__*/React.createElement(ArrowRightIcon, null),
+      label: item.label,
+      parentMenuOpen: open
+    }, item.children.map(function (subitem) {
+      return /*#__PURE__*/React.createElement(MenuItem, {
+        key: subitem.key,
+        onClick: function onClick() {
+          if (subitem.onClick) {
+            subitem.onClick();
+          }
+
+          if (closeOnClick) {
+            handleClose();
+          }
+        }
+      }, subitem.label ? subitem.label : subitem.Component ? subitem.Component : null);
+    })) : /*#__PURE__*/React.createElement(MenuItem, {
       key: item.key,
       onClick: function onClick() {
         if (item.onClick) {
@@ -2785,7 +2806,7 @@ function Menu(_ref) {
           handleClose();
         }
       }
-    }, item.label ? item.label : item.Component ? item.Component : null);
+    }, item.label ? item.label : item.Component ? item.Component : null));
   }));
 }
 
@@ -3480,6 +3501,12 @@ var MuiMenu = {
       "& li:hover": {
         background: "#FDFBFF !important",
         borderRadius: "5px !important"
+      },
+      "& > div > .MuiMenuItem-root.nested-menu-item": {
+        padding: "6px 0 6px 16px !important",
+        "& > .MuiBox-root > p": {
+          padding: "0 !important"
+        }
       }
     }
   }

@@ -273,3 +273,64 @@ const handleMenuClose = () => {
   />
 </ThemeProvider>;
 ```
+
+Nested menu:
+
+```js
+import Menu from "./Menu.js";
+import ThemeProvider from "../ThemeProvider";
+import Button from "../Button/Button.js";
+
+const [anchorEl, setAnchorEl] = React.useState(null);
+
+const handleButtonClick = (event) => {
+  setAnchorEl(event.currentTarget);
+};
+
+const handleMenuClose = () => {
+  setAnchorEl(null);
+};
+
+<ThemeProvider>
+  <Button
+    onClick={handleButtonClick}
+    value="Open menu"
+    size="small"
+    variant="outlined"
+    color="primary"
+  />
+  <Menu
+    anchorEl={anchorEl}
+    onClose={handleMenuClose}
+    closeOnClick
+    items={[
+      {
+        key: "1",
+        label: "Rename",
+      },
+      {
+        key: "2",
+        label: "Move to workspace",
+        children: [
+          {
+            key: "2.1",
+            label: "Workspace 1",
+          },
+          {
+            key: "2.2",
+            label: "Workspace 2",
+          },
+          {
+            key: "2.3",
+            label: "Workspace 3",
+          },
+        ],
+      },
+      {
+        key: "3",
+        label: "Delete",
+      },
+    ]}
+  />
+</ThemeProvider>;
+```

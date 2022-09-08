@@ -18,6 +18,12 @@ const MuiMenu = {
         background: "#FDFBFF !important",
         borderRadius: "5px !important",
       },
+      "& > div > .MuiMenuItem-root.nested-menu-item": {
+        padding: "6px 0 6px 16px !important",
+        "& > .MuiBox-root > p": {
+          padding: "0 !important",
+        },
+      },
     },
   },
 };
