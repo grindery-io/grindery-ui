@@ -2777,6 +2777,7 @@ function Menu(_ref) {
 
   }, items.map(function (item) {
     return item.children ? /*#__PURE__*/React.createElement(NestedMenuItem, {
+      key: item.key,
       className: "nested-menu-item",
       leftIcon: item.icon,
       rightIcon: /*#__PURE__*/React.createElement(ArrowRightIcon, null),

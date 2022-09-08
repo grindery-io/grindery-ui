@@ -32,6 +32,7 @@ function Menu({
       {items.map((item) =>
         item.children ? (
           <NestedMenuItem
+            key={item.key}
             className="nested-menu-item"
             leftIcon={item.icon}
             rightIcon={<ArrowRightIcon />}

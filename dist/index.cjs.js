@@ -2790,6 +2790,7 @@ function Menu(_ref) {
 
   }, items.map(function (item) {
     return item.children ? /*#__PURE__*/React__default["default"].createElement(muiNestedMenu.NestedMenuItem, {
+      key: item.key,
       className: "nested-menu-item",
       leftIcon: item.icon,
       rightIcon: /*#__PURE__*/React__default["default"].createElement(ArrowRightIcon__default["default"], null),
