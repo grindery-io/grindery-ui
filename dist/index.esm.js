@@ -2738,16 +2738,30 @@ RichInput.propTypes = {
 
 function Tooltip(_ref) {
   var title = _ref.title,
-      children = _ref.children;
+      children = _ref.children,
+      placement = _ref.placement,
+      sx = _ref.sx,
+      open = _ref.open,
+      onClose = _ref.onClose,
+      onOpen = _ref.onOpen;
   return /*#__PURE__*/React.createElement(Tooltip$1, {
     title: title,
-    placement: "top",
-    arrow: true
+    placement: placement || "top",
+    arrow: true,
+    sx: sx,
+    open: open,
+    onClose: onClose,
+    onOpen: onOpen
   }, children);
 }
 
 Tooltip.propTypes = {
-  title: PropTypes.string.isRequired
+  title: PropTypes.string.isRequired,
+  placement: PropTypes.string,
+  sx: PropTypes.any,
+  open: PropTypes.bool,
+  onClose: PropTypes.func,
+  onOpen: PropTypes.func
 };
 
 /**

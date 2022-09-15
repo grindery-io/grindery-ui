@@ -2751,16 +2751,30 @@ RichInput.propTypes = {
 
 function Tooltip(_ref) {
   var title = _ref.title,
-      children = _ref.children;
+      children = _ref.children,
+      placement = _ref.placement,
+      sx = _ref.sx,
+      open = _ref.open,
+      onClose = _ref.onClose,
+      onOpen = _ref.onOpen;
   return /*#__PURE__*/React__default["default"].createElement(material.Tooltip, {
     title: title,
-    placement: "top",
-    arrow: true
+    placement: placement || "top",
+    arrow: true,
+    sx: sx,
+    open: open,
+    onClose: onClose,
+    onOpen: onOpen
   }, children);
 }
 
 Tooltip.propTypes = {
-  title: PropTypes__default["default"].string.isRequired
+  title: PropTypes__default["default"].string.isRequired,
+  placement: PropTypes__default["default"].string,
+  sx: PropTypes__default["default"].any,
+  open: PropTypes__default["default"].bool,
+  onClose: PropTypes__default["default"].func,
+  onOpen: PropTypes__default["default"].func
 };
 
 /**
