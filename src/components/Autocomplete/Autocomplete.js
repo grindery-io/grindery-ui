@@ -85,13 +85,15 @@ function Autocomplete({
             },
           }}
         >
-          <Typography variant="p">{label}</Typography>
+          <Typography variant="body2">{label}</Typography>
           {tooltip ? (
             <Tooltip title={tooltip} placement="top" arrow>
               <Icon
                 sx={{
                   color: "#898989",
-                  fontSize: "18px",
+                  fontSize: "14px",
+                  marginTop: "3px",
+                  marginLeft: "6px",
                   ".": { backgroundColor: "#000" },
                 }}
               >

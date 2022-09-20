@@ -6,13 +6,16 @@ const MuiFormControl = {
         padding: "0px",
         width: "100%",
         "& input": {
-          padding: "15px 5px 15px 15px !important",
+          padding: "10px 5px 10px 5px !important",
         },
         "& textarea": {
-          padding: "15px 5px 15px 15px",
+          padding: "10px 5px 10px 5px",
         },
         "& fieldset": {
           border: "none",
+        },
+        "& .MuiOutlinedInput-root": {
+          marginTop: 0,
         },
         "&.input-filled .MuiOutlinedInput-root": {
           boxShadow: "inset 0px 0px 0px 1px #8C30F5",

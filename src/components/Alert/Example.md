@@ -5,7 +5,7 @@ import Alert from "./Alert.js";
 import ThemeProvider from "../ThemeProvider";
 
 <ThemeProvider>
-  <Alert>Success message</Alert>
+  <Alert elevation={0}>Success message</Alert>
 </ThemeProvider>;
 ```
 
@@ -16,7 +16,9 @@ import Alert from "./Alert.js";
 import ThemeProvider from "../ThemeProvider";
 
 <ThemeProvider>
-  <Alert color="error">Error message</Alert>
+  <Alert elevation={0} color="error">
+    Error message
+  </Alert>
 </ThemeProvider>;
 ```
 
@@ -27,7 +29,9 @@ import Alert from "./Alert.js";
 import ThemeProvider from "../ThemeProvider";
 
 <ThemeProvider>
-  <Alert color="warning">Warning message</Alert>
+  <Alert elevation={0} color="warning">
+    Warning message
+  </Alert>
 </ThemeProvider>;
 ```
 
@@ -38,7 +42,9 @@ import Alert from "./Alert.js";
 import ThemeProvider from "../ThemeProvider";
 
 <ThemeProvider>
-  <Alert color="info">Information message</Alert>
+  <Alert elevation={0} color="info">
+    Information message
+  </Alert>
 </ThemeProvider>;
 ```
 
@@ -50,7 +56,11 @@ import ThemeProvider from "../ThemeProvider";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 
 <ThemeProvider>
-  <Alert color="error" icon={<CheckCircleOutlineIcon fontSize="inherit" />}>
+  <Alert
+    elevation={0}
+    color="error"
+    icon={<CheckCircleOutlineIcon fontSize="inherit" />}
+  >
     Error message
   </Alert>
 </ThemeProvider>;

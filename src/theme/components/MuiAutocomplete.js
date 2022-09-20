@@ -230,7 +230,7 @@ const MuiAutocomplete = {
       },
     },
     input: {
-      padding: "15px 70px 15px 5px!important",
+      padding: "10px 70px 10px 5px!important",
     },
     endAdornment: {
       "& > button": {

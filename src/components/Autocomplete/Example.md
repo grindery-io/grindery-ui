@@ -16,6 +16,7 @@ const [autocompleteValue, setAutocompleteValue] = React.useState("");
     onChange={(v) => {
       setAutocompleteValue(v);
     }}
+    tooltip="some help text"
   ></Autocomplete>
 </ThemeProvider>;
 ```

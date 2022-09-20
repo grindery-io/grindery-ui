@@ -23,7 +23,7 @@ const MuiOutlinedInput = {
       border: 0,
     },
     input: {
-      padding: "15px 70px 15px 15px",
+      padding: "10px 70px 10px 15px",
     },
   },
 };

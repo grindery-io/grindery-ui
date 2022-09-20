@@ -55,13 +55,13 @@ function TextInput({
           },
         }}
       >
-        {label ? <Typography variant="p">{label}</Typography> : ""}
+        {label ? <Typography variant="body2">{label}</Typography> : ""}
         {tooltip ? (
           <Tooltip title={tooltip} placement="top" arrow>
             <Icon
               sx={{
                 color: "#898989",
-                fontSize: "18px",
+                fontSize: "14px",
                 ".": { backgroundColor: "#000" },
                 marginTop: "3px",
                 marginLeft: "6px",

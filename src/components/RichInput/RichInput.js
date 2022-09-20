@@ -717,7 +717,7 @@ const RichInputWrapper = styled("div")({
     '& p[data-slate-node="element"]': {
       fontWeight: "400",
       fontSize: "16px",
-      lineHeight: "32px",
+      lineHeight: "150%",
       color: "#0B0D17",
       margin: 0,
       padding: 0,
@@ -728,9 +728,19 @@ const RichInputWrapper = styled("div")({
     },
     "& .rich-input-box": {
       background: "#F4F5F7",
-      borderRadius: "5px",
-      padding: "12px 15px",
+      borderRadius: "6px",
+      padding: "7px 15px",
       border: "1px solid #DCDCDC",
+      boxSizing: "border-box",
+      minHeight: "44px",
+      display: "flex",
+      alignItems: "flex-start",
+      justifyContent: "center",
+      flexWrap: "wrap",
+      flexDirection: "column",
+      "& > *": {
+        width: "100%",
+      },
     },
     '& div[data-slate-editor="true"]': {
       padding: 0,
@@ -749,8 +759,9 @@ const RichInputWrapper = styled("div")({
     "& .copy-to-clipboard": {
       position: "absolute",
       right: "10px",
-      top: "20px",
+      top: "12px",
       cursor: "pointer",
+      width: "auto",
       "& svg": {
         width: "20px",
         height: "20px",
@@ -767,6 +778,10 @@ const RichInputWrapper = styled("div")({
       flexWrap: "nowrap",
       gap: "6px",
       marginBottom: "4px",
+      "& .MuiTypography-root": {
+        fontSize: "14px",
+        lineHeight: "150%",
+      },
       "& > .required ": {
         marginLeft: "auto",
         fontSize: "14px",
@@ -775,9 +790,9 @@ const RichInputWrapper = styled("div")({
     },
     "& .rich-input__label": { lineHeight: "150%", textAlign: "left" },
     "& .rich-input__label-tooltip": {
-      marginBottom: "3px",
+      marginBottom: "4px",
       color: "#898989",
-      fontSize: "18px",
+      fontSize: "14px",
       ".": { backgroundColor: "#000" },
     },
     "& .rich-input__dropdown": {
@@ -793,7 +808,7 @@ const RichInputWrapper = styled("div")({
       //display: "none",
       zIndex: 2,
       "& .MuiOutlinedInput-input": {
-        padding: "10px 70px 10px 15px",
+        padding: "10px 70px 10px 5px",
       },
     },
     "& .rich-input__dropdown-search-wrapper": {
@@ -932,7 +947,7 @@ const RichInputWrapper = styled("div")({
       justifyContent: "flex-start",
       flexWrap: "nowrap",
       gap: "6px",
-      margin: "2px",
+      margin: "0 2px",
       "& > img": {
         width: 16,
         height: 16,

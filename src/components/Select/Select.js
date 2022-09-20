@@ -27,7 +27,7 @@ const styleDescription = {
 
 const SelectWrapper = styled("div")({
   "& .MuiInputLabel-root": {
-    top: "5px",
+    top: "-1px",
   },
   "& .MuiOutlinedInput-root": {
     border: "none",
@@ -50,11 +50,11 @@ const SelectWrapper = styled("div")({
     border: 0,
   },
   "& .MuiOutlinedInput-input": {
-    padding: "15px 15px 15px 15px",
+    padding: "10px 15px 10px 15px",
     display: "flex",
   },
   "& .MuiFormControl-root": {
-    marginTop: "4px",
+    marginTop: "0px",
     "& .Mui-focused": {
       "& #search-select": {
         boxShadow: "inset 0px 0px 0px 1px #8C30F5",
@@ -130,7 +130,7 @@ const SelectWrapper = styled("div")({
       display: "flex",
       alignItems: "center",
       marginRight: "5px",
-      padding: "5px",
+      padding: "0 5px",
       "& .icon_second": {
         marginLeft: "-12px",
       },
@@ -175,7 +175,7 @@ const SelectWrapper = styled("div")({
     height: "24px",
     "& > img": {
       border: "1px solid #DCDCDC",
-      padding: "4px",
+      padding: "3px",
       borderRadius: "5px",
       marginLeft: "-5px",
       background: "#FFFFFF",
@@ -183,7 +183,7 @@ const SelectWrapper = styled("div")({
   },
 
   "& .MuiIcon-root": {
-    fontSize: "18px",
+    fontSize: "14px",
     marginTop: "3px",
     marginLeft: "6px",
   },
@@ -245,13 +245,15 @@ function Select({
               },
             }}
           >
-            <Typography variant="p">{label}</Typography>
+            <Typography variant="body2">{label}</Typography>
             {tooltip ? (
               <Tooltip title={tooltip} placement="top" arrow>
                 <Icon
                   sx={{
                     color: "#898989",
-                    fontSize: "18px",
+                    fontSize: "14px",
+                    marginTop: "3px",
+                    marginLeft: "6px",
                     ".": { backgroundColor: "#000" },
                   }}
                 >
@@ -468,13 +470,15 @@ function Select({
               },
             }}
           >
-            <Typography variant="p">{label}</Typography>
+            <Typography variant="body2">{label}</Typography>
             {tooltip ? (
               <Tooltip title={tooltip} placement="top" arrow>
                 <Icon
                   sx={{
                     color: "#898989",
-                    fontSize: "18px",
+                    fontSize: "14px",
+                    marginTop: "3px",
+                    marginLeft: "6px",
                     ".": { backgroundColor: "#000" },
                   }}
                 >
