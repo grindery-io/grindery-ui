@@ -323,7 +323,7 @@ function Autocomplete(_ref) {
       }
     }
   }, /*#__PURE__*/React.createElement(Typography, {
-    variant: "p"
+    variant: "body2"
   }, label), tooltip ? /*#__PURE__*/React.createElement(Tooltip$1, {
     title: tooltip,
     placement: "top",
@@ -331,7 +331,9 @@ function Autocomplete(_ref) {
   }, /*#__PURE__*/React.createElement(Icon, {
     sx: {
       color: "#898989",
-      fontSize: "18px",
+      fontSize: "14px",
+      marginTop: "3px",
+      marginLeft: "6px",
       ".": {
         backgroundColor: "#000"
       }
@@ -541,7 +543,7 @@ function TextInput(_ref) {
       }
     }
   }, label ? /*#__PURE__*/React.createElement(Typography, {
-    variant: "p"
+    variant: "body2"
   }, label) : "", tooltip ? /*#__PURE__*/React.createElement(Tooltip$1, {
     title: tooltip,
     placement: "top",
@@ -549,7 +551,7 @@ function TextInput(_ref) {
   }, /*#__PURE__*/React.createElement(Icon, {
     sx: {
       color: "#898989",
-      fontSize: "18px",
+      fontSize: "14px",
       ".": {
         backgroundColor: "#000"
       },
@@ -639,7 +641,7 @@ var styleDescription = {
 };
 var SelectWrapper = styled("div")({
   "& .MuiInputLabel-root": {
-    top: "5px"
+    top: "-1px"
   },
   "& .MuiOutlinedInput-root": {
     border: "none",
@@ -662,11 +664,11 @@ var SelectWrapper = styled("div")({
     border: 0
   },
   "& .MuiOutlinedInput-input": {
-    padding: "15px 15px 15px 15px",
+    padding: "10px 15px 10px 15px",
     display: "flex"
   },
   "& .MuiFormControl-root": {
-    marginTop: "4px",
+    marginTop: "0px",
     "& .Mui-focused": {
       "& #search-select": {
         boxShadow: "inset 0px 0px 0px 1px #8C30F5",
@@ -740,7 +742,7 @@ var SelectWrapper = styled("div")({
       display: "flex",
       alignItems: "center",
       marginRight: "5px",
-      padding: "5px",
+      padding: "0 5px",
       "& .icon_second": {
         marginLeft: "-12px"
       }
@@ -785,14 +787,14 @@ var SelectWrapper = styled("div")({
     height: "24px",
     "& > img": {
       border: "1px solid #DCDCDC",
-      padding: "4px",
+      padding: "3px",
       borderRadius: "5px",
       marginLeft: "-5px",
       background: "#FFFFFF"
     }
   },
   "& .MuiIcon-root": {
-    fontSize: "18px",
+    fontSize: "14px",
     marginTop: "3px",
     marginLeft: "6px"
   }
@@ -854,7 +856,7 @@ function Select(_ref) {
       }
     }
   }, /*#__PURE__*/React.createElement(Typography, {
-    variant: "p"
+    variant: "body2"
   }, label), tooltip ? /*#__PURE__*/React.createElement(Tooltip$1, {
     title: tooltip,
     placement: "top",
@@ -862,7 +864,9 @@ function Select(_ref) {
   }, /*#__PURE__*/React.createElement(Icon, {
     sx: {
       color: "#898989",
-      fontSize: "18px",
+      fontSize: "14px",
+      marginTop: "3px",
+      marginLeft: "6px",
       ".": {
         backgroundColor: "#000"
       }
@@ -1027,7 +1031,7 @@ function Select(_ref) {
       }
     }
   }, /*#__PURE__*/React.createElement(Typography, {
-    variant: "p"
+    variant: "body2"
   }, label), tooltip ? /*#__PURE__*/React.createElement(Tooltip$1, {
     title: tooltip,
     placement: "top",
@@ -1035,7 +1039,9 @@ function Select(_ref) {
   }, /*#__PURE__*/React.createElement(Icon, {
     sx: {
       color: "#898989",
-      fontSize: "18px",
+      fontSize: "14px",
+      marginTop: "3px",
+      marginLeft: "6px",
       ".": {
         backgroundColor: "#000"
       }
@@ -2301,7 +2307,7 @@ var RichInputWrapper = styled$1("div")({
     '& p[data-slate-node="element"]': {
       fontWeight: "400",
       fontSize: "16px",
-      lineHeight: "32px",
+      lineHeight: "150%",
       color: "#0B0D17",
       margin: 0,
       padding: 0,
@@ -2312,9 +2318,19 @@ var RichInputWrapper = styled$1("div")({
     },
     "& .rich-input-box": {
       background: "#F4F5F7",
-      borderRadius: "5px",
-      padding: "12px 15px",
-      border: "1px solid #DCDCDC"
+      borderRadius: "6px",
+      padding: "7px 15px",
+      border: "1px solid #DCDCDC",
+      boxSizing: "border-box",
+      minHeight: "44px",
+      display: "flex",
+      alignItems: "flex-start",
+      justifyContent: "center",
+      flexWrap: "wrap",
+      flexDirection: "column",
+      "& > *": {
+        width: "100%"
+      }
     },
     '& div[data-slate-editor="true"]': {
       padding: 0,
@@ -2333,8 +2349,9 @@ var RichInputWrapper = styled$1("div")({
     "& .copy-to-clipboard": {
       position: "absolute",
       right: "10px",
-      top: "20px",
+      top: "12px",
       cursor: "pointer",
+      width: "auto",
       "& svg": {
         width: "20px",
         height: "20px"
@@ -2351,6 +2368,10 @@ var RichInputWrapper = styled$1("div")({
       flexWrap: "nowrap",
       gap: "6px",
       marginBottom: "4px",
+      "& .MuiTypography-root": {
+        fontSize: "14px",
+        lineHeight: "150%"
+      },
       "& > .required ": {
         marginLeft: "auto",
         fontSize: "14px",
@@ -2362,9 +2383,9 @@ var RichInputWrapper = styled$1("div")({
       textAlign: "left"
     },
     "& .rich-input__label-tooltip": {
-      marginBottom: "3px",
+      marginBottom: "4px",
       color: "#898989",
-      fontSize: "18px",
+      fontSize: "14px",
       ".": {
         backgroundColor: "#000"
       }
@@ -2382,7 +2403,7 @@ var RichInputWrapper = styled$1("div")({
       //display: "none",
       zIndex: 2,
       "& .MuiOutlinedInput-input": {
-        padding: "10px 70px 10px 15px"
+        padding: "10px 70px 10px 5px"
       }
     },
     "& .rich-input__dropdown-search-wrapper": {
@@ -2520,7 +2541,7 @@ var RichInputWrapper = styled$1("div")({
       justifyContent: "flex-start",
       flexWrap: "nowrap",
       gap: "6px",
-      margin: "2px",
+      margin: "0 2px",
       "& > img": {
         width: 16,
         height: 16
@@ -3052,13 +3073,16 @@ var MuiFormControl = {
         padding: "0px",
         width: "100%",
         "& input": {
-          padding: "15px 5px 15px 15px !important"
+          padding: "10px 5px 10px 5px !important"
         },
         "& textarea": {
-          padding: "15px 5px 15px 15px"
+          padding: "10px 5px 10px 5px"
         },
         "& fieldset": {
           border: "none"
+        },
+        "& .MuiOutlinedInput-root": {
+          marginTop: 0
         },
         "&.input-filled .MuiOutlinedInput-root": {
           boxShadow: "inset 0px 0px 0px 1px #8C30F5",
@@ -3098,7 +3122,7 @@ var MuiOutlinedInput = {
       border: 0
     },
     input: {
-      padding: "15px 70px 15px 15px"
+      padding: "10px 70px 10px 15px"
     }
   }
 };
@@ -3385,7 +3409,7 @@ var MuiAutocomplete = {
       }
     },
     input: {
-      padding: "15px 70px 15px 5px!important"
+      padding: "10px 70px 10px 5px!important"
     },
     endAdornment: {
       "& > button": {
