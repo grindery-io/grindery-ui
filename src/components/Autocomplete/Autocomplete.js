@@ -9,6 +9,8 @@ import {
   Tooltip,
   Paper,
   Button,
+  ListItem,
+  MenuItem,
 } from "@mui/material";
 import PropTypes from "prop-types";
 
@@ -52,7 +54,9 @@ function Autocomplete({
   texthelper,
   value,
   tooltip,
-  buttonSuggestion,
+  button,
+  buttonText,
+  onButtonClick,
   onChange,
   error,
 }) {
@@ -60,9 +64,15 @@ function Autocomplete({
 
   const PaperComponentCustom = (options) => {
     return (
-      <Paper {...options.containerProps}>
+      <Paper className={options.className}>
         {options.children}
-        {buttonSuggestion && <Button sx={styleButton}>Suggest an App</Button>}
+        {button && (
+          <div>
+            <Button onMouseDown={onButtonClick} sx={styleButton}>
+              {buttonText || "Suggest an App"}
+            </Button>
+          </div>
+        )}
       </Paper>
     );
   };
@@ -309,7 +319,9 @@ Autocomplete.propTypes = {
   value: PropTypes.string.isRequired,
   onChange: PropTypes.func,
   tooltip: PropTypes.string,
-  buttonSuggestion: PropTypes.bool,
+  button: PropTypes.bool,
+  buttonText: PropTypes.string,
+  onButtonClick: PropTypes.func,
   error: PropTypes.string,
 };
 

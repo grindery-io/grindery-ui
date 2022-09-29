@@ -36,7 +36,10 @@ const [autocompleteValue, setAutocompleteValue] = React.useState("");
     label={"Connect with..."}
     value={autocompleteValue}
     placeholder={"Search for an App"}
-    buttonSuggestion
+    button
+    onButtonClick={(e) => {
+      alert("button clicked");
+    }}
     onChange={(v) => {
       setAutocompleteValue(v);
     }}

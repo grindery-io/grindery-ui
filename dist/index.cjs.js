@@ -303,7 +303,9 @@ function Autocomplete(_ref) {
       texthelper = _ref.texthelper,
       value = _ref.value,
       tooltip = _ref.tooltip,
-      buttonSuggestion = _ref.buttonSuggestion,
+      button = _ref.button,
+      buttonText = _ref.buttonText,
+      onButtonClick = _ref.onButtonClick,
       onChange = _ref.onChange,
       error = _ref.error;
   var currentValue = options.find(function (opt) {
@@ -311,9 +313,12 @@ function Autocomplete(_ref) {
   }) || null;
 
   var PaperComponentCustom = function PaperComponentCustom(options) {
-    return /*#__PURE__*/React__default["default"].createElement(material.Paper, options.containerProps, options.children, buttonSuggestion && /*#__PURE__*/React__default["default"].createElement(material.Button, {
+    return /*#__PURE__*/React__default["default"].createElement(material.Paper, {
+      className: options.className
+    }, options.children, button && /*#__PURE__*/React__default["default"].createElement("div", null, /*#__PURE__*/React__default["default"].createElement(material.Button, {
+      onMouseDown: onButtonClick,
       sx: styleButton
-    }, "Suggest an App"));
+    }, buttonText || "Suggest an App")));
   };
 
   var handleChange = function handleChange(event, obj) {
@@ -504,7 +509,9 @@ Autocomplete.propTypes = {
   value: PropTypes__default["default"].string.isRequired,
   onChange: PropTypes__default["default"].func,
   tooltip: PropTypes__default["default"].string,
-  buttonSuggestion: PropTypes__default["default"].bool,
+  button: PropTypes__default["default"].bool,
+  buttonText: PropTypes__default["default"].string,
+  onButtonClick: PropTypes__default["default"].func,
   error: PropTypes__default["default"].string
 };
 

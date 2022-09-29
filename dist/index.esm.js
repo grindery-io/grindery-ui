@@ -290,7 +290,9 @@ function Autocomplete(_ref) {
       texthelper = _ref.texthelper,
       value = _ref.value,
       tooltip = _ref.tooltip,
-      buttonSuggestion = _ref.buttonSuggestion,
+      button = _ref.button,
+      buttonText = _ref.buttonText,
+      onButtonClick = _ref.onButtonClick,
       onChange = _ref.onChange,
       error = _ref.error;
   var currentValue = options.find(function (opt) {
@@ -298,9 +300,12 @@ function Autocomplete(_ref) {
   }) || null;
 
   var PaperComponentCustom = function PaperComponentCustom(options) {
-    return /*#__PURE__*/React.createElement(Paper, options.containerProps, options.children, buttonSuggestion && /*#__PURE__*/React.createElement(Button$1, {
+    return /*#__PURE__*/React.createElement(Paper, {
+      className: options.className
+    }, options.children, button && /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(Button$1, {
+      onMouseDown: onButtonClick,
       sx: styleButton
-    }, "Suggest an App"));
+    }, buttonText || "Suggest an App")));
   };
 
   var handleChange = function handleChange(event, obj) {
@@ -491,7 +496,9 @@ Autocomplete.propTypes = {
   value: PropTypes.string.isRequired,
   onChange: PropTypes.func,
   tooltip: PropTypes.string,
-  buttonSuggestion: PropTypes.bool,
+  button: PropTypes.bool,
+  buttonText: PropTypes.string,
+  onButtonClick: PropTypes.func,
   error: PropTypes.string
 };
 
