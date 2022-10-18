@@ -68,14 +68,14 @@ function RichInput({
       return (
         (val &&
           val.split("\n").map((row) => {
-            const preparedRow = row
-              .replace(/{{/g, "{grinderyvirtualspace}{{")
-              .replace(/}}/g, "}}{grinderyvirtualspace}");
+            const preparedRow = row;
+            //.replace(/{{/g, "{grinderyvirtualspace}{{")
+            //.replace(/}}/g, "}}{grinderyvirtualspace}");
             return {
               type: "paragraph",
               children: (preparedRow &&
                 preparedRow
-                  .split(/(?:\{grinderyvirtualspace\})/)
+                  //.split(/(?:\{grinderyvirtualspace\})/)
                   .filter(Boolean)
                   .map((v) => {
                     if (

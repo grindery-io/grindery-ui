@@ -1794,10 +1794,13 @@ function RichInput(_ref) {
   var initialValue = React.useMemo(function () {
     var unserializeValue = function unserializeValue(val) {
       return val && val.split("\n").map(function (row) {
-        var preparedRow = row.replace(/{{/g, "{grinderyvirtualspace}{{").replace(/}}/g, "}}{grinderyvirtualspace}");
+        var preparedRow = row; //.replace(/{{/g, "{grinderyvirtualspace}{{")
+        //.replace(/}}/g, "}}{grinderyvirtualspace}");
+
         return {
           type: "paragraph",
-          children: preparedRow && preparedRow.split(/(?:\{grinderyvirtualspace\})/).filter(Boolean).map(function (v) {
+          children: preparedRow && preparedRow //.split(/(?:\{grinderyvirtualspace\})/)
+          .filter(Boolean).map(function (v) {
             if (/\{\{\s*([^}]+)\s*\}\}/g.test(v) && options.find(function (opt) {
               return opt.value === v;
             })) {
