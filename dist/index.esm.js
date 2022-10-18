@@ -1786,8 +1786,7 @@ function RichInput(_ref) {
 
         return {
           type: "paragraph",
-          children: preparedRow && preparedRow //.split(/(?:\{grinderyvirtualspace\})/)
-          .filter(Boolean).map(function (v) {
+          children: preparedRow && preparedRow.split(/(?:\{grinderyvirtualspace\})/).filter(Boolean).map(function (v) {
             if (/\{\{\s*([^}]+)\s*\}\}/g.test(v) && options.find(function (opt) {
               return opt.value === v;
             })) {

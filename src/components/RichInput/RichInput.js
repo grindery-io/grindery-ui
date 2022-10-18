@@ -75,7 +75,7 @@ function RichInput({
               type: "paragraph",
               children: (preparedRow &&
                 preparedRow
-                  //.split(/(?:\{grinderyvirtualspace\})/)
+                  .split(/(?:\{grinderyvirtualspace\})/)
                   .filter(Boolean)
                   .map((v) => {
                     if (
