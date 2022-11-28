@@ -53,7 +53,7 @@ export const autocompleteOptions = [
     label: "MolochDao",
     icon: ICONS.MOLOCH_DAO,
   },
-  { value: "3", label: "Google", icon: ICONS.GOOGLE_SHEETS, },
+  { value: "3", label: "Google", icon: ICONS.GOOGLE_SHEETS },
   {
     value: "4",
     label: "Gmail",
@@ -67,5 +67,32 @@ export const autocompleteOptions = [
     icon: ICONS.GOOGLE_SHEETS,
     group: "Coming soon",
     disabled: true,
+  },
+];
+
+export const apps = [
+  {
+    url: "https://flow.grindery.org/",
+    name: "Flow",
+    description: "Create workflows witn no-code",
+    target: "_blank",
+  },
+  {
+    url: "https://ping.grindery.org/",
+    name: "Ping",
+    description: "Receive blockchain notifications",
+    target: "_blank",
+  },
+  {
+    url: "https://api.grindery.org/",
+    name: "API",
+    description: "Your gateway to web3 no-code",
+    target: "_blank",
+  },
+  {
+    url: "https://cds.grindery.org/",
+    name: "CDS",
+    description: "Create Connector Description Schema files",
+    target: "_blank",
   },
 ];
