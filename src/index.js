@@ -18,3 +18,4 @@ export { default as Menu } from "./components/Menu/Menu";
 export { default as Snackbar } from "./components/Snackbar/Snackbar";
 export { default as AppsMenu } from "./components/AppsMenu/AppsMenu";
 export { default as ThemeProvider } from "./components/ThemeProvider/ThemeProvider";
+export { default as theme } from "./theme/index.js";

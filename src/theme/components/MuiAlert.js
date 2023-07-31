@@ -27,13 +27,13 @@ const MuiAlert = {
         color: "#FFB930!important",
       },
     },
-    standardInfo: {
-      backgroundColor: "#F1E4FF!important",
+    standardInfo: ({ theme }) => ({
+      backgroundColor: "#F1E4FF !important",
 
       "& .MuiAlert-icon": {
-        color: "#8C30F5!important",
+        color: `${theme.palette.primary.main} !important`,
       },
-    },
+    }),
   },
 };
 

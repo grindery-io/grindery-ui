@@ -131,10 +131,14 @@ function Autocomplete({
             ...(currentValue
               ? {
                   ".MuiOutlinedInput-root": {
-                    boxShadow: error
-                      ? "inset 0px 0px 0px 1px #FF5858"
-                      : "inset 0px 0px 0px 1px #8C30F5",
-                    border: error ? "1px solid #FF5858" : "1px solid #8C30F5",
+                    boxShadow: (theme) =>
+                      error
+                        ? "inset 0px 0px 0px 1px #FF5858"
+                        : `inset 0px 0px 0px 1px ${theme.palette.primary.main}`,
+                    border: (theme) =>
+                      error
+                        ? "1px solid #FF5858"
+                        : `1px solid ${theme.palette.primary.main}`,
                   },
                 }
               : {
@@ -147,10 +151,14 @@ function Autocomplete({
                   ".MuiAutocomplete-clearIndicator": { display: "none" },
                 }),
             ".MuiOutlinedInput-root.Mui-focused": {
-              boxShadow: error
-                ? "inset 0px 0px 0px 1px #FF5858"
-                : "inset 0px 0px 0px 1px #8C30F5",
-              border: error ? "1px solid #FF5858" : "1px solid #8C30F5",
+              boxShadow: (theme) =>
+                error
+                  ? "inset 0px 0px 0px 1px #FF5858"
+                  : `inset 0px 0px 0px 1px ${theme.palette.primary.main}`,
+              border: (theme) =>
+                error
+                  ? "1px solid #FF5858"
+                  : `1px solid ${theme.palette.primary.main}`,
             },
           }}
           options={options}

@@ -12,9 +12,7 @@ const tabs = ["All", "Success", "Error"];
   <Tabs
     value={value}
     type={"text"}
-    activeIndicatorColor={"#8C30F5"}
     tabColor={"#0B0D17"}
-    activeColor={"#8C30F5"}
     options={tabs}
     onChange={(tab) => {
       setValue(tab);
@@ -42,9 +40,7 @@ const tabs = [<StarIcon />, <CheckCircleIcon />, <EmailIcon />];
       value={value}
       type={"icon"}
       orientation={"vertical"}
-      activeIndicatorColor={"#8C30F5"}
       tabColor={"#0B0D17"}
-      activeColor={"#8C30F5"}
       options={tabs}
       onChange={(tab) => {
         setValue(tab);
@@ -68,9 +64,7 @@ const tabs = ["All", "Success", "Error"];
   <Tabs
     value={value}
     type={"text"}
-    activeIndicatorColor={"#8C30F5"}
     tabColor={"#0B0D17"}
-    activeColor={"#8C30F5"}
     options={tabs}
     onChange={(tab) => {
       setValue(tab);

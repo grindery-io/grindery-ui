@@ -1,6 +1,6 @@
 const MuiFormControl = {
   styleOverrides: {
-    root: {
+    root: ({ theme }) => ({
       "&.custom-text-input": {
         marginTop: "4px",
         padding: "0px",
@@ -18,15 +18,15 @@ const MuiFormControl = {
           marginTop: 0,
         },
         "&.input-filled .MuiOutlinedInput-root": {
-          boxShadow: "inset 0px 0px 0px 1px #8C30F5",
-          border: "1px solid #8C30F5",
+          boxShadow: `inset 0px 0px 0px 1px ${theme.palette.primary.main}`,
+          border: `1px solid ${theme.palette.primary.main}`,
         },
         "& .MuiOutlinedInput-root.Mui-focused": {
-          boxShadow: "inset 0px 0px 0px 1px #8C30F5",
-          border: "1px solid #8C30F5",
+          boxShadow: `inset 0px 0px 0px 1px ${theme.palette.primary.main}`,
+          border: `1px solid ${theme.palette.primary.main}`,
         },
       },
-    },
+    }),
   },
 };
 

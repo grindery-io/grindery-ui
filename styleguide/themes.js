@@ -7,6 +7,6 @@ module.exports = {
   color: {
     sidebarBackground: "#0B0D17",
     ribbonText: "#ffffff",
-    ribbonBackground: "#8C30F5",
+    ribbonBackground: "#0057FF",
   },
 };

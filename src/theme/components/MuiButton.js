@@ -46,10 +46,10 @@ const MuiButton = {
     sizeLarge: {
       width: "100%",
     },
-    outlinedPrimary: {
-      color: "#8C30F5",
-      border: "1px solid #8C30F5",
-    },
+    outlinedPrimary: ({ theme }) => ({
+      color: theme.palette.primary.main,
+      border: `1px solid ${theme.palette.primary.main}`,
+    }),
     outlinedSecondary: {
       color: "#0B0D17",
       border: "1px solid #0B0D17",

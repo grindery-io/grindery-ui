@@ -1,6 +1,6 @@
 const MuiAutocomplete = {
   styleOverrides: {
-    root: {
+    root: ({ theme }) => ({
       "& .MuiInputAdornment-root": {
         marginLeft: "0px",
         marginRight: "0px",
@@ -85,8 +85,8 @@ const MuiAutocomplete = {
         width: "240px",
       },
       "& > div > .Mui-focused": {
-        boxShadow: "inset 0px 0px 0px 1px #8C30F5",
-        border: "1px solid #8C30F5",
+        boxShadow: `inset 0px 0px 0px 1px ${theme.palette.primary.main}`,
+        border: `1px solid ${theme.palette.primary.main}`,
       },
       position: "relative",
       "& .paid-label": {
@@ -113,7 +113,7 @@ const MuiAutocomplete = {
       },
       "&.Mui-focused": {
         "& .MuiFilledInput-root": {
-          boxShadow: "inset 0px 0px 0px 1px #8C30F5",
+          boxShadow: `inset 0px 0px 0px 1px ${theme.palette.primary.main}`,
         },
       },
       notchedOutline: {
@@ -122,7 +122,7 @@ const MuiAutocomplete = {
       input: {
         padding: "15px 70px 15px 15px",
       },
-    },
+    }),
     listbox: {
       "& > li:first-of-type > .MuiListSubheader-root": {
         border: "0px",

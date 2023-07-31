@@ -1,5 +1,5 @@
 import React from "react";
-import { Tabs as MuiTabs, Tab } from "@mui/material";
+import { Tabs as MuiTabs, Tab, useTheme } from "@mui/material";
 import PropTypes from "prop-types";
 
 /**
@@ -19,19 +19,26 @@ function Tabs({
   const handleChange = (event, newValue) => {
     onChange(newValue);
   };
+  const theme = useTheme();
 
   return (
     <>
       {type === "text" ? (
         <MuiTabs
-          TabIndicatorProps={{ style: { background: activeIndicatorColor } }}
+          TabIndicatorProps={{
+            style: {
+              background: activeIndicatorColor || theme.palette.primary.main,
+            },
+          }}
           orientation={orientation}
           value={value}
           onChange={handleChange}
           variant={variant}
           aria-label="scrollable force tabs example"
           sx={{
-            ".Mui-selected": { color: activeColor + "!important" },
+            ".Mui-selected": {
+              color: activeColor || theme.palette.primary.main + "!important",
+            },
             ".MuiTab-root": { color: tabColor },
           }}
         >
@@ -41,14 +48,20 @@ function Tabs({
         </MuiTabs>
       ) : (
         <MuiTabs
-          TabIndicatorProps={{ style: { background: activeIndicatorColor } }}
+          TabIndicatorProps={{
+            style: {
+              background: activeIndicatorColor || theme.palette.primary.main,
+            },
+          }}
           value={value}
           orientation={orientation}
           onChange={handleChange}
           variant="scrollable"
           aria-label="scrollable"
           sx={{
-            ".Mui-selected": { color: activeColor + "!important" },
+            ".Mui-selected": {
+              color: activeColor || theme.palette.primary.main + "!important",
+            },
             ".MuiTab-root": { color: tabColor },
           }}
         >
@@ -66,9 +79,9 @@ Tabs.propTypes = {
   type: PropTypes.string.isRequired,
   options: PropTypes.array.isRequired,
   orientation: PropTypes.string,
-  activeIndicatorColor: PropTypes.string.isRequired,
+  activeIndicatorColor: PropTypes.string,
   tabColor: PropTypes.string.isRequired,
-  activeColor: PropTypes.string.isRequired,
+  activeColor: PropTypes.string,
   onChange: PropTypes.func.isRequired,
 };
 

@@ -25,7 +25,7 @@ const styleDescription = {
   margin: "0px",
 };
 
-const SelectWrapper = styled("div")({
+const SelectWrapper = styled("div")(({ theme }) => ({
   "& .MuiInputLabel-root": {
     top: "-1px",
   },
@@ -35,8 +35,8 @@ const SelectWrapper = styled("div")({
     background: "#F4F5F7",
     padding: "0px!important",
     "& #search-select": {
-      boxShadow: "inset 0px 0px 0px 1px #8C30F5",
-      border: "1px solid #8C30F5",
+      boxShadow: `inset 0px 0px 0px 1px ${theme.palette.primary.main}`,
+      border: `1px solid ${theme.palette.primary.main}`,
     },
     "& #search-select-empty": {
       boxShadow: "none",
@@ -57,13 +57,13 @@ const SelectWrapper = styled("div")({
     marginTop: "0px",
     "& .Mui-focused": {
       "& #search-select": {
-        boxShadow: "inset 0px 0px 0px 1px #8C30F5",
-        border: "1px solid #8C30F5",
+        boxShadow: `inset 0px 0px 0px 1px ${theme.palette.primary.main}`,
+        border: `1px solid ${theme.palette.primary.main}`,
         padding: "10px 15px 10px 15px!important",
       },
       "& #search-select-empty": {
-        boxShadow: "inset 0px 0px 0px 1px #8C30F5",
-        border: "1px solid #8C30F5",
+        boxShadow: `inset 0px 0px 0px 1px ${theme.palette.primary.main}`,
+        border: `1px solid ${theme.palette.primary.main}`,
       },
     },
     "& .MuiInputLabel-root.Mui-error": {
@@ -187,7 +187,7 @@ const SelectWrapper = styled("div")({
     marginTop: "3px",
     marginLeft: "6px",
   },
-});
+}));
 
 /**
  * Select input component

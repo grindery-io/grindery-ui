@@ -17,7 +17,7 @@ import ThemeProvider from "../ThemeProvider";
 import { ICONS } from "../../constants.js";
 
 <ThemeProvider>
-  <IconButton icon="star" type="text" color="#8C30F5" />
+  <IconButton icon="star" type="text" color="#0057FF" />
 </ThemeProvider>;
 ```
 

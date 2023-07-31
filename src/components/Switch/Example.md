@@ -47,7 +47,7 @@ const [value, setValue] = React.useState(false);
 <ThemeProvider>
   <Switch
     value={value}
-    color="#8C30F5"
+    color="#0057FF"
     onChange={(e) => {
       setValue(e.target.checked);
     }}
